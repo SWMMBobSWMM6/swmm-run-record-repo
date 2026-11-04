@@ -1,0 +1,584 @@
+{
+ "schema": "swmm-run-matrix/1",
+ "tool": {
+  "name": "swmmrr",
+  "version": "1.0.0"
+ },
+ "model": {
+  "name": "Greenville_all_SWMM5_Features_SI_Units.inp",
+  "sha256": "5808a9bad783d64d24d59716d2394fb6eb7b989647ef37a3a23949ac0ddb656d",
+  "options": {
+   "FLOW_UNITS": "LPS",
+   "INFILTRATION": "GREEN_AMPT",
+   "FLOW_ROUTING": "DYNWAVE",
+   "ALLOW_PONDING": "NO",
+   "IGNORE_QUALITY": "YES",
+   "START_DATE": "01/01/1997",
+   "START_TIME": "00:00:00",
+   "REPORT_START_DATE": "01/01/1997",
+   "REPORT_START_TIME": "00:00:00",
+   "END_DATE": "01/03/1997",
+   "END_TIME": "02:00:00",
+   "REPORT_STEP": "00:01:00",
+   "ROUTING_STEP": "0:00:10",
+   "SURCHARGE_METHOD": "SLOT",
+   "THREADS": "1"
+  },
+  "counts": {
+   "raingages": 2,
+   "subcatchments": 30,
+   "junctions": 149,
+   "outfalls": 5,
+   "dividers": 1,
+   "storage": 17,
+   "conduits": 223,
+   "pumps": 5,
+   "orifices": 2,
+   "weirs": 4,
+   "outlets": 1,
+   "pollutants": 6,
+   "lid_controls": 27,
+   "lid_usage": 186,
+   "control_rules": 8,
+   "aquifers": 2
+  }
+ },
+ "profile": {
+  "name": "engineering",
+  "abs": 0.001,
+  "rel": 0.01
+ },
+ "engines": [
+  {
+   "engine": "swmm5-epa",
+   "family": "swmm5",
+   "language": "C",
+   "role": "reference",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 4.595,
+   "cpu_seconds": 3.08,
+   "build_sha256": "336c36ad466d7c1fa69d7f17b19a1a7e40efa601394172e68212f7ddf2e21647",
+   "results_sha256": "d0dc979565a25ee59de1f10eb3bd36b7abc8aa05bbd00434e48d0bf1367d9092",
+   "continuity": {
+    "runoff_quantity_continuity": -0.359,
+    "groundwater_continuity": 0.0,
+    "flow_routing_continuity": 5.706
+   },
+   "reason": null
+  },
+  {
+   "engine": "swmm5-cplus",
+   "family": "swmm5",
+   "language": "C++",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 4.491,
+   "cpu_seconds": 2.843,
+   "build_sha256": "9a09b3ca736c884cca15d17eb4cf37d28502d10dda559d4a5894ddea2d3f2dfd",
+   "results_sha256": "d0dc979565a25ee59de1f10eb3bd36b7abc8aa05bbd00434e48d0bf1367d9092",
+   "continuity": {
+    "runoff_quantity_continuity": -0.359,
+    "groundwater_continuity": 0.0,
+    "flow_routing_continuity": 5.706
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm5-epa",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm5-rust",
+   "family": "swmm5",
+   "language": "Rust",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 5.401,
+   "cpu_seconds": 3.458,
+   "build_sha256": "7e744f833860780a4f2e853a8fa61f2911e343b3b28f9d2a0601cc7fe3540e0e",
+   "results_sha256": "d0dc979565a25ee59de1f10eb3bd36b7abc8aa05bbd00434e48d0bf1367d9092",
+   "continuity": {
+    "runoff_quantity_continuity": -0.359,
+    "groundwater_continuity": 0.0,
+    "flow_routing_continuity": 5.706
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm5-epa",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm5-fortran",
+   "family": "swmm5",
+   "language": "Fortran",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 5.219,
+   "cpu_seconds": 3.525,
+   "build_sha256": "07ad60bbec1cf3d59757540c6c69a06791f6a7a0bf92d86cd6794e7cc46c1e6e",
+   "results_sha256": "d0dc979565a25ee59de1f10eb3bd36b7abc8aa05bbd00434e48d0bf1367d9092",
+   "continuity": {
+    "runoff_quantity_continuity": -0.359,
+    "groundwater_continuity": 0.0,
+    "flow_routing_continuity": 5.706
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm5-epa",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm5-csharp",
+   "family": "swmm5",
+   "language": "C#",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 7.861,
+   "cpu_seconds": 5.08,
+   "build_sha256": "387a9935bc6741d234d0187013889658effd0851ad608fd9359ab34fbe008c17",
+   "results_sha256": "d0dc979565a25ee59de1f10eb3bd36b7abc8aa05bbd00434e48d0bf1367d9092",
+   "continuity": {
+    "runoff_quantity_continuity": -0.359,
+    "groundwater_continuity": 0.0,
+    "flow_routing_continuity": 5.706
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm5-epa",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm5-python",
+   "family": "swmm5",
+   "language": "Python",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 417.512,
+   "cpu_seconds": 278.776,
+   "build_sha256": "7666864e8c3d0b2dc40cbc155806917e47ec7c0407a37297040c55693fd22e06",
+   "results_sha256": "d0dc979565a25ee59de1f10eb3bd36b7abc8aa05bbd00434e48d0bf1367d9092",
+   "continuity": {
+    "runoff_quantity_continuity": -0.359,
+    "groundwater_continuity": 0.0,
+    "flow_routing_continuity": 5.706
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm5-epa",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm5-typescript",
+   "family": "swmm5",
+   "language": "TypeScript",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 68.776,
+   "cpu_seconds": 43.061,
+   "build_sha256": "dd235b0a59ede1c99f5b755ef75f20b926b639faabf08383db97d4a3e24e2b0a",
+   "results_sha256": "d0dc979565a25ee59de1f10eb3bd36b7abc8aa05bbd00434e48d0bf1367d9092",
+   "continuity": {
+    "runoff_quantity_continuity": -0.359,
+    "groundwater_continuity": 0.0,
+    "flow_routing_continuity": 5.706
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm5-epa",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm5-java",
+   "family": "swmm5",
+   "language": "Java",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 16.634,
+   "cpu_seconds": 10.058,
+   "build_sha256": "0cb9ba269512a71065e06129bc2764f5e25e2253d404bd52bf627e6179d30bc8",
+   "results_sha256": "d0dc979565a25ee59de1f10eb3bd36b7abc8aa05bbd00434e48d0bf1367d9092",
+   "continuity": {
+    "runoff_quantity_continuity": -0.359,
+    "groundwater_continuity": 0.0,
+    "flow_routing_continuity": 5.706
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm5-epa",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm5-go",
+   "family": "swmm5",
+   "language": "Go",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 9.663,
+   "cpu_seconds": 4.632,
+   "build_sha256": "ab70fb23142ab9573a445ea3f1086d296c5a0a9631ef4e4adbe7be04880be582",
+   "results_sha256": "d0dc979565a25ee59de1f10eb3bd36b7abc8aa05bbd00434e48d0bf1367d9092",
+   "continuity": {
+    "runoff_quantity_continuity": -0.359,
+    "groundwater_continuity": 0.0,
+    "flow_routing_continuity": 5.706
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm5-epa",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm6-cpp",
+   "family": "swmm6",
+   "language": "C++",
+   "role": "reference",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 13.876,
+   "cpu_seconds": 9.271,
+   "build_sha256": "0db96143ab3056ee3d87429f17053dd3ebe2675935bef1d6c22ceffa3e419fb4",
+   "results_sha256": "aa2bb947f288d5bf027624c49bdde73ddc50eeff0d4e76b74ac6c11c87b0457a",
+   "continuity": {
+    "runoff_quantity_continuity": -0.358,
+    "groundwater_continuity": 0.0,
+    "flow_routing_continuity": 5.703
+   },
+   "reason": null
+  },
+  {
+   "engine": "swmm6-csharp",
+   "family": "swmm6",
+   "language": "C#",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 32.377,
+   "cpu_seconds": 20.999,
+   "build_sha256": "a895eaa0bc1da708636e3167c3d88b466d583c340bee186ffb6d8262a6f570c6",
+   "results_sha256": "aa2bb947f288d5bf027624c49bdde73ddc50eeff0d4e76b74ac6c11c87b0457a",
+   "continuity": {
+    "runoff_quantity_continuity": -0.358,
+    "groundwater_continuity": 0.0,
+    "flow_routing_continuity": 5.703
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm6-cpp",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm6-go",
+   "family": "swmm6",
+   "language": "Go",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 52.054,
+   "cpu_seconds": 27.692,
+   "build_sha256": "d8209937bd951b6091c5c34af4ebb5605b5c09c30f9b50a5b1a580d20704aa4e",
+   "results_sha256": "aa2bb947f288d5bf027624c49bdde73ddc50eeff0d4e76b74ac6c11c87b0457a",
+   "continuity": {
+    "runoff_quantity_continuity": -0.358,
+    "groundwater_continuity": 0.0,
+    "flow_routing_continuity": 5.703
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm6-cpp",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm6-java",
+   "family": "swmm6",
+   "language": "Java",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 87.837,
+   "cpu_seconds": 51.245,
+   "build_sha256": "647069303c5667b5f155dc5617038692fe8c7a172cfb88b1ff93741740243c05",
+   "results_sha256": "aa2bb947f288d5bf027624c49bdde73ddc50eeff0d4e76b74ac6c11c87b0457a",
+   "continuity": {
+    "runoff_quantity_continuity": -0.358,
+    "groundwater_continuity": 0.0,
+    "flow_routing_continuity": 5.703
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm6-cpp",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm6-typescript",
+   "family": "swmm6",
+   "language": "TypeScript",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 241.396,
+   "cpu_seconds": 157.76,
+   "build_sha256": "d5d8dec0549e97f0d6d41847e1788f48362f75e04ec4977f47b389a0bb40cda3",
+   "results_sha256": "aa2bb947f288d5bf027624c49bdde73ddc50eeff0d4e76b74ac6c11c87b0457a",
+   "continuity": {
+    "runoff_quantity_continuity": -0.358,
+    "groundwater_continuity": 0.0,
+    "flow_routing_continuity": 5.703
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm6-cpp",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm6-fortran",
+   "family": "swmm6",
+   "language": "Fortran",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 155.323,
+   "cpu_seconds": 106.534,
+   "build_sha256": "91a27f9f18df630fe77743b6d60541b1c9c3535eca191a7ea6189a963328fa84",
+   "results_sha256": "aa2bb947f288d5bf027624c49bdde73ddc50eeff0d4e76b74ac6c11c87b0457a",
+   "continuity": {
+    "runoff_quantity_continuity": -0.358,
+    "groundwater_continuity": 0.0,
+    "flow_routing_continuity": 5.703
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm6-cpp",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm6-python",
+   "family": "swmm6",
+   "language": "Python",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 1669.329,
+   "cpu_seconds": 1127.59,
+   "build_sha256": "f1633f3d6270014fcc843ed47083f1a03472b366b1a9c49f1ea1e741fc21fea7",
+   "results_sha256": "aa2bb947f288d5bf027624c49bdde73ddc50eeff0d4e76b74ac6c11c87b0457a",
+   "continuity": {
+    "runoff_quantity_continuity": -0.358,
+    "groundwater_continuity": 0.0,
+    "flow_routing_continuity": 5.703
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm6-cpp",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm6-rust",
+   "family": "swmm6",
+   "language": "Rust",
+   "role": "translation (incomplete)",
+   "status": "not_run",
+   "exit_code": null,
+   "exit_code_agrees_with_report": null,
+   "wall_seconds": null,
+   "cpu_seconds": null,
+   "build_sha256": null,
+   "results_sha256": null,
+   "continuity": {},
+   "reason": "the time-stepping engine and the output writers are unfinished (its README)"
+  }
+ ],
+ "cross_family": {
+  "a": "swmm5-epa",
+  "b": "swmm6-cpp",
+  "verdict": "DIFFERENT",
+  "values_compared": 7386000,
+  "values_outside": 25650,
+  "max_tolerance_ratio": 99.43188110454638,
+  "worst": [
+   {
+    "kind": "link",
+    "variable": "flow",
+    "outside": 11680,
+    "compared": 705000,
+    "tolerance_ratio": 99.43188110454638,
+    "worst": {
+     "id": "PUMP-15",
+     "time": "1997-01-02T01:23:00",
+     "a": 0.0,
+     "b": 17.501949310302734
+    }
+   },
+   {
+    "kind": "link",
+    "variable": "volume",
+    "outside": 6658,
+    "compared": 705000,
+    "tolerance_ratio": 46.48919041585337,
+    "worst": {
+     "id": "R83",
+     "time": "1997-01-02T05:31:00",
+     "a": 1.795883297920227,
+     "b": 0.9145025014877319
+    }
+   },
+   {
+    "kind": "node",
+    "variable": "total_inflow",
+    "outside": 6037,
+    "compared": 516000,
+    "tolerance_ratio": 96.36612725386051,
+    "worst": {
+     "id": "83",
+     "time": "1997-01-02T02:16:00",
+     "a": 2.825613498687744,
+     "b": 0.006313071586191654
+    }
+   },
+   {
+    "kind": "link",
+    "variable": "capacity",
+    "outside": 414,
+    "compared": 705000,
+    "tolerance_ratio": 90.90909090909092,
+    "worst": {
+     "id": "PUMP-15",
+     "time": "1997-01-02T01:23:00",
+     "a": 0.0,
+     "b": 1.0
+    }
+   },
+   {
+    "kind": "sys",
+    "variable": "outfall_outflow",
+    "outside": 334,
+    "compared": 3000,
+    "tolerance_ratio": 34.41981267408552,
+    "worst": {
+     "id": null,
+     "time": "1997-01-02T13:28:00",
+     "a": 5.548463344573975,
+     "b": 3.6042728424072266
+    }
+   },
+   {
+    "kind": "link",
+    "variable": "velocity",
+    "outside": 331,
+    "compared": 705000,
+    "tolerance_ratio": 72.06885633336647,
+    "worst": {
+     "id": "3629",
+     "time": "1997-01-01T00:42:00",
+     "a": 0.0,
+     "b": 0.25802329182624817
+    }
+   },
+   {
+    "kind": "sub",
+    "variable": "evaporation_loss",
+    "outside": 93,
+    "compared": 90000,
+    "tolerance_ratio": 26.208868922240597,
+    "worst": {
+     "id": "C13",
+     "time": "1997-01-02T21:17:00",
+     "a": 0.01872357912361622,
+     "b": 0.060891393572092056
+    }
+   },
+   {
+    "kind": "node",
+    "variable": "volume",
+    "outside": 63,
+    "compared": 516000,
+    "tolerance_ratio": 3.7415161933700114,
+    "worst": {
+     "id": "83",
+     "time": "1997-01-02T05:31:00",
+     "a": 0.0038869469426572323,
+     "b": 0.0
+    }
+   }
+  ],
+  "continuity": {
+   "flow_routing_continuity": {
+    "a": 5.706,
+    "b": 5.703
+   },
+   "groundwater_continuity": {
+    "a": 0.0,
+    "b": 0.0
+   },
+   "runoff_quantity_continuity": {
+    "a": -0.359,
+    "b": -0.358
+   }
+  }
+ }
+}

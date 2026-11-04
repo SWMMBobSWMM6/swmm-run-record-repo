@@ -1,0 +1,1013 @@
+{
+ "schema": "swmm-run-record/1",
+ "created": "2026-11-04T19:51:19+00:00",
+ "tool": {
+  "name": "swmmrr",
+  "version": "1.0.0"
+ },
+ "engine": {
+  "id": "swmm5-fortran",
+  "family": "swmm5",
+  "language": "Fortran",
+  "role": "translation",
+  "name": "swmm5-fortran (EPA SWMM 5.2.4 translated to Fortran 2008)",
+  "repo": "https://github.com/SWMMBobSWMM6/swmm5-fortran",
+  "pinned": null,
+  "command": [
+   "/home/claude/swmm5-ports/f90/bin/runswmm"
+  ],
+  "env": {},
+  "capabilities": {
+   "simulate": true,
+   "routing": [
+    "STEADY",
+    "KINWAVE",
+    "DYNWAVE"
+   ],
+   "two_d": false,
+   "threads": 1
+  },
+  "verification": [
+   {
+    "set": "1729 gate (480 models)",
+    "result": "480 of 480 identical to EPA",
+    "as_of": "2026-10-29"
+   }
+  ],
+  "fingerprint": {
+   "build_sha256": "07ad60bbec1cf3d59757540c6c69a06791f6a7a0bf92d86cd6794e7cc46c1e6e",
+   "artifacts": [
+    {
+     "path": "/home/claude/swmm5-ports/f90/bin/runswmm",
+     "sha256": "8eab3881a22e3f6e2711c36dc6c0eadd5c644f62e1e40be3352ceb80aefaf65b",
+     "files": 1
+    }
+   ],
+   "git": {
+    "commit": "7f51dc57ada56bbc8359ff67f52be2cf74c2e895",
+    "dirty": true
+   }
+  }
+ },
+ "model": {
+  "path": "/home/claude/swmmbobswmm6/1729-swmm5-models-2030/OpenSWMM_Engine_Test_Decks/tests/regression/data/Example1.inp",
+  "name": "Example1.inp",
+  "bytes": 29206,
+  "sha256": "7a78aab1315a83a5dac98b902d55a75a3aece121c4c07dfd4a37287cfb4715db",
+  "options": {
+   "FLOW_UNITS": "CFS",
+   "INFILTRATION": "HORTON",
+   "FLOW_ROUTING": "DYNWAVE",
+   "ALLOW_PONDING": "NO",
+   "START_DATE": "01/01/1998",
+   "START_TIME": "00:00:00",
+   "REPORT_START_DATE": "01/01/1998",
+   "REPORT_START_TIME": "00:00:00",
+   "END_DATE": "01/02/1998",
+   "END_TIME": "06:00:00",
+   "REPORT_STEP": "00:05:00",
+   "ROUTING_STEP": "0:00:05",
+   "THREADS": "1"
+  },
+  "counts": {
+   "raingages": 1,
+   "subcatchments": 7,
+   "junctions": 11,
+   "outfalls": 1,
+   "conduits": 11,
+   "pollutants": 1
+  },
+  "files": []
+ },
+ "files": {
+  "rpt": {
+   "path": "/home/claude/swmm-run-record/demo/example1/swmm5-fortran/run.rpt",
+   "bytes": 14948,
+   "sha256": "9cde3fe0c028fef52b853c563c651f18980f4d966a808239ce259c0c180bacf2",
+   "sha256_without_clock": "38eb1fb901789c1e0ee5553e93ac280089b47241526f28d10381f2be997af86c"
+  },
+  "out": {
+   "path": "/home/claude/swmm-run-record/demo/example1/swmm5-fortran/run.out",
+   "bytes": 332063,
+   "sha256": "d660d53af622d533d57c46df56fc30febc2ab7da1305eab7e4cc4477d46789f1",
+   "version": 52004,
+   "error_code": 0,
+   "results_sha256": "6f44e67b05db394331b878fc49490c8c15aad26642b21b0a7d52a43eb04407a4"
+  }
+ },
+ "time": {
+  "model_start": "1998-01-01T00:00:00",
+  "model_end": "1998-01-02T06:00:00",
+  "output_start": "1998-01-01T00:00:00",
+  "report_step_seconds": 300,
+  "periods": 360,
+  "first_report": "1998-01-01T00:05:00",
+  "last_report": "1998-01-02T06:00:00",
+  "reached_end": true
+ },
+ "units": {
+  "flow": "CFS",
+  "system": "US",
+  "depth": "ft",
+  "head": "ft",
+  "length": "ft",
+  "velocity": "ft/s",
+  "volume": "ft3",
+  "area": "acre",
+  "rainfall": "in/hr",
+  "temperature": "deg F"
+ },
+ "objects": {
+  "subcatchments": 7,
+  "nodes": 12,
+  "links": 11,
+  "pollutants": [
+   "TSS"
+  ],
+  "node_types": {
+   "JUNCTION": 12
+  },
+  "link_types": {
+   "CONDUIT": 11
+  },
+  "variables": {
+   "sub": [
+    "rainfall",
+    "snow_depth",
+    "evaporation_loss",
+    "infiltration_loss",
+    "runoff",
+    "groundwater_flow",
+    "groundwater_elevation",
+    "soil_moisture",
+    "quality:TSS"
+   ],
+   "node": [
+    "depth",
+    "head",
+    "volume",
+    "lateral_inflow",
+    "total_inflow",
+    "flooding",
+    "quality:TSS"
+   ],
+   "link": [
+    "flow",
+    "depth",
+    "velocity",
+    "volume",
+    "capacity",
+    "quality:TSS"
+   ],
+   "sys": [
+    "air_temperature",
+    "rainfall",
+    "snow_depth",
+    "infiltration",
+    "runoff",
+    "dry_weather_inflow",
+    "groundwater_inflow",
+    "rdii_inflow",
+    "external_inflow",
+    "total_lateral_inflow",
+    "flooding",
+    "outfall_outflow",
+    "storage_volume",
+    "evaporation",
+    "pet"
+   ]
+  }
+ },
+ "summary": {
+  "nodes": {
+   "max_depth": {
+    "id": "J11",
+    "value": 1.987815260887146,
+    "time": "1998-01-01T12:10:00"
+   },
+   "max_total_inflow": {
+    "id": "J11",
+    "value": 72.28589630126953,
+    "time": "1998-01-01T12:10:00"
+   },
+   "max_flooding": {
+    "id": null,
+    "value": 0.0,
+    "time": null
+   },
+   "flooded_nodes": 0
+  },
+  "links": {
+   "max_flow": {
+    "id": "C11",
+    "value": 71.1805648803711,
+    "time": "1998-01-01T12:10:00"
+   },
+   "max_velocity": {
+    "id": "C7",
+    "value": 11.97061538696289,
+    "time": "1998-01-01T12:05:00"
+   },
+   "max_capacity": {
+    "id": "C10",
+    "value": 0.4428415596485138,
+    "time": "1998-01-01T12:10:00"
+   },
+   "links_reversing": 0,
+   "links_full": 0
+  },
+  "subcatchments": {
+   "max_runoff": {
+    "id": "S4",
+    "value": 22.791810989379883,
+    "time": "1998-01-01T12:05:00"
+   }
+  }
+ },
+ "peaks": {
+  "subcatchments": {
+   "S1": {
+    "max_rainfall": 4.672368049621582,
+    "max_rainfall_time": "1998-01-01T12:00:00",
+    "max_snow_depth": 0.0,
+    "max_snow_depth_time": "1998-01-01T00:05:00",
+    "max_evaporation_loss": 0.0,
+    "max_evaporation_loss_time": "1998-01-01T00:05:00",
+    "max_infiltration_loss": 0.156059131026268,
+    "max_infiltration_loss_time": "1998-01-01T11:30:00",
+    "max_runoff": 15.903886795043945,
+    "max_runoff_time": "1998-01-01T12:05:00",
+    "max_groundwater_flow": 0.0,
+    "max_groundwater_flow_time": "1998-01-01T00:05:00",
+    "max_groundwater_elevation": 0.0,
+    "max_groundwater_elevation_time": "1998-01-01T00:05:00",
+    "max_soil_moisture": 0.0,
+    "max_soil_moisture_time": "1998-01-01T00:05:00",
+    "max_quality:TSS": 247.37509155273438,
+    "max_quality:TSS_time": "1998-01-01T11:55:00"
+   },
+   "S2": {
+    "max_rainfall": 4.672368049621582,
+    "max_rainfall_time": "1998-01-01T12:00:00",
+    "max_snow_depth": 0.0,
+    "max_snow_depth_time": "1998-01-01T00:05:00",
+    "max_evaporation_loss": 0.0,
+    "max_evaporation_loss_time": "1998-01-01T00:05:00",
+    "max_infiltration_loss": 0.13366176187992096,
+    "max_infiltration_loss_time": "1998-01-01T11:30:00",
+    "max_runoff": 17.70712661743164,
+    "max_runoff_time": "1998-01-01T12:05:00",
+    "max_groundwater_flow": 0.0,
+    "max_groundwater_flow_time": "1998-01-01T00:05:00",
+    "max_groundwater_elevation": 0.0,
+    "max_groundwater_elevation_time": "1998-01-01T00:05:00",
+    "max_soil_moisture": 0.0,
+    "max_soil_moisture_time": "1998-01-01T00:05:00",
+    "max_quality:TSS": 449.78204345703125,
+    "max_quality:TSS_time": "1998-01-01T11:55:00"
+   },
+   "S3": {
+    "max_rainfall": 4.672368049621582,
+    "max_rainfall_time": "1998-01-01T12:00:00",
+    "max_snow_depth": 0.0,
+    "max_snow_depth_time": "1998-01-01T00:05:00",
+    "max_evaporation_loss": 0.0,
+    "max_evaporation_loss_time": "1998-01-01T00:05:00",
+    "max_infiltration_loss": 0.2185550332069397,
+    "max_infiltration_loss_time": "1998-01-01T11:30:00",
+    "max_runoff": 11.335505485534668,
+    "max_runoff_time": "1998-01-01T12:05:00",
+    "max_groundwater_flow": 0.0,
+    "max_groundwater_flow_time": "1998-01-01T00:05:00",
+    "max_groundwater_elevation": 0.0,
+    "max_groundwater_elevation_time": "1998-01-01T00:05:00",
+    "max_soil_moisture": 0.0,
+    "max_soil_moisture_time": "1998-01-01T00:05:00",
+    "max_quality:TSS": 137.43788146972656,
+    "max_quality:TSS_time": "1998-01-01T11:55:00"
+   },
+   "S4": {
+    "max_rainfall": 4.672368049621582,
+    "max_rainfall_time": "1998-01-01T12:00:00",
+    "max_snow_depth": 0.0,
+    "max_snow_depth_time": "1998-01-01T00:05:00",
+    "max_evaporation_loss": 0.0,
+    "max_evaporation_loss_time": "1998-01-01T00:05:00",
+    "max_infiltration_loss": 0.1809852421283722,
+    "max_infiltration_loss_time": "1998-01-01T11:30:00",
+    "max_runoff": 22.791810989379883,
+    "max_runoff_time": "1998-01-01T12:05:00",
+    "max_groundwater_flow": 0.0,
+    "max_groundwater_flow_time": "1998-01-01T00:05:00",
+    "max_groundwater_elevation": 0.0,
+    "max_groundwater_elevation_time": "1998-01-01T00:05:00",
+    "max_soil_moisture": 0.0,
+    "max_soil_moisture_time": "1998-01-01T00:05:00",
+    "max_quality:TSS": 250.7013397216797,
+    "max_quality:TSS_time": "1998-01-01T11:55:00"
+   },
+   "S5": {
+    "max_rainfall": 4.672368049621582,
+    "max_rainfall_time": "1998-01-01T12:00:00",
+    "max_snow_depth": 0.0,
+    "max_snow_depth_time": "1998-01-01T00:05:00",
+    "max_evaporation_loss": 0.0,
+    "max_evaporation_loss_time": "1998-01-01T00:05:00",
+    "max_infiltration_loss": 0.04443350434303284,
+    "max_infiltration_loss_time": "1998-01-01T11:30:00",
+    "max_runoff": 21.512605667114258,
+    "max_runoff_time": "1998-01-01T12:05:00",
+    "max_groundwater_flow": 0.0,
+    "max_groundwater_flow_time": "1998-01-01T00:05:00",
+    "max_groundwater_elevation": 0.0,
+    "max_groundwater_elevation_time": "1998-01-01T00:05:00",
+    "max_soil_moisture": 0.0,
+    "max_soil_moisture_time": "1998-01-01T00:05:00",
+    "max_quality:TSS": 601.8369140625,
+    "max_quality:TSS_time": "1998-01-01T11:50:00"
+   },
+   "S6": {
+    "max_rainfall": 4.672368049621582,
+    "max_rainfall_time": "1998-01-01T12:00:00",
+    "max_snow_depth": 0.0,
+    "max_snow_depth_time": "1998-01-01T00:05:00",
+    "max_evaporation_loss": 0.0,
+    "max_evaporation_loss_time": "1998-01-01T00:05:00",
+    "max_infiltration_loss": 0.018062399700284004,
+    "max_infiltration_loss_time": "1998-01-01T11:30:00",
+    "max_runoff": 9.055179595947266,
+    "max_runoff_time": "1998-01-01T12:05:00",
+    "max_groundwater_flow": 0.0,
+    "max_groundwater_flow_time": "1998-01-01T00:05:00",
+    "max_groundwater_elevation": 0.0,
+    "max_groundwater_elevation_time": "1998-01-01T00:05:00",
+    "max_soil_moisture": 0.0,
+    "max_soil_moisture_time": "1998-01-01T00:05:00",
+    "max_quality:TSS": 673.40771484375,
+    "max_quality:TSS_time": "1998-01-01T11:50:00"
+   },
+   "S7": {
+    "max_rainfall": 4.672368049621582,
+    "max_rainfall_time": "1998-01-01T12:00:00",
+    "max_snow_depth": 0.0,
+    "max_snow_depth_time": "1998-01-01T00:05:00",
+    "max_evaporation_loss": 0.0,
+    "max_evaporation_loss_time": "1998-01-01T00:05:00",
+    "max_infiltration_loss": 0.3612479865550995,
+    "max_infiltration_loss_time": "1998-01-01T11:30:00",
+    "max_runoff": 4.239161014556885,
+    "max_runoff_time": "1998-01-01T12:10:00",
+    "max_groundwater_flow": 0.0,
+    "max_groundwater_flow_time": "1998-01-01T00:05:00",
+    "max_groundwater_elevation": 0.0,
+    "max_groundwater_elevation_time": "1998-01-01T00:05:00",
+    "max_soil_moisture": 0.0,
+    "max_soil_moisture_time": "1998-01-01T00:05:00",
+    "max_quality:TSS": 0.0,
+    "max_quality:TSS_time": "1998-01-01T00:05:00"
+   }
+  },
+  "nodes": {
+   "J1": {
+    "max_depth": 0.7225125432014465,
+    "max_depth_time": "1998-01-01T12:05:00",
+    "max_head": 4973.72265625,
+    "max_head_time": "1998-01-01T12:05:00",
+    "max_volume": 0.0,
+    "max_volume_time": "1998-01-01T00:05:00",
+    "max_lateral_inflow": 15.896150588989258,
+    "max_lateral_inflow_time": "1998-01-01T12:05:00",
+    "max_total_inflow": 15.896150588989258,
+    "max_total_inflow_time": "1998-01-01T12:05:00",
+    "max_flooding": 0.0,
+    "max_flooding_time": "1998-01-01T00:05:00",
+    "max_quality:TSS": 246.49981689453125,
+    "max_quality:TSS_time": "1998-01-01T11:55:00",
+    "type": "JUNCTION"
+   },
+   "J2": {
+    "max_depth": 0.6626250743865967,
+    "max_depth_time": "1998-01-01T12:05:00",
+    "max_head": 4969.66259765625,
+    "max_head_time": "1998-01-01T12:05:00",
+    "max_volume": 0.0,
+    "max_volume_time": "1998-01-01T00:05:00",
+    "max_lateral_inflow": 17.699230194091797,
+    "max_lateral_inflow_time": "1998-01-01T12:05:00",
+    "max_total_inflow": 17.699230194091797,
+    "max_total_inflow_time": "1998-01-01T12:05:00",
+    "max_flooding": 0.0,
+    "max_flooding_time": "1998-01-01T00:05:00",
+    "max_quality:TSS": 447.7542419433594,
+    "max_quality:TSS_time": "1998-01-01T11:55:00",
+    "type": "JUNCTION"
+   },
+   "J3": {
+    "max_depth": 0.9078943133354187,
+    "max_depth_time": "1998-01-01T12:05:00",
+    "max_head": 4973.90771484375,
+    "max_head_time": "1998-01-01T12:05:00",
+    "max_volume": 0.0,
+    "max_volume_time": "1998-01-01T00:05:00",
+    "max_lateral_inflow": 11.327986717224121,
+    "max_lateral_inflow_time": "1998-01-01T12:05:00",
+    "max_total_inflow": 11.327986717224121,
+    "max_total_inflow_time": "1998-01-01T12:05:00",
+    "max_flooding": 0.0,
+    "max_flooding_time": "1998-01-01T00:05:00",
+    "max_quality:TSS": 136.84483337402344,
+    "max_quality:TSS_time": "1998-01-01T11:55:00",
+    "type": "JUNCTION"
+   },
+   "J4": {
+    "max_depth": 0.7082810997962952,
+    "max_depth_time": "1998-01-01T12:05:00",
+    "max_head": 4971.70849609375,
+    "max_head_time": "1998-01-01T12:05:00",
+    "max_volume": 0.0,
+    "max_volume_time": "1998-01-01T00:05:00",
+    "max_lateral_inflow": 0.0,
+    "max_lateral_inflow_time": "1998-01-01T00:05:00",
+    "max_total_inflow": 11.201345443725586,
+    "max_total_inflow_time": "1998-01-01T12:05:00",
+    "max_flooding": 0.0,
+    "max_flooding_time": "1998-01-01T00:05:00",
+    "max_quality:TSS": 137.796142578125,
+    "max_quality:TSS_time": "1998-01-01T12:00:00",
+    "type": "JUNCTION"
+   },
+   "J5": {
+    "max_depth": 1.2063449621200562,
+    "max_depth_time": "1998-01-01T12:10:00",
+    "max_head": 4971.00634765625,
+    "max_head_time": "1998-01-01T12:10:00",
+    "max_volume": 0.0,
+    "max_volume_time": "1998-01-01T00:05:00",
+    "max_lateral_inflow": 0.0,
+    "max_lateral_inflow_time": "1998-01-01T00:05:00",
+    "max_total_inflow": 26.0043888092041,
+    "max_total_inflow_time": "1998-01-01T12:05:00",
+    "max_flooding": 0.0,
+    "max_flooding_time": "1998-01-01T00:05:00",
+    "max_quality:TSS": 248.75917053222656,
+    "max_quality:TSS_time": "1998-01-01T12:05:00",
+    "type": "JUNCTION"
+   },
+   "J6": {
+    "max_depth": 1.2844712734222412,
+    "max_depth_time": "1998-01-01T12:10:00",
+    "max_head": 4970.28466796875,
+    "max_head_time": "1998-01-01T12:10:00",
+    "max_volume": 0.0,
+    "max_volume_time": "1998-01-01T00:05:00",
+    "max_lateral_inflow": 0.0,
+    "max_lateral_inflow_time": "1998-01-01T00:05:00",
+    "max_total_inflow": 41.97590255737305,
+    "max_total_inflow_time": "1998-01-01T12:05:00",
+    "max_flooding": 0.0,
+    "max_flooding_time": "1998-01-01T00:05:00",
+    "max_quality:TSS": 245.19993591308594,
+    "max_quality:TSS_time": "1998-01-01T12:00:00",
+    "type": "JUNCTION"
+   },
+   "J7": {
+    "max_depth": 0.8627319931983948,
+    "max_depth_time": "1998-01-01T12:05:00",
+    "max_head": 4972.36279296875,
+    "max_head_time": "1998-01-01T12:05:00",
+    "max_volume": 0.0,
+    "max_volume_time": "1998-01-01T00:05:00",
+    "max_lateral_inflow": 22.779558181762695,
+    "max_lateral_inflow_time": "1998-01-01T12:05:00",
+    "max_total_inflow": 22.779558181762695,
+    "max_total_inflow_time": "1998-01-01T12:05:00",
+    "max_flooding": 0.0,
+    "max_flooding_time": "1998-01-01T00:05:00",
+    "max_quality:TSS": 249.5182342529297,
+    "max_quality:TSS_time": "1998-01-01T11:55:00",
+    "type": "JUNCTION"
+   },
+   "J8": {
+    "max_depth": 1.2675689458847046,
+    "max_depth_time": "1998-01-01T12:10:00",
+    "max_head": 4967.767578125,
+    "max_head_time": "1998-01-01T12:10:00",
+    "max_volume": 0.0,
+    "max_volume_time": "1998-01-01T00:05:00",
+    "max_lateral_inflow": 0.0,
+    "max_lateral_inflow_time": "1998-01-01T00:05:00",
+    "max_total_inflow": 37.88221740722656,
+    "max_total_inflow_time": "1998-01-01T12:10:00",
+    "max_flooding": 0.0,
+    "max_flooding_time": "1998-01-01T00:05:00",
+    "max_quality:TSS": 251.05946350097656,
+    "max_quality:TSS_time": "1998-01-01T12:00:00",
+    "type": "JUNCTION"
+   },
+   "J9": {
+    "max_depth": 1.6418455839157104,
+    "max_depth_time": "1998-01-01T12:10:00",
+    "max_head": 4966.44140625,
+    "max_head_time": "1998-01-01T12:10:00",
+    "max_volume": 0.0,
+    "max_volume_time": "1998-01-01T00:05:00",
+    "max_lateral_inflow": 0.0,
+    "max_lateral_inflow_time": "1998-01-01T00:05:00",
+    "max_total_inflow": 37.257808685302734,
+    "max_total_inflow_time": "1998-01-01T12:10:00",
+    "max_flooding": 0.0,
+    "max_flooding_time": "1998-01-01T00:05:00",
+    "max_quality:TSS": 253.40248107910156,
+    "max_quality:TSS_time": "1998-01-01T12:05:00",
+    "type": "JUNCTION"
+   },
+   "J10": {
+    "max_depth": 1.729882836341858,
+    "max_depth_time": "1998-01-01T12:10:00",
+    "max_head": 4965.52978515625,
+    "max_head_time": "1998-01-01T12:10:00",
+    "max_volume": 0.0,
+    "max_volume_time": "1998-01-01T00:05:00",
+    "max_lateral_inflow": 24.599092483520508,
+    "max_lateral_inflow_time": "1998-01-01T12:05:00",
+    "max_total_inflow": 55.33384704589844,
+    "max_total_inflow_time": "1998-01-01T12:10:00",
+    "max_flooding": 0.0,
+    "max_flooding_time": "1998-01-01T00:05:00",
+    "max_quality:TSS": 368.97039794921875,
+    "max_quality:TSS_time": "1998-01-01T11:50:00",
+    "type": "JUNCTION"
+   },
+   "J11": {
+    "max_depth": 1.987815260887146,
+    "max_depth_time": "1998-01-01T12:10:00",
+    "max_head": 4964.98779296875,
+    "max_head_time": "1998-01-01T12:10:00",
+    "max_volume": 0.0,
+    "max_volume_time": "1998-01-01T00:05:00",
+    "max_lateral_inflow": 9.053061485290527,
+    "max_lateral_inflow_time": "1998-01-01T12:05:00",
+    "max_total_inflow": 72.28589630126953,
+    "max_total_inflow_time": "1998-01-01T12:10:00",
+    "max_flooding": 0.0,
+    "max_flooding_time": "1998-01-01T00:05:00",
+    "max_quality:TSS": 383.49334716796875,
+    "max_quality:TSS_time": "1998-01-01T11:55:00",
+    "type": "JUNCTION"
+   },
+   "O1": {
+    "max_depth": 1.9822423458099365,
+    "max_depth_time": "1998-01-01T12:10:00",
+    "max_head": 4963.982421875,
+    "max_head_time": "1998-01-01T12:10:00",
+    "max_volume": 0.0,
+    "max_volume_time": "1998-01-01T00:05:00",
+    "max_lateral_inflow": 0.0,
+    "max_lateral_inflow_time": "1998-01-01T00:05:00",
+    "max_total_inflow": 71.1805648803711,
+    "max_total_inflow_time": "1998-01-01T12:10:00",
+    "max_flooding": 0.0,
+    "max_flooding_time": "1998-01-01T00:05:00",
+    "max_quality:TSS": 371.63507080078125,
+    "max_quality:TSS_time": "1998-01-01T11:55:00",
+    "type": "JUNCTION"
+   }
+  },
+  "links": {
+   "C1": {
+    "max_flow": 15.351317405700684,
+    "max_flow_time": "1998-01-01T12:05:00",
+    "min_flow": 0.0,
+    "min_flow_time": "1998-01-01T00:05:00",
+    "max_depth": 0.9537935853004456,
+    "max_depth_time": "1998-01-01T12:05:00",
+    "max_velocity": 1.6475650072097778,
+    "max_velocity_time": "1998-01-01T12:05:00",
+    "max_volume": 1773.21826171875,
+    "max_volume_time": "1998-01-01T12:05:00",
+    "max_capacity": 0.15529298782348633,
+    "max_capacity_time": "1998-01-01T12:05:00",
+    "max_quality:TSS": 285.2057189941406,
+    "max_quality:TSS_time": "1998-01-01T12:05:00",
+    "type": "CONDUIT"
+   },
+   "C2": {
+    "max_flow": 13.458512306213379,
+    "max_flow_time": "1998-01-01T12:05:00",
+    "min_flow": 0.0,
+    "min_flow_time": "1998-01-01T00:05:00",
+    "max_depth": 0.6264787316322327,
+    "max_depth_time": "1998-01-01T12:05:00",
+    "max_velocity": 2.743295907974243,
+    "max_velocity_time": "1998-01-01T12:05:00",
+    "max_volume": 2589.1328125,
+    "max_volume_time": "1998-01-01T12:05:00",
+    "max_capacity": 0.39247560501098633,
+    "max_capacity_time": "1998-01-01T12:05:00",
+    "max_quality:TSS": 455.3908996582031,
+    "max_quality:TSS_time": "1998-01-01T12:00:00",
+    "type": "CONDUIT"
+   },
+   "C3": {
+    "max_flow": 11.201345443725586,
+    "max_flow_time": "1998-01-01T12:05:00",
+    "min_flow": 0.0,
+    "min_flow_time": "1998-01-01T00:05:00",
+    "max_depth": 0.8081657290458679,
+    "max_depth_time": "1998-01-01T12:05:00",
+    "max_velocity": 8.716334342956543,
+    "max_velocity_time": "1998-01-01T12:05:00",
+    "max_volume": 140.3917694091797,
+    "max_volume_time": "1998-01-01T12:05:00",
+    "max_capacity": 0.32320746779441833,
+    "max_capacity_time": "1998-01-01T12:05:00",
+    "max_quality:TSS": 127.97821807861328,
+    "max_quality:TSS_time": "1998-01-01T12:00:00",
+    "type": "CONDUIT"
+   },
+   "C4": {
+    "max_flow": 10.653071403503418,
+    "max_flow_time": "1998-01-01T12:05:00",
+    "min_flow": 0.0,
+    "min_flow_time": "1998-01-01T00:05:00",
+    "max_depth": 0.9466722011566162,
+    "max_depth_time": "1998-01-01T12:05:00",
+    "max_velocity": 1.1561452150344849,
+    "max_velocity_time": "1998-01-01T12:05:00",
+    "max_volume": 1263.288330078125,
+    "max_volume_time": "1998-01-01T12:05:00",
+    "max_capacity": 0.1535717099905014,
+    "max_capacity_time": "1998-01-01T12:05:00",
+    "max_quality:TSS": 188.76768493652344,
+    "max_quality:TSS_time": "1998-01-01T12:05:00",
+    "type": "CONDUIT"
+   },
+   "C5": {
+    "max_flow": 20.61371612548828,
+    "max_flow_time": "1998-01-01T12:10:00",
+    "min_flow": 0.0,
+    "min_flow_time": "1998-01-01T00:05:00",
+    "max_depth": 1.245402455329895,
+    "max_depth_time": "1998-01-01T12:10:00",
+    "max_velocity": 1.4742882251739502,
+    "max_velocity_time": "1998-01-01T12:10:00",
+    "max_volume": 2895.883544921875,
+    "max_volume_time": "1998-01-01T12:10:00",
+    "max_capacity": 0.23303580284118652,
+    "max_capacity_time": "1998-01-01T12:10:00",
+    "max_quality:TSS": 268.9045715332031,
+    "max_quality:TSS_time": "1998-01-01T12:05:00",
+    "type": "CONDUIT"
+   },
+   "C6": {
+    "max_flow": 22.199831008911133,
+    "max_flow_time": "1998-01-01T12:05:00",
+    "min_flow": 0.0,
+    "min_flow_time": "1998-01-01T00:05:00",
+    "max_depth": 1.0711402893066406,
+    "max_depth_time": "1998-01-01T12:05:00",
+    "max_velocity": 2.0013535022735596,
+    "max_velocity_time": "1998-01-01T12:05:00",
+    "max_volume": 1583.3240966796875,
+    "max_volume_time": "1998-01-01T12:05:00",
+    "max_capacity": 0.18487347662448883,
+    "max_capacity_time": "1998-01-01T12:05:00",
+    "max_quality:TSS": 277.49688720703125,
+    "max_quality:TSS_time": "1998-01-01T12:00:00",
+    "type": "CONDUIT"
+   },
+   "C7": {
+    "max_flow": 37.88221740722656,
+    "max_flow_time": "1998-01-01T12:10:00",
+    "min_flow": 0.0,
+    "min_flow_time": "1998-01-01T00:05:00",
+    "max_depth": 1.276024341583252,
+    "max_depth_time": "1998-01-01T12:10:00",
+    "max_velocity": 11.97061538696289,
+    "max_velocity_time": "1998-01-01T12:05:00",
+    "max_volume": 301.4557189941406,
+    "max_volume_time": "1998-01-01T12:10:00",
+    "max_capacity": 0.32981768250465393,
+    "max_capacity_time": "1998-01-01T12:10:00",
+    "max_quality:TSS": 249.1339874267578,
+    "max_quality:TSS_time": "1998-01-01T12:00:00",
+    "type": "CONDUIT"
+   },
+   "C8": {
+    "max_flow": 37.257808685302734,
+    "max_flow_time": "1998-01-01T12:10:00",
+    "min_flow": 0.0,
+    "min_flow_time": "1998-01-01T00:05:00",
+    "max_depth": 1.4547151327133179,
+    "max_depth_time": "1998-01-01T12:10:00",
+    "max_velocity": 2.3093788623809814,
+    "max_velocity_time": "1998-01-01T12:05:00",
+    "max_volume": 2992.919921875,
+    "max_volume_time": "1998-01-01T12:10:00",
+    "max_capacity": 0.2975759506225586,
+    "max_capacity_time": "1998-01-01T12:10:00",
+    "max_quality:TSS": 250.68423461914062,
+    "max_quality:TSS_time": "1998-01-01T12:05:00",
+    "type": "CONDUIT"
+   },
+   "C9": {
+    "max_flow": 35.946285247802734,
+    "max_flow_time": "1998-01-01T12:10:00",
+    "min_flow": 0.0,
+    "min_flow_time": "1998-01-01T00:05:00",
+    "max_depth": 1.6858689785003662,
+    "max_depth_time": "1998-01-01T12:10:00",
+    "max_velocity": 1.6157288551330566,
+    "max_velocity_time": "1998-01-01T12:15:00",
+    "max_volume": 7247.9384765625,
+    "max_volume_time": "1998-01-01T12:10:00",
+    "max_capacity": 0.37733525037765503,
+    "max_capacity_time": "1998-01-01T12:10:00",
+    "max_quality:TSS": 255.4415283203125,
+    "max_quality:TSS_time": "1998-01-01T12:05:00",
+    "type": "CONDUIT"
+   },
+   "C10": {
+    "max_flow": 53.03903579711914,
+    "max_flow_time": "1998-01-01T12:10:00",
+    "min_flow": 0.0,
+    "min_flow_time": "1998-01-01T00:05:00",
+    "max_depth": 1.8588342666625977,
+    "max_depth_time": "1998-01-01T12:10:00",
+    "max_velocity": 2.0142602920532227,
+    "max_velocity_time": "1998-01-01T12:15:00",
+    "max_volume": 3864.774658203125,
+    "max_volume_time": "1998-01-01T12:10:00",
+    "max_capacity": 0.4428415596485138,
+    "max_capacity_time": "1998-01-01T12:10:00",
+    "max_quality:TSS": 326.3300476074219,
+    "max_quality:TSS_time": "1998-01-01T11:55:00",
+    "type": "CONDUIT"
+   },
+   "C11": {
+    "max_flow": 71.1805648803711,
+    "max_flow_time": "1998-01-01T12:10:00",
+    "min_flow": 0.0,
+    "min_flow_time": "1998-01-01T00:05:00",
+    "max_depth": 1.9849413633346558,
+    "max_depth_time": "1998-01-01T12:10:00",
+    "max_velocity": 10.140612602233887,
+    "max_velocity_time": "1998-01-01T12:10:00",
+    "max_volume": 624.72265625,
+    "max_volume_time": "1998-01-01T12:10:00",
+    "max_capacity": 0.39611393213272095,
+    "max_capacity_time": "1998-01-01T12:10:00",
+    "max_quality:TSS": 374.8962097167969,
+    "max_quality:TSS_time": "1998-01-01T11:55:00",
+    "type": "CONDUIT"
+   }
+  },
+  "system": {
+   "air_temperature": {
+    "max": 70.0,
+    "max_time": "1998-01-01T00:05:00",
+    "min": 70.0
+   },
+   "rainfall": {
+    "max": 4.67236852645874,
+    "max_time": "1998-01-01T12:00:00",
+    "min": 0.0
+   },
+   "snow_depth": {
+    "max": 0.0,
+    "max_time": "1998-01-01T00:05:00",
+    "min": 0.0
+   },
+   "infiltration": {
+    "max": 0.15491768717765808,
+    "max_time": "1998-01-01T11:30:00",
+    "min": 0.0
+   },
+   "runoff": {
+    "max": 101.40440368652344,
+    "max_time": "1998-01-01T12:05:00",
+    "min": 0.0
+   },
+   "dry_weather_inflow": {
+    "max": 0.0,
+    "max_time": "1998-01-01T00:05:00",
+    "min": 0.0
+   },
+   "groundwater_inflow": {
+    "max": 0.0,
+    "max_time": "1998-01-01T00:05:00",
+    "min": 0.0
+   },
+   "rdii_inflow": {
+    "max": 0.0,
+    "max_time": "1998-01-01T00:05:00",
+    "min": 0.0
+   },
+   "external_inflow": {
+    "max": 0.0,
+    "max_time": "1998-01-01T00:05:00",
+    "min": 0.0
+   },
+   "total_lateral_inflow": {
+    "max": 101.40440368652344,
+    "max_time": "1998-01-01T12:05:00",
+    "min": 0.0
+   },
+   "flooding": {
+    "max": 0.0,
+    "max_time": "1998-01-01T00:05:00",
+    "min": 0.0
+   },
+   "outfall_outflow": {
+    "max": 71.1814956665039,
+    "max_time": "1998-01-01T12:10:00",
+    "min": 0.0
+   },
+   "storage_volume": {
+    "max": 25063.912109375,
+    "max_time": "1998-01-01T12:10:00",
+    "min": 0.6588287353515625
+   },
+   "evaporation": {
+    "max": 0.0,
+    "max_time": "1998-01-01T00:05:00",
+    "min": 0.0
+   },
+   "pet": {
+    "max": 0.0,
+    "max_time": "1998-01-01T00:05:00",
+    "min": 0.0
+   }
+  }
+ },
+ "run": {
+  "exit_code": 0,
+  "signal": null,
+  "wall_seconds": 0.388,
+  "cpu_seconds": 0.191,
+  "timeout_seconds": 1800.0,
+  "stderr_tail": null,
+  "errors": [],
+  "warnings": [
+   {
+    "code": 9,
+    "text": "time series interval greater than recording interval for Rain Gage RainGage"
+   }
+  ],
+  "warning_counts": {
+   "9": 1
+  },
+  "banner": "EPA STORM WATER MANAGEMENT MODEL - VERSION 5.2 (Build 5.2.4)",
+  "status": "completed",
+  "exit_code_agrees_with_report": true
+ },
+ "continuity": {
+  "runoff_quantity_continuity": {
+   "units": [
+    "acre-feet",
+    "inches"
+   ],
+   "rows": {
+    "total_precipitation": [
+     6.829,
+     2.834
+    ],
+    "evaporation_loss": [
+     0.0,
+     0.0
+    ],
+    "infiltration_loss": [
+     2.148,
+     0.891
+    ],
+    "surface_runoff": [
+     4.627,
+     1.92
+    ],
+    "final_storage": [
+     0.062,
+     0.026
+    ]
+   },
+   "error_percent": -0.111
+  },
+  "runoff_quality_continuity": {
+   "units": [
+    "lbs"
+   ],
+   "rows": {
+    "initial_buildup": 913.85,
+    "surface_buildup": 85.342,
+    "wet_deposition": 0.0,
+    "sweeping_removal": 0.0,
+    "infiltration_loss": 0.0,
+    "bmp_removal": 0.0,
+    "surface_runoff": 907.299,
+    "remaining_buildup": 91.893
+   },
+   "error_percent": 0.0
+  },
+  "flow_routing_continuity": {
+   "units": [
+    "acre-feet",
+    "10^6 gal"
+   ],
+   "rows": {
+    "dry_weather_inflow": [
+     0.0,
+     0.0
+    ],
+    "wet_weather_inflow": [
+     4.625,
+     1.507
+    ],
+    "groundwater_inflow": [
+     0.0,
+     0.0
+    ],
+    "rdii_inflow": [
+     0.0,
+     0.0
+    ],
+    "external_inflow": [
+     0.0,
+     0.0
+    ],
+    "external_outflow": [
+     4.624,
+     1.507
+    ],
+    "flooding_loss": [
+     0.0,
+     0.0
+    ],
+    "evaporation_loss": [
+     0.0,
+     0.0
+    ],
+    "exfiltration_loss": [
+     0.0,
+     0.0
+    ],
+    "initial_stored_volume": [
+     0.0,
+     0.0
+    ],
+    "final_stored_volume": [
+     0.0,
+     0.0
+    ]
+   },
+   "error_percent": 0.01
+  },
+  "quality_routing_continuity": {
+   "units": [
+    "lbs"
+   ],
+   "rows": {
+    "dry_weather_inflow": 0.0,
+    "wet_weather_inflow": 906.598,
+    "groundwater_inflow": 0.0,
+    "rdii_inflow": 0.0,
+    "external_inflow": 0.0,
+    "external_outflow": 924.339,
+    "flooding_loss": 0.0,
+    "exfiltration_loss": 0.0,
+    "mass_reacted": 0.0,
+    "initial_stored_mass": 0.0,
+    "final_stored_mass": 0.002
+   },
+   "error_percent": -1.957
+  }
+ },
+ "time_steps": {
+  "minimum_time_step": 3.86,
+  "average_time_step": 4.99,
+  "maximum_time_step": 5.0,
+  "percent_of_time_in_steady_state": 0.0,
+  "average_iterations_per_step": 2.0,
+  "percent_of_steps_not_converging": 0.0,
+  "histogram": [
+   {
+    "range": "5.000 -  3.155 sec",
+    "percent": 100.0
+   },
+   {
+    "range": "3.155 -  1.991 sec",
+    "percent": 0.0
+   },
+   {
+    "range": "1.991 -  1.256 sec",
+    "percent": 0.0
+   },
+   {
+    "range": "1.256 -  0.792 sec",
+    "percent": 0.0
+   },
+   {
+    "range": "0.792 -  0.500 sec",
+    "percent": 0.0
+   }
+  ]
+ }
+}

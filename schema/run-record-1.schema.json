@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/SWMMBobSWMM6/swmm-run-record/schema/run-record-1.schema.json",
+  "title": "SWMM run record, version 1",
+  "description": "What ran (engine and build), on what (model and every file it reads), how it ended, and what it produced, for one run of one SWMM 5 or OpenSWMM 6 engine. Non-finite numbers are written as the strings NaN, Infinity and -Infinity. Written by Claude (Anthropic) for Robert Dickinson.",
+  "type": "object",
+  "required": ["schema", "created", "tool", "engine", "model", "run"],
+  "properties": {
+    "schema": {"const": "swmm-run-record/1"},
+    "created": {"type": "string", "description": "UTC time the record was written, ISO 8601"},
+    "tool": {"type": "object", "required": ["name", "version"], "properties": {"name": {"type": "string"}, "version": {"type": "string"}}},
+    "engine": {
+      "type": "object",
+      "required": ["id", "family", "language", "role", "name", "repo", "command", "capabilities", "verification"],
+      "properties": {
+        "id": {"type": "string", "description": "registry id, e.g. swmm5-epa, swmm6-go"},
+        "family": {"enum": ["swmm5", "swmm6"]},
+        "language": {"type": "string"},
+        "role": {"type": "string", "description": "reference, translation, or translation (incomplete)"},
+        "name": {"type": "string"},
+        "repo": {"type": "string"},
+        "pinned": {"type": ["string", "null"], "description": "the release or commit a reference engine was built from"},
+        "command": {"type": ["array", "null"], "items": {"type": "string"}},
+        "env": {"type": "object", "additionalProperties": {"type": "string"}},
+        "capabilities": {"type": "object", "properties": {"simulate": {"type": "boolean"}, "routing": {"type": "array", "items": {"type": "string"}}, "two_d": {}, "threads": {"type": "integer"}, "reason": {"type": "string"}}},
+        "verification": {"type": "array", "items": {"type": "object"}, "description": "what the engine's byte gate showed, as of a date"},
+        "fingerprint": {
+          "type": ["object", "null"],
+          "properties": {
+            "build_sha256": {"type": ["string", "null"]},
+            "artifacts": {"type": "array", "items": {"type": "object", "required": ["path", "sha256"], "properties": {"path": {"type": "string"}, "sha256": {"type": "string"}, "files": {"type": "integer"}}}},
+            "git": {"type": ["object", "null"], "properties": {"commit": {"type": ["string", "null"]}, "dirty": {"type": "boolean"}}}
+          }
+        }
+      }
+    },
+    "model": {
+      "type": "object",
+      "required": ["path", "name", "bytes", "sha256", "options", "counts", "files"],
+      "properties": {
+        "path": {"type": "string"}, "name": {"type": "string"}, "bytes": {"type": "integer"},
+        "sha256": {"type": "string"},
+        "options": {"type": "object", "additionalProperties": {"type": "string"}},
+        "counts": {"type": "object", "additionalProperties": {"type": "integer"}},
+        "files": {"type": "array", "items": {"type": "object", "required": ["kind", "name"], "properties": {"kind": {"type": "string"}, "name": {"type": "string"}, "exists": {"type": ["boolean", "null"]}, "sha256": {"type": "string"}, "bytes": {"type": "integer"}}}}
+      }
+    },
+    "run": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {"enum": ["completed", "error", "crashed", "timeout", "incomplete", "not_run"],
+                   "description": "completed: no ERROR line, exit code 0, a complete .out and the last report time at the model's end; error: the engine reported ERROR lines; crashed: nonzero exit without an ERROR line; incomplete: no ERROR line but no complete .out, or the run stopped short of the end time; not_run: the engine cannot run here (reason)"},
+        "reason": {"type": "string"},
+        "exit_code": {"type": "integer", "description": "a signal N is recorded as 128 + N"},
+        "signal": {"type": ["integer", "null"]},
+        "exit_code_agrees_with_report": {"type": "boolean", "description": "nonzero exit exactly when the report has ERROR lines (EPA SWMM 5.2.4's command line always exits 0, so its translations do too)"},
+        "wall_seconds": {"type": "number"}, "cpu_seconds": {"type": "number"}, "timeout_seconds": {"type": "number"},
+        "banner": {"type": ["string", "null"]},
+        "errors": {"type": "array", "items": {"$ref": "#/$defs/message"}},
+        "warnings": {"type": "array", "items": {"$ref": "#/$defs/message"}},
+        "warning_counts": {"type": "object", "additionalProperties": {"type": "integer"}},
+        "stderr_tail": {"type": ["string", "null"]}
+      }
+    },
+    "files": {
+      "type": "object",
+      "properties": {
+        "rpt": {"type": "object", "required": ["path", "bytes", "sha256", "sha256_without_clock"], "properties": {"path": {"type": "string"}, "bytes": {"type": "integer"}, "sha256": {"type": "string"}, "sha256_without_clock": {"type": "string", "description": "the report without the Analysis begun / ended / Total elapsed time lines"}}},
+        "out": {"type": "object", "required": ["path", "bytes", "sha256"], "properties": {"path": {"type": "string"}, "bytes": {"type": "integer"}, "sha256": {"type": "string"}, "results_sha256": {"type": "string", "description": "the results block alone: comparable across engines whose headers differ"}, "version": {"type": "integer"}, "error_code": {"type": "integer"}, "unreadable": {"type": "string"}}}
+      }
+    },
+    "time": {
+      "type": "object",
+      "properties": {
+        "model_start": {"type": ["string", "null"]}, "model_end": {"type": ["string", "null"]},
+        "output_start": {"type": "string"}, "report_step_seconds": {"type": "integer"}, "periods": {"type": "integer"},
+        "first_report": {"type": ["string", "null"]}, "last_report": {"type": ["string", "null"]}, "reached_end": {"type": "boolean"}
+      }
+    },
+    "units": {"type": "object", "required": ["flow", "system"], "properties": {"flow": {"type": "string"}, "system": {"enum": ["US", "SI"]}}, "additionalProperties": {"type": "string"}},
+    "objects": {"type": "object", "properties": {"subcatchments": {"type": "integer"}, "nodes": {"type": "integer"}, "links": {"type": "integer"}, "pollutants": {"type": "array", "items": {"type": "string"}}, "node_types": {"type": "object"}, "link_types": {"type": "object"}, "variables": {"type": "object", "additionalProperties": {"type": "array", "items": {"type": "string"}}}}},
+    "continuity": {"type": "object", "description": "every continuity table of the report, by its title", "additionalProperties": {"type": "object", "properties": {"units": {"type": "array"}, "rows": {"type": "object"}, "error_percent": {}}}},
+    "time_steps": {"type": "object", "description": "the report's Routing Time Step Summary"},
+    "summary": {"type": "object", "description": "headline peaks with the object and time that hold each"},
+    "peaks": {
+      "type": "object",
+      "description": "from the .out file: for every object the maximum of each reporting variable and the time of the first period that reaches it (links also the minimum flow)",
+      "properties": {"subcatchments": {"type": "object"}, "nodes": {"type": "object"}, "links": {"type": "object"}, "system": {"type": "object"}}
+    },
+    "series": {"type": "object", "properties": {"dates": {"type": "array", "items": {"type": "string"}}, "items": {"type": "array", "items": {"type": "object", "required": ["kind", "variable", "values"], "properties": {"kind": {"enum": ["sub", "node", "link", "sys"]}, "id": {"type": ["string", "null"]}, "variable": {"type": "string"}, "values": {"type": ["array", "null"]}, "note": {"type": "string"}}}}}}
+  },
+  "$defs": {
+    "message": {"type": "object", "required": ["code", "text"], "properties": {"code": {"type": "integer"}, "text": {"type": "string"}}}
+  }
+}

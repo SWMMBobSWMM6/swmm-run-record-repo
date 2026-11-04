@@ -1,0 +1,9 @@
+
+... OpenSWMM Engine 6.0.0-alpha.4
+... Input: Example1.inp
+... Report: /home/claude/swmm-run-record/demo/example1/swmm6-cpp/run.rpt
+... Output: /home/claude/swmm-run-record/demo/example1/swmm6-cpp/run.out
+... 1000 steps, elapsed = 0.0578 days... 2000 steps, elapsed = 0.1157 days... 3000 steps, elapsed = 0.1736 days... 4000 steps, elapsed = 0.2314 days... 5000 steps, elapsed = 0.2893 days... 6000 steps, elapsed = 0.3472 days... 7000 steps, elapsed = 0.4050 days... 8000 steps, elapsed = 0.4629 days... 9000 steps, elapsed = 0.5182 days... 10000 steps, elapsed = 0.5760 days... 11000 steps, elapsed = 0.6339 days... 12000 steps, elapsed = 0.6918 days... 13000 steps, elapsed = 0.7497 days... 14000 steps, elapsed = 0.8075 days... 15000 steps, elapsed = 0.8654 days... 16000 steps, elapsed = 0.9233 days... 17000 steps, elapsed = 0.9811 days... 18000 steps, elapsed = 1.0390 days... 19000 steps, elapsed = 1.0969 days... 20000 steps, elapsed = 1.1548 days... 21000 steps, elapsed = 1.2126 days
+... 21646 steps completed.
+... OpenSWMM Engine completed in 0.00 seconds.
+

@@ -1,0 +1,574 @@
+{
+ "schema": "swmm-run-diff/1",
+ "created": "2026-11-04T19:54:26+00:00",
+ "tool": {
+  "name": "swmmrr",
+  "version": "1.0.0"
+ },
+ "a": {
+  "engine": "swmm5-epa",
+  "family": "swmm5",
+  "build_sha256": "336c36ad466d7c1fa69d7f17b19a1a7e40efa601394172e68212f7ddf2e21647",
+  "model": "Example1.inp",
+  "model_sha256": "7a78aab1315a83a5dac98b902d55a75a3aece121c4c07dfd4a37287cfb4715db",
+  "status": "completed",
+  "out_sha256": "d660d53af622d533d57c46df56fc30febc2ab7da1305eab7e4cc4477d46789f1",
+  "results_sha256": "6f44e67b05db394331b878fc49490c8c15aad26642b21b0a7d52a43eb04407a4",
+  "rpt_sha256_without_clock": "38eb1fb901789c1e0ee5553e93ac280089b47241526f28d10381f2be997af86c"
+ },
+ "b": {
+  "engine": "swmm6-cpp",
+  "family": "swmm6",
+  "build_sha256": "0db96143ab3056ee3d87429f17053dd3ebe2675935bef1d6c22ceffa3e419fb4",
+  "model": "Example1.inp",
+  "model_sha256": "7a78aab1315a83a5dac98b902d55a75a3aece121c4c07dfd4a37287cfb4715db",
+  "status": "completed",
+  "out_sha256": "10d5b101007ee4963b64c1f1e83c8201dd5cf60216e358dccbb15b0c941b6847",
+  "results_sha256": "d85c41845c2bd3ee1cccaff0da3c55a2c958a30e66083f0476f17e15b805c711",
+  "rpt_sha256_without_clock": "2295bdbb9dfef5ba71a376582be1de32d2aa723c389ffe8e2765b6b147ebb832"
+ },
+ "profile": {
+  "name": "engineering",
+  "abs": 0.001,
+  "rel": 0.01
+ },
+ "same_family": false,
+ "same_model": true,
+ "continuity": {
+  "flow_routing_continuity": {
+   "a": 0.01,
+   "b": 0.01
+  },
+  "quality_routing_continuity": {
+   "a": -1.957,
+   "b": -1.925
+  },
+  "runoff_quality_continuity": {
+   "a": 0.0,
+   "b": 0.0
+  },
+  "runoff_quantity_continuity": {
+   "a": -0.111,
+   "b": -0.111
+  }
+ },
+ "time_steps": {
+  "minimum_time_step": {
+   "a": 3.86,
+   "b": 3.86
+  },
+  "average_time_step": {
+   "a": 4.99,
+   "b": 4.99
+  },
+  "average_iterations_per_step": {
+   "a": 2.0,
+   "b": 2.0
+  },
+  "percent_of_steps_not_converging": {
+   "a": 0.0,
+   "b": 0.0
+  }
+ },
+ "run": {
+  "a": {
+   "status": "completed",
+   "wall_seconds": 0.223
+  },
+  "b": {
+   "status": "completed",
+   "wall_seconds": 0.574
+  }
+ },
+ "verdict": "DIFFERENT",
+ "grid": {
+  "a_periods": 360,
+  "b_periods": 360,
+  "common_periods": 360,
+  "same_grid": true
+ },
+ "objects_missing": {
+  "subcatchments": {
+   "only_in_a": [],
+   "only_in_b": []
+  },
+  "nodes": {
+   "only_in_a": [],
+   "only_in_b": []
+  },
+  "links": {
+   "only_in_a": [],
+   "only_in_b": []
+  }
+ },
+ "values_compared": 82080,
+ "values_outside": 16,
+ "max_tolerance_ratio": 14.942153025889745,
+ "variables": [
+  {
+   "kind": "link",
+   "variable": "volume",
+   "compared": 3960,
+   "outside": 12,
+   "max_abs_diff": 2.6875,
+   "max_rel_diff": 0.24449967582869506,
+   "worst": {
+    "id": "C5",
+    "time": "1998-01-01T00:20:00",
+    "a": 0.23631013929843903,
+    "b": 0.1860581636428833
+   },
+   "tolerance_ratio": 14.942153025889745
+  },
+  {
+   "kind": "link",
+   "variable": "quality:TSS",
+   "compared": 3960,
+   "outside": 2,
+   "max_abs_diff": 0.2694244384765625,
+   "max_rel_diff": 0.10982160588312573,
+   "worst": {
+    "id": "C5",
+    "time": "1998-01-01T00:30:00",
+    "a": 0.1707049459218979,
+    "b": 0.15195785462856293
+   },
+   "tolerance_ratio": 6.925285841930554
+  },
+  {
+   "kind": "node",
+   "variable": "quality:TSS",
+   "compared": 4320,
+   "outside": 1,
+   "max_abs_diff": 0.25927734375,
+   "max_rel_diff": 0.07415279742826596,
+   "worst": {
+    "id": "J8",
+    "time": "1998-01-02T04:25:00",
+    "a": 0.13889466226100922,
+    "b": 0.15001899003982544
+   },
+   "tolerance_ratio": 4.449393134915165
+  },
+  {
+   "kind": "sys",
+   "variable": "storage_volume",
+   "compared": 360,
+   "outside": 1,
+   "max_abs_diff": 9.171875,
+   "max_rel_diff": 0.022219518345780336,
+   "worst": {
+    "id": null,
+    "time": "1998-01-01T00:15:00",
+    "a": 1.5528875589370728,
+    "b": 1.5183831453323364
+   },
+   "tolerance_ratio": 2.08752334169211
+  },
+  {
+   "kind": "sub",
+   "variable": "infiltration_loss",
+   "compared": 2520,
+   "outside": 0,
+   "max_abs_diff": 0.0015861019492149353,
+   "max_rel_diff": 0.024187566893223076,
+   "worst": {
+    "id": "S2",
+    "time": "1998-01-01T16:25:00",
+    "a": 0.06398899108171463,
+    "b": 0.06557509303092957
+   },
+   "tolerance_ratio": 0.9579351097925398
+  },
+  {
+   "kind": "sub",
+   "variable": "quality:TSS",
+   "compared": 2520,
+   "outside": 0,
+   "max_abs_diff": 0.39129638671875,
+   "max_rel_diff": 0.0047346834442934,
+   "worst": {
+    "id": "S4",
+    "time": "1998-01-01T12:05:00",
+    "a": 37.251216888427734,
+    "b": 37.428428649902344
+   },
+   "tolerance_ratio": 0.4722067186126923
+  },
+  {
+   "kind": "sub",
+   "variable": "runoff",
+   "compared": 2520,
+   "outside": 0,
+   "max_abs_diff": 0.012928009033203125,
+   "max_rel_diff": 0.019914781465118943,
+   "worst": {
+    "id": "S7",
+    "time": "1998-01-01T12:05:00",
+    "a": 3.098280429840088,
+    "b": 3.0916483402252197
+   },
+   "tolerance_ratio": 0.20736423088452458
+  },
+  {
+   "kind": "node",
+   "variable": "lateral_inflow",
+   "compared": 4320,
+   "outside": 0,
+   "max_abs_diff": 0.014108657836914062,
+   "max_rel_diff": 0.003910161093883297,
+   "worst": {
+    "id": "J3",
+    "time": "1998-01-01T13:00:00",
+    "a": 0.46796485781669617,
+    "b": 0.4690530300140381
+   },
+   "tolerance_ratio": 0.19122509501708032
+  },
+  {
+   "kind": "node",
+   "variable": "total_inflow",
+   "compared": 4320,
+   "outside": 0,
+   "max_abs_diff": 0.02867889404296875,
+   "max_rel_diff": 1.0,
+   "worst": {
+    "id": "J3",
+    "time": "1998-01-01T13:00:00",
+    "a": 0.46796485781669617,
+    "b": 0.4690530300140381
+   },
+   "tolerance_ratio": 0.19122509501708032
+  },
+  {
+   "kind": "link",
+   "variable": "velocity",
+   "compared": 3960,
+   "outside": 0,
+   "max_abs_diff": 0.00215911865234375,
+   "max_rel_diff": 0.03592390176825747,
+   "worst": {
+    "id": "C9",
+    "time": "1998-01-01T01:00:00",
+    "a": 0.03547047823667526,
+    "b": 0.03521598502993584
+   },
+   "tolerance_ratio": 0.1878587940723221
+  },
+  {
+   "kind": "sys",
+   "variable": "infiltration",
+   "compared": 360,
+   "outside": 0,
+   "max_abs_diff": 0.0002599582076072693,
+   "max_rel_diff": 0.0031899345410182373,
+   "worst": {
+    "id": null,
+    "time": "1998-01-01T16:25:00",
+    "a": 0.08123331516981125,
+    "b": 0.08149327337741852
+   },
+   "tolerance_ratio": 0.14323297099098628
+  },
+  {
+   "kind": "node",
+   "variable": "depth",
+   "compared": 4320,
+   "outside": 0,
+   "max_abs_diff": 0.0004298686981201172,
+   "max_rel_diff": 0.8627417723501747,
+   "worst": {
+    "id": "J6",
+    "time": "1998-01-01T00:15:00",
+    "a": 0.0001646215678192675,
+    "b": 2.2595664631808177e-05
+   },
+   "tolerance_ratio": 0.14179248218024437
+  },
+  {
+   "kind": "link",
+   "variable": "flow",
+   "compared": 3960,
+   "outside": 0,
+   "max_abs_diff": 0.02777862548828125,
+   "max_rel_diff": 1.0,
+   "worst": {
+    "id": "C3",
+    "time": "1998-01-02T04:50:00",
+    "a": 0.0,
+    "b": 0.00012846282334066927
+   },
+   "tolerance_ratio": 0.12829800809717778
+  },
+  {
+   "kind": "sys",
+   "variable": "runoff",
+   "compared": 360,
+   "outside": 0,
+   "max_abs_diff": 0.0489654541015625,
+   "max_rel_diff": 0.0029623378020209993,
+   "worst": {
+    "id": null,
+    "time": "1998-01-02T00:15:00",
+    "a": 0.12322993576526642,
+    "b": 0.12344678491353989
+   },
+   "tolerance_ratio": 0.09704733427127862
+  },
+  {
+   "kind": "sys",
+   "variable": "total_lateral_inflow",
+   "compared": 360,
+   "outside": 0,
+   "max_abs_diff": 0.0489654541015625,
+   "max_rel_diff": 0.0029623378020209993,
+   "worst": {
+    "id": null,
+    "time": "1998-01-02T00:15:00",
+    "a": 0.12322993576526642,
+    "b": 0.12344678491353989
+   },
+   "tolerance_ratio": 0.09704733427127862
+  },
+  {
+   "kind": "sys",
+   "variable": "outfall_outflow",
+   "compared": 360,
+   "outside": 0,
+   "max_abs_diff": 0.02555084228515625,
+   "max_rel_diff": 0.0034963157596259965,
+   "worst": {
+    "id": null,
+    "time": "1998-01-01T13:05:00",
+    "a": 5.335890769958496,
+    "b": 5.3395209312438965
+   },
+   "tolerance_ratio": 0.06673678309700436
+  },
+  {
+   "kind": "link",
+   "variable": "depth",
+   "compared": 3960,
+   "outside": 0,
+   "max_abs_diff": 0.00042939186096191406,
+   "max_rel_diff": 0.24418262543837632,
+   "worst": {
+    "id": "C7",
+    "time": "1998-01-01T00:40:00",
+    "a": 0.01284788642078638,
+    "b": 0.012776448391377926
+   },
+   "tolerance_ratio": 0.0633047119217433
+  },
+  {
+   "kind": "link",
+   "variable": "capacity",
+   "compared": 3960,
+   "outside": 0,
+   "max_abs_diff": 0.0001690685749053955,
+   "max_rel_diff": 0.2444374505453504,
+   "worst": {
+    "id": "C3",
+    "time": "1998-01-01T12:05:00",
+    "a": 0.32320746779441833,
+    "b": 0.32303839921951294
+   },
+   "tolerance_ratio": 0.03994933638258104
+  },
+  {
+   "kind": "node",
+   "variable": "head",
+   "compared": 4320,
+   "outside": 0,
+   "max_abs_diff": 0.00048828125,
+   "max_rel_diff": 9.840400512173166e-08,
+   "worst": {
+    "id": "O1",
+    "time": "1998-01-02T02:30:00",
+    "a": 4962.00537109375,
+    "b": 4962.005859375
+   },
+   "tolerance_ratio": 9.840202201198128e-06
+  },
+  {
+   "kind": "sub",
+   "variable": "rainfall",
+   "compared": 2520,
+   "outside": 0,
+   "max_abs_diff": 0.0,
+   "max_rel_diff": 0.0,
+   "worst": null,
+   "tolerance_ratio": 0.0
+  },
+  {
+   "kind": "sub",
+   "variable": "snow_depth",
+   "compared": 2520,
+   "outside": 0,
+   "max_abs_diff": 0.0,
+   "max_rel_diff": 0.0,
+   "worst": null,
+   "tolerance_ratio": 0.0
+  },
+  {
+   "kind": "sub",
+   "variable": "evaporation_loss",
+   "compared": 2520,
+   "outside": 0,
+   "max_abs_diff": 0.0,
+   "max_rel_diff": 0.0,
+   "worst": null,
+   "tolerance_ratio": 0.0
+  },
+  {
+   "kind": "sub",
+   "variable": "groundwater_flow",
+   "compared": 2520,
+   "outside": 0,
+   "max_abs_diff": 0.0,
+   "max_rel_diff": 0.0,
+   "worst": null,
+   "tolerance_ratio": 0.0
+  },
+  {
+   "kind": "sub",
+   "variable": "groundwater_elevation",
+   "compared": 2520,
+   "outside": 0,
+   "max_abs_diff": 0.0,
+   "max_rel_diff": 0.0,
+   "worst": null,
+   "tolerance_ratio": 0.0
+  },
+  {
+   "kind": "sub",
+   "variable": "soil_moisture",
+   "compared": 2520,
+   "outside": 0,
+   "max_abs_diff": 0.0,
+   "max_rel_diff": 0.0,
+   "worst": null,
+   "tolerance_ratio": 0.0
+  },
+  {
+   "kind": "node",
+   "variable": "volume",
+   "compared": 4320,
+   "outside": 0,
+   "max_abs_diff": 0.0,
+   "max_rel_diff": 0.0,
+   "worst": null,
+   "tolerance_ratio": 0.0
+  },
+  {
+   "kind": "node",
+   "variable": "flooding",
+   "compared": 4320,
+   "outside": 0,
+   "max_abs_diff": 0.0,
+   "max_rel_diff": 0.0,
+   "worst": null,
+   "tolerance_ratio": 0.0
+  },
+  {
+   "kind": "sys",
+   "variable": "air_temperature",
+   "compared": 360,
+   "outside": 0,
+   "max_abs_diff": 0.0,
+   "max_rel_diff": 0.0,
+   "worst": null,
+   "tolerance_ratio": 0.0
+  },
+  {
+   "kind": "sys",
+   "variable": "rainfall",
+   "compared": 360,
+   "outside": 0,
+   "max_abs_diff": 0.0,
+   "max_rel_diff": 0.0,
+   "worst": null,
+   "tolerance_ratio": 0.0
+  },
+  {
+   "kind": "sys",
+   "variable": "snow_depth",
+   "compared": 360,
+   "outside": 0,
+   "max_abs_diff": 0.0,
+   "max_rel_diff": 0.0,
+   "worst": null,
+   "tolerance_ratio": 0.0
+  },
+  {
+   "kind": "sys",
+   "variable": "dry_weather_inflow",
+   "compared": 360,
+   "outside": 0,
+   "max_abs_diff": 0.0,
+   "max_rel_diff": 0.0,
+   "worst": null,
+   "tolerance_ratio": 0.0
+  },
+  {
+   "kind": "sys",
+   "variable": "groundwater_inflow",
+   "compared": 360,
+   "outside": 0,
+   "max_abs_diff": 0.0,
+   "max_rel_diff": 0.0,
+   "worst": null,
+   "tolerance_ratio": 0.0
+  },
+  {
+   "kind": "sys",
+   "variable": "rdii_inflow",
+   "compared": 360,
+   "outside": 0,
+   "max_abs_diff": 0.0,
+   "max_rel_diff": 0.0,
+   "worst": null,
+   "tolerance_ratio": 0.0
+  },
+  {
+   "kind": "sys",
+   "variable": "external_inflow",
+   "compared": 360,
+   "outside": 0,
+   "max_abs_diff": 0.0,
+   "max_rel_diff": 0.0,
+   "worst": null,
+   "tolerance_ratio": 0.0
+  },
+  {
+   "kind": "sys",
+   "variable": "flooding",
+   "compared": 360,
+   "outside": 0,
+   "max_abs_diff": 0.0,
+   "max_rel_diff": 0.0,
+   "worst": null,
+   "tolerance_ratio": 0.0
+  },
+  {
+   "kind": "sys",
+   "variable": "evaporation",
+   "compared": 360,
+   "outside": 0,
+   "max_abs_diff": 0.0,
+   "max_rel_diff": 0.0,
+   "worst": null,
+   "tolerance_ratio": 0.0
+  },
+  {
+   "kind": "sys",
+   "variable": "pet",
+   "compared": 360,
+   "outside": 0,
+   "max_abs_diff": 0.0,
+   "max_rel_diff": 0.0,
+   "worst": null,
+   "tolerance_ratio": 0.0
+  }
+ ]
+}

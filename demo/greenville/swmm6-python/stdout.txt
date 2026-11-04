@@ -1,0 +1,9 @@
+
+... OpenSWMM Engine 6.0.0-alpha.4
+... Input: Greenville_all_SWMM5_Features_SI_Units.inp
+... Report: /home/claude/swmm-run-record/demo/greenville/swmm6-python/run.rpt
+... Output: /home/claude/swmm-run-record/demo/greenville/swmm6-python/run.out
+
+... 18003 steps completed.
+... OpenSWMM Engine completed in 1669.12 seconds.
+

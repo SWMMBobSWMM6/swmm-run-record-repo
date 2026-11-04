@@ -1,0 +1,9 @@
+
+... OpenSWMM Engine 6.0.0-alpha.4
+... Input: Example1.inp
+... Report: /home/claude/swmm-run-record/demo/example1/swmm6-fortran/run.rpt
+... Output: /home/claude/swmm-run-record/demo/example1/swmm6-fortran/run.out
+
+... 21646 steps completed.
+... OpenSWMM Engine completed in 1.71 seconds.
+

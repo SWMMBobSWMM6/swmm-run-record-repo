@@ -1,0 +1,592 @@
+{
+ "schema": "swmm-run-matrix/1",
+ "tool": {
+  "name": "swmmrr",
+  "version": "1.0.0"
+ },
+ "model": {
+  "name": "Example1.inp",
+  "sha256": "7a78aab1315a83a5dac98b902d55a75a3aece121c4c07dfd4a37287cfb4715db",
+  "options": {
+   "FLOW_UNITS": "CFS",
+   "INFILTRATION": "HORTON",
+   "FLOW_ROUTING": "DYNWAVE",
+   "ALLOW_PONDING": "NO",
+   "START_DATE": "01/01/1998",
+   "START_TIME": "00:00:00",
+   "REPORT_START_DATE": "01/01/1998",
+   "REPORT_START_TIME": "00:00:00",
+   "END_DATE": "01/02/1998",
+   "END_TIME": "06:00:00",
+   "REPORT_STEP": "00:05:00",
+   "ROUTING_STEP": "0:00:05",
+   "THREADS": "1"
+  },
+  "counts": {
+   "raingages": 1,
+   "subcatchments": 7,
+   "junctions": 11,
+   "outfalls": 1,
+   "conduits": 11,
+   "pollutants": 1
+  }
+ },
+ "profile": {
+  "name": "engineering",
+  "abs": 0.001,
+  "rel": 0.01
+ },
+ "engines": [
+  {
+   "engine": "swmm5-epa",
+   "family": "swmm5",
+   "language": "C",
+   "role": "reference",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 0.223,
+   "cpu_seconds": 0.155,
+   "build_sha256": "336c36ad466d7c1fa69d7f17b19a1a7e40efa601394172e68212f7ddf2e21647",
+   "results_sha256": "6f44e67b05db394331b878fc49490c8c15aad26642b21b0a7d52a43eb04407a4",
+   "continuity": {
+    "runoff_quantity_continuity": -0.111,
+    "runoff_quality_continuity": 0.0,
+    "flow_routing_continuity": 0.01,
+    "quality_routing_continuity": -1.957
+   },
+   "reason": null
+  },
+  {
+   "engine": "swmm5-cplus",
+   "family": "swmm5",
+   "language": "C++",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 0.375,
+   "cpu_seconds": 0.178,
+   "build_sha256": "9a09b3ca736c884cca15d17eb4cf37d28502d10dda559d4a5894ddea2d3f2dfd",
+   "results_sha256": "6f44e67b05db394331b878fc49490c8c15aad26642b21b0a7d52a43eb04407a4",
+   "continuity": {
+    "runoff_quantity_continuity": -0.111,
+    "runoff_quality_continuity": 0.0,
+    "flow_routing_continuity": 0.01,
+    "quality_routing_continuity": -1.957
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm5-epa",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm5-rust",
+   "family": "swmm5",
+   "language": "Rust",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 0.273,
+   "cpu_seconds": 0.189,
+   "build_sha256": "7e744f833860780a4f2e853a8fa61f2911e343b3b28f9d2a0601cc7fe3540e0e",
+   "results_sha256": "6f44e67b05db394331b878fc49490c8c15aad26642b21b0a7d52a43eb04407a4",
+   "continuity": {
+    "runoff_quantity_continuity": -0.111,
+    "runoff_quality_continuity": 0.0,
+    "flow_routing_continuity": 0.01,
+    "quality_routing_continuity": -1.957
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm5-epa",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm5-fortran",
+   "family": "swmm5",
+   "language": "Fortran",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 0.388,
+   "cpu_seconds": 0.191,
+   "build_sha256": "07ad60bbec1cf3d59757540c6c69a06791f6a7a0bf92d86cd6794e7cc46c1e6e",
+   "results_sha256": "6f44e67b05db394331b878fc49490c8c15aad26642b21b0a7d52a43eb04407a4",
+   "continuity": {
+    "runoff_quantity_continuity": -0.111,
+    "runoff_quality_continuity": 0.0,
+    "flow_routing_continuity": 0.01,
+    "quality_routing_continuity": -1.957
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm5-epa",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm5-csharp",
+   "family": "swmm5",
+   "language": "C#",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 5.386,
+   "cpu_seconds": 0.899,
+   "build_sha256": "387a9935bc6741d234d0187013889658effd0851ad608fd9359ab34fbe008c17",
+   "results_sha256": "6f44e67b05db394331b878fc49490c8c15aad26642b21b0a7d52a43eb04407a4",
+   "continuity": {
+    "runoff_quantity_continuity": -0.111,
+    "runoff_quality_continuity": 0.0,
+    "flow_routing_continuity": 0.01,
+    "quality_routing_continuity": -1.957
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm5-epa",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm5-python",
+   "family": "swmm5",
+   "language": "Python",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 24.891,
+   "cpu_seconds": 15.78,
+   "build_sha256": "7666864e8c3d0b2dc40cbc155806917e47ec7c0407a37297040c55693fd22e06",
+   "results_sha256": "6f44e67b05db394331b878fc49490c8c15aad26642b21b0a7d52a43eb04407a4",
+   "continuity": {
+    "runoff_quantity_continuity": -0.111,
+    "runoff_quality_continuity": 0.0,
+    "flow_routing_continuity": 0.01,
+    "quality_routing_continuity": -1.957
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm5-epa",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm5-typescript",
+   "family": "swmm5",
+   "language": "TypeScript",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 5.833,
+   "cpu_seconds": 3.836,
+   "build_sha256": "dd235b0a59ede1c99f5b755ef75f20b926b639faabf08383db97d4a3e24e2b0a",
+   "results_sha256": "6f44e67b05db394331b878fc49490c8c15aad26642b21b0a7d52a43eb04407a4",
+   "continuity": {
+    "runoff_quantity_continuity": -0.111,
+    "runoff_quality_continuity": 0.0,
+    "flow_routing_continuity": 0.01,
+    "quality_routing_continuity": -1.957
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm5-epa",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm5-java",
+   "family": "swmm5",
+   "language": "Java",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 4.489,
+   "cpu_seconds": 1.609,
+   "build_sha256": "0cb9ba269512a71065e06129bc2764f5e25e2253d404bd52bf627e6179d30bc8",
+   "results_sha256": "6f44e67b05db394331b878fc49490c8c15aad26642b21b0a7d52a43eb04407a4",
+   "continuity": {
+    "runoff_quantity_continuity": -0.111,
+    "runoff_quality_continuity": 0.0,
+    "flow_routing_continuity": 0.01,
+    "quality_routing_continuity": -1.957
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm5-epa",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm5-go",
+   "family": "swmm5",
+   "language": "Go",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 0.583,
+   "cpu_seconds": 0.263,
+   "build_sha256": "ab70fb23142ab9573a445ea3f1086d296c5a0a9631ef4e4adbe7be04880be582",
+   "results_sha256": "6f44e67b05db394331b878fc49490c8c15aad26642b21b0a7d52a43eb04407a4",
+   "continuity": {
+    "runoff_quantity_continuity": -0.111,
+    "runoff_quality_continuity": 0.0,
+    "flow_routing_continuity": 0.01,
+    "quality_routing_continuity": -1.957
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm5-epa",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm6-cpp",
+   "family": "swmm6",
+   "language": "C++",
+   "role": "reference",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 0.574,
+   "cpu_seconds": 0.351,
+   "build_sha256": "0db96143ab3056ee3d87429f17053dd3ebe2675935bef1d6c22ceffa3e419fb4",
+   "results_sha256": "d85c41845c2bd3ee1cccaff0da3c55a2c958a30e66083f0476f17e15b805c711",
+   "continuity": {
+    "runoff_quantity_continuity": -0.111,
+    "runoff_quality_continuity": 0.0,
+    "flow_routing_continuity": 0.01,
+    "quality_routing_continuity": -1.925
+   },
+   "reason": null
+  },
+  {
+   "engine": "swmm6-csharp",
+   "family": "swmm6",
+   "language": "C#",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 3.992,
+   "cpu_seconds": 2.482,
+   "build_sha256": "a895eaa0bc1da708636e3167c3d88b466d583c340bee186ffb6d8262a6f570c6",
+   "results_sha256": "d85c41845c2bd3ee1cccaff0da3c55a2c958a30e66083f0476f17e15b805c711",
+   "continuity": {
+    "runoff_quantity_continuity": -0.111,
+    "runoff_quality_continuity": 0.0,
+    "flow_routing_continuity": 0.01,
+    "quality_routing_continuity": -1.925
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm6-cpp",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm6-go",
+   "family": "swmm6",
+   "language": "Go",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 1.757,
+   "cpu_seconds": 0.935,
+   "build_sha256": "d8209937bd951b6091c5c34af4ebb5605b5c09c30f9b50a5b1a580d20704aa4e",
+   "results_sha256": "d85c41845c2bd3ee1cccaff0da3c55a2c958a30e66083f0476f17e15b805c711",
+   "continuity": {
+    "runoff_quantity_continuity": -0.111,
+    "runoff_quality_continuity": 0.0,
+    "flow_routing_continuity": 0.01,
+    "quality_routing_continuity": -1.925
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm6-cpp",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm6-java",
+   "family": "swmm6",
+   "language": "Java",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 8.618,
+   "cpu_seconds": 4.989,
+   "build_sha256": "647069303c5667b5f155dc5617038692fe8c7a172cfb88b1ff93741740243c05",
+   "results_sha256": "d85c41845c2bd3ee1cccaff0da3c55a2c958a30e66083f0476f17e15b805c711",
+   "continuity": {
+    "runoff_quantity_continuity": -0.111,
+    "runoff_quality_continuity": 0.0,
+    "flow_routing_continuity": 0.01,
+    "quality_routing_continuity": -1.925
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm6-cpp",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm6-typescript",
+   "family": "swmm6",
+   "language": "TypeScript",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 11.087,
+   "cpu_seconds": 6.764,
+   "build_sha256": "d5d8dec0549e97f0d6d41847e1788f48362f75e04ec4977f47b389a0bb40cda3",
+   "results_sha256": "d85c41845c2bd3ee1cccaff0da3c55a2c958a30e66083f0476f17e15b805c711",
+   "continuity": {
+    "runoff_quantity_continuity": -0.111,
+    "runoff_quality_continuity": 0.0,
+    "flow_routing_continuity": 0.01,
+    "quality_routing_continuity": -1.925
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm6-cpp",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm6-fortran",
+   "family": "swmm6",
+   "language": "Fortran",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 1.832,
+   "cpu_seconds": 1.236,
+   "build_sha256": "91a27f9f18df630fe77743b6d60541b1c9c3535eca191a7ea6189a963328fa84",
+   "results_sha256": "d85c41845c2bd3ee1cccaff0da3c55a2c958a30e66083f0476f17e15b805c711",
+   "continuity": {
+    "runoff_quantity_continuity": -0.111,
+    "runoff_quality_continuity": 0.0,
+    "flow_routing_continuity": 0.01,
+    "quality_routing_continuity": -1.925
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm6-cpp",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm6-python",
+   "family": "swmm6",
+   "language": "Python",
+   "role": "translation",
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 47.682,
+   "cpu_seconds": 32.537,
+   "build_sha256": "f1633f3d6270014fcc843ed47083f1a03472b366b1a9c49f1ea1e741fc21fea7",
+   "results_sha256": "d85c41845c2bd3ee1cccaff0da3c55a2c958a30e66083f0476f17e15b805c711",
+   "continuity": {
+    "runoff_quantity_continuity": -0.111,
+    "runoff_quality_continuity": 0.0,
+    "flow_routing_continuity": 0.01,
+    "quality_routing_continuity": -1.925
+   },
+   "reason": null,
+   "vs_reference": {
+    "reference": "swmm6-cpp",
+    "verdict": "IDENTICAL_FILES",
+    "values_outside": null,
+    "max_tolerance_ratio": null
+   }
+  },
+  {
+   "engine": "swmm6-rust",
+   "family": "swmm6",
+   "language": "Rust",
+   "role": "translation (incomplete)",
+   "status": "not_run",
+   "exit_code": null,
+   "exit_code_agrees_with_report": null,
+   "wall_seconds": null,
+   "cpu_seconds": null,
+   "build_sha256": null,
+   "results_sha256": null,
+   "continuity": {},
+   "reason": "the time-stepping engine and the output writers are unfinished (its README)"
+  }
+ ],
+ "cross_family": {
+  "a": "swmm5-epa",
+  "b": "swmm6-cpp",
+  "verdict": "DIFFERENT",
+  "values_compared": 82080,
+  "values_outside": 16,
+  "max_tolerance_ratio": 14.942153025889745,
+  "worst": [
+   {
+    "kind": "link",
+    "variable": "volume",
+    "outside": 12,
+    "compared": 3960,
+    "tolerance_ratio": 14.942153025889745,
+    "worst": {
+     "id": "C5",
+     "time": "1998-01-01T00:20:00",
+     "a": 0.23631013929843903,
+     "b": 0.1860581636428833
+    }
+   },
+   {
+    "kind": "link",
+    "variable": "quality:TSS",
+    "outside": 2,
+    "compared": 3960,
+    "tolerance_ratio": 6.925285841930554,
+    "worst": {
+     "id": "C5",
+     "time": "1998-01-01T00:30:00",
+     "a": 0.1707049459218979,
+     "b": 0.15195785462856293
+    }
+   },
+   {
+    "kind": "node",
+    "variable": "quality:TSS",
+    "outside": 1,
+    "compared": 4320,
+    "tolerance_ratio": 4.449393134915165,
+    "worst": {
+     "id": "J8",
+     "time": "1998-01-02T04:25:00",
+     "a": 0.13889466226100922,
+     "b": 0.15001899003982544
+    }
+   },
+   {
+    "kind": "sys",
+    "variable": "storage_volume",
+    "outside": 1,
+    "compared": 360,
+    "tolerance_ratio": 2.08752334169211,
+    "worst": {
+     "id": null,
+     "time": "1998-01-01T00:15:00",
+     "a": 1.5528875589370728,
+     "b": 1.5183831453323364
+    }
+   },
+   {
+    "kind": "sub",
+    "variable": "infiltration_loss",
+    "outside": 0,
+    "compared": 2520,
+    "tolerance_ratio": 0.9579351097925398,
+    "worst": {
+     "id": "S2",
+     "time": "1998-01-01T16:25:00",
+     "a": 0.06398899108171463,
+     "b": 0.06557509303092957
+    }
+   },
+   {
+    "kind": "sub",
+    "variable": "quality:TSS",
+    "outside": 0,
+    "compared": 2520,
+    "tolerance_ratio": 0.4722067186126923,
+    "worst": {
+     "id": "S4",
+     "time": "1998-01-01T12:05:00",
+     "a": 37.251216888427734,
+     "b": 37.428428649902344
+    }
+   },
+   {
+    "kind": "sub",
+    "variable": "runoff",
+    "outside": 0,
+    "compared": 2520,
+    "tolerance_ratio": 0.20736423088452458,
+    "worst": {
+     "id": "S7",
+     "time": "1998-01-01T12:05:00",
+     "a": 3.098280429840088,
+     "b": 3.0916483402252197
+    }
+   },
+   {
+    "kind": "node",
+    "variable": "lateral_inflow",
+    "outside": 0,
+    "compared": 4320,
+    "tolerance_ratio": 0.19122509501708032,
+    "worst": {
+     "id": "J3",
+     "time": "1998-01-01T13:00:00",
+     "a": 0.46796485781669617,
+     "b": 0.4690530300140381
+    }
+   }
+  ],
+  "continuity": {
+   "flow_routing_continuity": {
+    "a": 0.01,
+    "b": 0.01
+   },
+   "quality_routing_continuity": {
+    "a": -1.957,
+    "b": -1.925
+   },
+   "runoff_quality_continuity": {
+    "a": 0.0,
+    "b": 0.0
+   },
+   "runoff_quantity_continuity": {
+    "a": -0.111,
+    "b": -0.111
+   }
+  }
+ }
+}

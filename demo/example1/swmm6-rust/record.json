@@ -1,0 +1,59 @@
+{
+ "schema": "swmm-run-record/1",
+ "created": "2026-11-04T19:53:25+00:00",
+ "tool": {
+  "name": "swmmrr",
+  "version": "1.0.0"
+ },
+ "engine": {
+  "id": "swmm6-rust",
+  "family": "swmm6",
+  "language": "Rust",
+  "role": "translation (incomplete)",
+  "name": "swmm6-rust (Rust translation of OpenSWMM 6: loading, initialisation, geometry and numerical helpers; no time stepping or output writers yet)",
+  "repo": "https://github.com/SWMMBobSWMM6/swmm6-rust",
+  "pinned": null,
+  "command": null,
+  "env": {},
+  "capabilities": {
+   "simulate": false,
+   "reason": "the time-stepping engine and the output writers are unfinished (its README)"
+  },
+  "verification": [],
+  "fingerprint": null
+ },
+ "model": {
+  "path": "/home/claude/swmmbobswmm6/1729-swmm5-models-2030/OpenSWMM_Engine_Test_Decks/tests/regression/data/Example1.inp",
+  "name": "Example1.inp",
+  "bytes": 29206,
+  "sha256": "7a78aab1315a83a5dac98b902d55a75a3aece121c4c07dfd4a37287cfb4715db",
+  "options": {
+   "FLOW_UNITS": "CFS",
+   "INFILTRATION": "HORTON",
+   "FLOW_ROUTING": "DYNWAVE",
+   "ALLOW_PONDING": "NO",
+   "START_DATE": "01/01/1998",
+   "START_TIME": "00:00:00",
+   "REPORT_START_DATE": "01/01/1998",
+   "REPORT_START_TIME": "00:00:00",
+   "END_DATE": "01/02/1998",
+   "END_TIME": "06:00:00",
+   "REPORT_STEP": "00:05:00",
+   "ROUTING_STEP": "0:00:05",
+   "THREADS": "1"
+  },
+  "counts": {
+   "raingages": 1,
+   "subcatchments": 7,
+   "junctions": 11,
+   "outfalls": 1,
+   "conduits": 11,
+   "pollutants": 1
+  },
+  "files": []
+ },
+ "run": {
+  "status": "not_run",
+  "reason": "the time-stepping engine and the output writers are unfinished (its README)"
+ }
+}
