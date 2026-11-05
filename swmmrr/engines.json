@@ -1,127 +1,731 @@
 {
-  "registry_version": 1,
-  "about": "Every engine a run record can name. command is run from the model's folder as COMMAND model.inp report.rpt output.out; {NAME} is replaced by the environment variable NAME or, when it is unset, by roots[NAME]. artifacts are hashed into the record's build fingerprint; git is the working tree whose commit the record states. verification is what the engine's own byte gate showed, as of the date given; it is evidence about the build that was gated, and a record states its own build fingerprint so the two can be matched.",
-  "roots": {
-    "SWMM5_PORTS": "/home/claude/swmm5-ports",
-    "SWMM6_PORTS": "/home/claude/swmm6-ports",
-    "SWMMBOB": "/home/claude/swmmbobswmm6"
+ "registry_version": 1,
+ "about": "Every engine a run record can name. command is run from the model's folder as COMMAND model.inp report.rpt output.out; {NAME} is replaced by the environment variable NAME or, when it is unset, by roots[NAME]. artifacts are hashed into the record's build fingerprint; git is the working tree whose commit the record states. verification is what the engine's own byte gate showed, one entry per test suite (total, identical, untested = did not finish or not run, different), as of the date given; it is evidence about the build that was gated, and a record states its own build fingerprint so the two can be matched.",
+ "roots": {
+  "SWMM5_PORTS": "/home/claude/swmm5-ports",
+  "SWMM6_PORTS": "/home/claude/swmm6-ports",
+  "SWMMBOB": "/home/claude/swmmbobswmm6"
+ },
+ "families": {
+  "swmm5": {
+   "name": "EPA SWMM 5.2.4 and its translations",
+   "reference": "swmm5-epa"
   },
-  "families": {
-    "swmm5": {"name": "EPA SWMM 5.2.4 and its translations", "reference": "swmm5-epa"},
-    "swmm6": {"name": "OpenSWMM 6 1D engine (HydroCouple swmm6_rel 88329d6) and its translations", "reference": "swmm6-cpp"}
+  "swmm6": {
+   "name": "OpenSWMM 6 1D engine (HydroCouple swmm6_rel 88329d6) and its translations",
+   "reference": "swmm6-cpp"
+  }
+ },
+ "engines": [
+  {
+   "id": "swmm5-epa",
+   "family": "swmm5",
+   "language": "C",
+   "role": "reference",
+   "name": "EPA SWMM 5.2.4 (serial gcc -O2 build, glibc libm, no FMA contraction)",
+   "repo": "https://github.com/USEPA/Stormwater-Management-Model",
+   "pinned": "v5.2.4",
+   "command": [
+    "{SWMM5_PORTS}/ref/runswmm"
+   ],
+   "artifacts": [
+    "{SWMM5_PORTS}/ref/runswmm"
+   ],
+   "git": "{SWMM5_PORTS}",
+   "capabilities": {
+    "simulate": true,
+    "routing": [
+     "STEADY",
+     "KINWAVE",
+     "DYNWAVE"
+    ],
+    "two_d": false,
+    "threads": 1
+   },
+   "verification": [
+    {
+     "suite": "EPA run twice (null control)",
+     "total": 40,
+     "identical": 40,
+     "untested": 0,
+     "different": 0,
+     "run": null,
+     "as_of": "2026-10-29",
+     "note": "the reference itself"
+    }
+   ]
   },
-  "engines": [
-    {"id": "swmm5-epa", "family": "swmm5", "language": "C", "role": "reference",
-     "name": "EPA SWMM 5.2.4 (serial gcc -O2 build, glibc libm, no FMA contraction)",
-     "repo": "https://github.com/USEPA/Stormwater-Management-Model", "pinned": "v5.2.4",
-     "command": ["{SWMM5_PORTS}/ref/runswmm"], "artifacts": ["{SWMM5_PORTS}/ref/runswmm"], "git": "{SWMM5_PORTS}",
-     "capabilities": {"simulate": true, "routing": ["STEADY", "KINWAVE", "DYNWAVE"], "two_d": false, "threads": 1},
-     "verification": [{"what": "the reference itself; run twice, 40 of 40 files identical (null control)", "as_of": "2026-10-29"}]},
-    {"id": "swmm5-cplus", "family": "swmm5", "language": "C++", "role": "translation",
-     "name": "swmm5-cplus (EPA SWMM 5.2.4 restructured in C++, one Simulation object per model)",
-     "repo": "https://github.com/SWMMBobSWMM6/swmm5-cplus",
-     "command": ["{SWMMBOB}/swmm5-cplus/build/native/runswmm_cp"], "artifacts": ["{SWMMBOB}/swmm5-cplus/build/native/runswmm_cp"], "git": "{SWMMBOB}/swmm5-cplus",
-     "capabilities": {"simulate": true, "routing": ["STEADY", "KINWAVE", "DYNWAVE"], "two_d": false, "threads": 1},
-     "verification": [{"set": "1729 gate (480 models)", "result": "480 of 480 identical to EPA", "as_of": "2026-10-29"},
-                      {"set": "1729 corpus (3,759 models run)", "result": "3,743 identical, 0 different, 4 inconclusive (time cap), 12 crash decks crash both alike", "as_of": "2026-10-29"}]},
-    {"id": "swmm5-rust", "family": "swmm5", "language": "Rust", "role": "translation",
-     "name": "swmm5-rust (safe Rust, #![forbid(unsafe_code)])",
-     "repo": "https://github.com/SWMMBobSWMM6/swmm5-rust",
-     "command": ["{SWMMBOB}/swmm5-rust/target/release/runswmm-rs"], "artifacts": ["{SWMMBOB}/swmm5-rust/target/release/runswmm-rs"], "git": "{SWMMBOB}/swmm5-rust",
-     "capabilities": {"simulate": true, "routing": ["STEADY", "KINWAVE", "DYNWAVE"], "two_d": false, "threads": 1},
-     "verification": [{"set": "1729 gate (480 models)", "result": "480 of 480 identical to EPA", "as_of": "2026-10-29"},
-                      {"set": "1729 corpus (3,759 models)", "result": "3,738 identical, 15 undefined in C, 0 different, 6 inconclusive", "as_of": "2026-10-29"}]},
-    {"id": "swmm5-fortran", "family": "swmm5", "language": "Fortran", "role": "translation",
-     "name": "swmm5-fortran (EPA SWMM 5.2.4 translated to Fortran 2008)",
-     "repo": "https://github.com/SWMMBobSWMM6/swmm5-fortran",
-     "command": ["{SWMM5_PORTS}/f90/bin/runswmm"], "artifacts": ["{SWMM5_PORTS}/f90/bin/runswmm"], "git": "{SWMM5_PORTS}",
-     "capabilities": {"simulate": true, "routing": ["STEADY", "KINWAVE", "DYNWAVE"], "two_d": false, "threads": 1},
-     "verification": [{"set": "1729 gate (480 models)", "result": "480 of 480 identical to EPA", "as_of": "2026-10-29"}]},
-    {"id": "swmm5-csharp", "family": "swmm5", "language": "C#", "role": "translation",
-     "name": "swmm5-csharp (EPA SWMM 5.2.4 translated to C#, .NET 8)",
-     "repo": "https://github.com/SWMMBobSWMM6/swmm5-csharp",
-     "command": ["dotnet", "{SWMM5_PORTS}/cs/bin/runswmm.dll"], "artifacts": ["{SWMM5_PORTS}/cs/bin/runswmm.dll"], "git": "{SWMM5_PORTS}",
-     "capabilities": {"simulate": true, "routing": ["STEADY", "KINWAVE", "DYNWAVE"], "two_d": false, "threads": 1},
-     "verification": [{"set": "1729 gate (480 models)", "result": "480 of 480 identical to EPA", "as_of": "2026-10-29"}]},
-    {"id": "swmm5-python", "family": "swmm5", "language": "Python", "role": "translation",
-     "name": "swmm5-python (EPA SWMM 5.2.4 translated to pure Python)",
-     "repo": "https://github.com/SWMMBobSWMM6/swmm5-python",
-     "command": ["python3", "{SWMM5_PORTS}/py/runswmm.py"], "artifacts": ["{SWMM5_PORTS}/py/runswmm.py", "{SWMM5_PORTS}/py/swmm5"], "git": "{SWMM5_PORTS}",
-     "capabilities": {"simulate": true, "routing": ["STEADY", "KINWAVE", "DYNWAVE"], "two_d": false, "threads": 1},
-     "verification": [{"set": "1729 gate (480 models)", "result": "465 identical: the 451 fast models and a 14-model sample of the 29 slow ones", "as_of": "2026-10-29"}]},
-    {"id": "swmm5-typescript", "family": "swmm5", "language": "TypeScript", "role": "translation",
-     "name": "swmm5-typescript (EPA SWMM 5.2.4 translated to TypeScript, run on Node)",
-     "repo": "https://github.com/SWMMBobSWMM6/swmm5-typescript",
-     "command": ["node", "{SWMM5_PORTS}/ts/dist/runswmm.js"], "artifacts": ["{SWMM5_PORTS}/ts/dist"], "git": "{SWMM5_PORTS}",
-     "capabilities": {"simulate": true, "routing": ["STEADY", "KINWAVE", "DYNWAVE"], "two_d": false, "threads": 1, "runtime": "Node (not a browser build)"},
-     "verification": [{"set": "1729 gate (480 models)", "result": "480 of 480 identical to EPA", "as_of": "2026-10-29"}]},
-    {"id": "swmm5-java", "family": "swmm5", "language": "Java", "role": "translation",
-     "name": "swmm5-java (EPA SWMM 5.2.4 translated to Java 21)",
-     "repo": "https://github.com/SWMMBobSWMM6/swmm5-java",
-     "command": ["{SWMM5_PORTS}/java/runswmm"], "artifacts": ["{SWMM5_PORTS}/java/swmm5.jar"], "git": "{SWMM5_PORTS}",
-     "capabilities": {"simulate": true, "routing": ["STEADY", "KINWAVE", "DYNWAVE"], "two_d": false, "threads": 1},
-     "verification": [{"set": "1729 gate (480 models)", "result": "480 of 480 identical to EPA", "as_of": "2026-10-29"}]},
-    {"id": "swmm5-go", "family": "swmm5", "language": "Go", "role": "translation",
-     "name": "swmm5-go (EPA SWMM 5.2.4 translated to Go)",
-     "repo": "https://github.com/SWMMBobSWMM6/swmm5-go",
-     "command": ["{SWMM5_PORTS}/go/bin/runswmm"], "artifacts": ["{SWMM5_PORTS}/go/bin/runswmm"], "git": "{SWMM5_PORTS}",
-     "capabilities": {"simulate": true, "routing": ["STEADY", "KINWAVE", "DYNWAVE"], "two_d": false, "threads": 1},
-     "verification": [{"set": "1729 gate (480 models)", "result": "480 of 480 identical to EPA", "as_of": "2026-10-29"}]},
-
-    {"id": "swmm6-cpp", "family": "swmm6", "language": "C++", "role": "reference",
-     "name": "OpenSWMM 6 engine, C++, built from HydroCouple/openswmm.engine swmm6_rel 88329d6, held to one thread",
-     "repo": "https://github.com/HydroCouple/openswmm.engine", "pinned": "swmm6_rel 88329d6",
-     "command": ["{SWMM6_PORTS}/ref/runswmm6"], "artifacts": ["{SWMM6_PORTS}/ref/openswmm"], "git": "{SWMM6_PORTS}",
-     "env": {"OMP_NUM_THREADS": "1", "OMP_THREAD_LIMIT": "1", "OMP_DYNAMIC": "false"},
-     "capabilities": {"simulate": true, "routing": ["STEADY", "KINWAVE", "DYNWAVE", "FV (finite volume)"], "two_d": "not through this command line", "threads": 1},
-     "verification": [{"what": "the reference for the six SWMM6 translations", "as_of": "2026-11-04"}]},
-    {"id": "swmm6-csharp", "family": "swmm6", "language": "C#", "role": "translation",
-     "name": "swmm6-csharp (the OpenSWMM 6 1D engine translated from C++ to C#; the other five are translated from this)",
-     "repo": "https://github.com/SWMMBobSWMM6/swmm6-csharp",
-     "command": ["dotnet", "{SWMM6_PORTS}/cs/binX/openswmm.dll"], "artifacts": ["{SWMM6_PORTS}/cs/binX/openswmm.dll"], "git": "{SWMM6_PORTS}",
-     "capabilities": {"simulate": true, "routing": ["STEADY", "KINWAVE", "DYNWAVE", "FV (finite volume)"], "two_d": false, "threads": 1},
-     "verification": [{"set": "1729 gate (480 models)", "result": "480 of 480 identical to the C++ (run cs8)", "as_of": "2026-11-04"},
-                      {"set": "extra decks (336 upstream tests + 116 swmm6-rust decks)", "result": "452 of 452 identical (run cs_x4)", "as_of": "2026-11-04"}]},
-    {"id": "swmm6-go", "family": "swmm6", "language": "Go", "role": "translation",
-     "name": "swmm6-go (translated from the verified C#)",
-     "repo": "https://github.com/SWMMBobSWMM6/swmm6-go",
-     "command": ["{SWMM6_PORTS}/go/bin/openswmm"], "artifacts": ["{SWMM6_PORTS}/go/bin/openswmm"], "git": "{SWMM6_PORTS}",
-     "capabilities": {"simulate": true, "routing": ["STEADY", "KINWAVE", "DYNWAVE", "FV (finite volume)"], "two_d": false, "threads": 1},
-     "verification": [{"set": "1729 gate (480 models)", "result": "480 of 480 identical to the C++ (run go5)", "as_of": "2026-11-04"},
-                      {"set": "extra decks (452)", "result": "452 of 452 identical (run go_x3)", "as_of": "2026-11-04"}]},
-    {"id": "swmm6-java", "family": "swmm6", "language": "Java", "role": "translation",
-     "name": "swmm6-java (translated from the verified C#)",
-     "repo": "https://github.com/SWMMBobSWMM6/swmm6-java",
-     "command": ["{SWMM6_PORTS}/java/runswmm6"], "artifacts": ["{SWMM6_PORTS}/java/bin/openswmm.jar"], "git": "{SWMM6_PORTS}",
-     "capabilities": {"simulate": true, "routing": ["STEADY", "KINWAVE", "DYNWAVE", "FV (finite volume)"], "two_d": false, "threads": 1},
-     "verification": [{"set": "1729 gate (480 models)", "result": "480 of 480 identical to the C++ (run java2)", "as_of": "2026-11-04"},
-                      {"set": "extra decks (452)", "result": "452 of 452 identical (run java_x2)", "as_of": "2026-11-04"}]},
-    {"id": "swmm6-typescript", "family": "swmm6", "language": "TypeScript", "role": "translation",
-     "name": "swmm6-typescript (translated from the verified C#, run on Node)",
-     "repo": "https://github.com/SWMMBobSWMM6/swmm6-typescript",
-     "command": ["{SWMM6_PORTS}/ts/runswmm6"], "artifacts": ["{SWMM6_PORTS}/ts/dist"], "git": "{SWMM6_PORTS}",
-     "capabilities": {"simulate": true, "routing": ["STEADY", "KINWAVE", "DYNWAVE", "FV (finite volume)"], "two_d": false, "threads": 1, "runtime": "Node (not a browser build)"},
-     "verification": [{"set": "extra decks (452)", "result": "452 of 452 identical (run ts_x3)", "as_of": "2026-11-04"},
-                      {"set": "1729 gate (480 models)", "result": "rerun of the final build under way (run ts2); the build before the extra-deck fixes passed 480 of 480 (ts1)", "as_of": "2026-11-04"}]},
-    {"id": "swmm6-fortran", "family": "swmm6", "language": "Fortran", "role": "translation",
-     "name": "swmm6-fortran (translated from the verified C#; Boehm garbage collector)",
-     "repo": "https://github.com/SWMMBobSWMM6/swmm6-fortran",
-     "command": ["{SWMM6_PORTS}/f90/runswmm6"], "artifacts": ["{SWMM6_PORTS}/f90/build/swmm6"], "git": "{SWMM6_PORTS}",
-     "capabilities": {"simulate": true, "routing": ["STEADY", "KINWAVE", "DYNWAVE", "FV (finite volume)"], "two_d": false, "threads": 1},
-     "verification": [{"set": "1729 gate (480 models)", "result": "480 of 480 identical to the C++ (run f90c)", "as_of": "2026-11-04"},
-                      {"set": "extra decks (452)", "result": "452 of 452 identical (run f90_x2)", "as_of": "2026-11-04"}]},
-    {"id": "swmm6-python", "family": "swmm6", "language": "Python", "role": "translation",
-     "name": "swmm6-python (translated from the verified C#, pure CPython)",
-     "repo": "https://github.com/SWMMBobSWMM6/swmm6-python",
-     "command": ["{SWMM6_PORTS}/py/runswmm6"], "artifacts": ["{SWMM6_PORTS}/py/runswmm6.py", "{SWMM6_PORTS}/py/gen", "{SWMM6_PORTS}/py/cpp"], "git": "{SWMM6_PORTS}",
-     "capabilities": {"simulate": true, "routing": ["STEADY", "KINWAVE", "DYNWAVE", "FV (finite volume)"], "two_d": false, "threads": 1},
-     "verification": [{"set": "extra decks (452)", "result": "450 identical; 2 did not finish in 7,000 s (untested, not failed) (run py_x2)", "as_of": "2026-11-04"},
-                      {"set": "1729 gate (480 models)", "result": "rerun of the final build under way (run py2); the earlier build gave 479 identical and 1 that did not finish (py1, py1h)", "as_of": "2026-11-04"}]},
-    {"id": "swmm6-rust", "family": "swmm6", "language": "Rust", "role": "translation (incomplete)",
-     "name": "swmm6-rust (Rust translation of OpenSWMM 6: loading, initialisation, geometry and numerical helpers; no time stepping or output writers yet)",
-     "repo": "https://github.com/SWMMBobSWMM6/swmm6-rust",
-     "command": null, "artifacts": [], "git": null,
-     "capabilities": {"simulate": false, "reason": "the time-stepping engine and the output writers are unfinished (its README)"},
-     "verification": []}
-  ]
+  {
+   "id": "swmm5-cplus",
+   "family": "swmm5",
+   "language": "C++",
+   "role": "translation",
+   "name": "swmm5-cplus (EPA SWMM 5.2.4 restructured in C++, one Simulation object per model)",
+   "repo": "https://github.com/SWMMBobSWMM6/swmm5-cplus",
+   "command": [
+    "{SWMMBOB}/swmm5-cplus/build/native/runswmm_cp"
+   ],
+   "artifacts": [
+    "{SWMMBOB}/swmm5-cplus/build/native/runswmm_cp"
+   ],
+   "git": "{SWMMBOB}/swmm5-cplus",
+   "capabilities": {
+    "simulate": true,
+    "routing": [
+     "STEADY",
+     "KINWAVE",
+     "DYNWAVE"
+    ],
+    "two_d": false,
+    "threads": 1
+   },
+   "verification": [
+    {
+     "suite": "1729 gate (480 models)",
+     "total": 480,
+     "identical": 480,
+     "untested": 0,
+     "different": 0,
+     "run": null,
+     "as_of": "2026-10-29",
+     "evidence": "https://github.com/SWMMBobSWMM6/swmm5-cplus"
+    },
+    {
+     "suite": "1729 corpus (models under 125 KB plus a 72-model sample of larger)",
+     "total": 3759,
+     "identical": 3743,
+     "untested": 4,
+     "different": 0,
+     "run": null,
+     "as_of": "2026-10-29",
+     "note": "12 crash decks crash both alike; the 4 untested hit the time cap",
+     "evidence": "https://github.com/SWMMBobSWMM6/swmm5-cplus"
+    }
+   ]
+  },
+  {
+   "id": "swmm5-rust",
+   "family": "swmm5",
+   "language": "Rust",
+   "role": "translation",
+   "name": "swmm5-rust (safe Rust, #![forbid(unsafe_code)])",
+   "repo": "https://github.com/SWMMBobSWMM6/swmm5-rust",
+   "command": [
+    "{SWMMBOB}/swmm5-rust/target/release/runswmm-rs"
+   ],
+   "artifacts": [
+    "{SWMMBOB}/swmm5-rust/target/release/runswmm-rs"
+   ],
+   "git": "{SWMMBOB}/swmm5-rust",
+   "capabilities": {
+    "simulate": true,
+    "routing": [
+     "STEADY",
+     "KINWAVE",
+     "DYNWAVE"
+    ],
+    "two_d": false,
+    "threads": 1
+   },
+   "verification": [
+    {
+     "suite": "1729 gate (480 models)",
+     "total": 480,
+     "identical": 480,
+     "untested": 0,
+     "different": 0,
+     "run": null,
+     "as_of": "2026-10-29",
+     "evidence": "https://github.com/SWMMBobSWMM6/swmm5-rust"
+    },
+    {
+     "suite": "1729 corpus (3,759 models)",
+     "total": 3759,
+     "identical": 3738,
+     "untested": 6,
+     "different": 0,
+     "run": null,
+     "as_of": "2026-10-29",
+     "note": "15 undefined in C; 6 inconclusive",
+     "evidence": "https://github.com/SWMMBobSWMM6/swmm5-rust"
+    }
+   ]
+  },
+  {
+   "id": "swmm5-fortran",
+   "family": "swmm5",
+   "language": "Fortran",
+   "role": "translation",
+   "name": "swmm5-fortran (EPA SWMM 5.2.4 translated to Fortran 2008)",
+   "repo": "https://github.com/SWMMBobSWMM6/swmm5-fortran",
+   "command": [
+    "{SWMM5_PORTS}/f90/bin/runswmm"
+   ],
+   "artifacts": [
+    "{SWMM5_PORTS}/f90/bin/runswmm"
+   ],
+   "git": "{SWMM5_PORTS}",
+   "capabilities": {
+    "simulate": true,
+    "routing": [
+     "STEADY",
+     "KINWAVE",
+     "DYNWAVE"
+    ],
+    "two_d": false,
+    "threads": 1
+   },
+   "verification": [
+    {
+     "suite": "1729 gate (480 models)",
+     "total": 480,
+     "identical": 480,
+     "untested": 0,
+     "different": 0,
+     "run": null,
+     "as_of": "2026-10-29",
+     "evidence": "https://github.com/SWMMBobSWMM6/swmm5-fortran"
+    }
+   ]
+  },
+  {
+   "id": "swmm5-csharp",
+   "family": "swmm5",
+   "language": "C#",
+   "role": "translation",
+   "name": "swmm5-csharp (EPA SWMM 5.2.4 translated to C#, .NET 8)",
+   "repo": "https://github.com/SWMMBobSWMM6/swmm5-csharp",
+   "command": [
+    "dotnet",
+    "{SWMM5_PORTS}/cs/bin/runswmm.dll"
+   ],
+   "artifacts": [
+    "{SWMM5_PORTS}/cs/bin/runswmm.dll"
+   ],
+   "git": "{SWMM5_PORTS}",
+   "capabilities": {
+    "simulate": true,
+    "routing": [
+     "STEADY",
+     "KINWAVE",
+     "DYNWAVE"
+    ],
+    "two_d": false,
+    "threads": 1
+   },
+   "verification": [
+    {
+     "suite": "1729 gate (480 models)",
+     "total": 480,
+     "identical": 480,
+     "untested": 0,
+     "different": 0,
+     "run": null,
+     "as_of": "2026-10-29",
+     "evidence": "https://github.com/SWMMBobSWMM6/swmm5-csharp"
+    }
+   ]
+  },
+  {
+   "id": "swmm5-python",
+   "family": "swmm5",
+   "language": "Python",
+   "role": "translation",
+   "name": "swmm5-python (EPA SWMM 5.2.4 translated to pure Python)",
+   "repo": "https://github.com/SWMMBobSWMM6/swmm5-python",
+   "command": [
+    "python3",
+    "{SWMM5_PORTS}/py/runswmm.py"
+   ],
+   "artifacts": [
+    "{SWMM5_PORTS}/py/runswmm.py",
+    "{SWMM5_PORTS}/py/swmm5"
+   ],
+   "git": "{SWMM5_PORTS}",
+   "capabilities": {
+    "simulate": true,
+    "routing": [
+     "STEADY",
+     "KINWAVE",
+     "DYNWAVE"
+    ],
+    "two_d": false,
+    "threads": 1
+   },
+   "verification": [
+    {
+     "suite": "1729 gate (480 models)",
+     "total": 480,
+     "identical": 465,
+     "untested": 15,
+     "different": 0,
+     "run": null,
+     "as_of": "2026-10-29",
+     "note": "the 451 fast models and a 14-model sample of the 29 slow ones",
+     "evidence": "https://github.com/SWMMBobSWMM6/swmm5-python"
+    }
+   ]
+  },
+  {
+   "id": "swmm5-typescript",
+   "family": "swmm5",
+   "language": "TypeScript",
+   "role": "translation",
+   "name": "swmm5-typescript (EPA SWMM 5.2.4 translated to TypeScript, run on Node)",
+   "repo": "https://github.com/SWMMBobSWMM6/swmm5-typescript",
+   "command": [
+    "node",
+    "{SWMM5_PORTS}/ts/dist/runswmm.js"
+   ],
+   "artifacts": [
+    "{SWMM5_PORTS}/ts/dist"
+   ],
+   "git": "{SWMM5_PORTS}",
+   "capabilities": {
+    "simulate": true,
+    "routing": [
+     "STEADY",
+     "KINWAVE",
+     "DYNWAVE"
+    ],
+    "two_d": false,
+    "threads": 1,
+    "runtime": "Node (not a browser build)"
+   },
+   "verification": [
+    {
+     "suite": "1729 gate (480 models)",
+     "total": 480,
+     "identical": 480,
+     "untested": 0,
+     "different": 0,
+     "run": null,
+     "as_of": "2026-10-29",
+     "evidence": "https://github.com/SWMMBobSWMM6/swmm5-typescript"
+    }
+   ]
+  },
+  {
+   "id": "swmm5-java",
+   "family": "swmm5",
+   "language": "Java",
+   "role": "translation",
+   "name": "swmm5-java (EPA SWMM 5.2.4 translated to Java 21)",
+   "repo": "https://github.com/SWMMBobSWMM6/swmm5-java",
+   "command": [
+    "{SWMM5_PORTS}/java/runswmm"
+   ],
+   "artifacts": [
+    "{SWMM5_PORTS}/java/swmm5.jar"
+   ],
+   "git": "{SWMM5_PORTS}",
+   "capabilities": {
+    "simulate": true,
+    "routing": [
+     "STEADY",
+     "KINWAVE",
+     "DYNWAVE"
+    ],
+    "two_d": false,
+    "threads": 1
+   },
+   "verification": [
+    {
+     "suite": "1729 gate (480 models)",
+     "total": 480,
+     "identical": 480,
+     "untested": 0,
+     "different": 0,
+     "run": null,
+     "as_of": "2026-10-29",
+     "evidence": "https://github.com/SWMMBobSWMM6/swmm5-java"
+    }
+   ]
+  },
+  {
+   "id": "swmm5-go",
+   "family": "swmm5",
+   "language": "Go",
+   "role": "translation",
+   "name": "swmm5-go (EPA SWMM 5.2.4 translated to Go)",
+   "repo": "https://github.com/SWMMBobSWMM6/swmm5-go",
+   "command": [
+    "{SWMM5_PORTS}/go/bin/runswmm"
+   ],
+   "artifacts": [
+    "{SWMM5_PORTS}/go/bin/runswmm"
+   ],
+   "git": "{SWMM5_PORTS}",
+   "capabilities": {
+    "simulate": true,
+    "routing": [
+     "STEADY",
+     "KINWAVE",
+     "DYNWAVE"
+    ],
+    "two_d": false,
+    "threads": 1
+   },
+   "verification": [
+    {
+     "suite": "1729 gate (480 models)",
+     "total": 480,
+     "identical": 480,
+     "untested": 0,
+     "different": 0,
+     "run": null,
+     "as_of": "2026-10-29",
+     "evidence": "https://github.com/SWMMBobSWMM6/swmm5-go"
+    }
+   ]
+  },
+  {
+   "id": "swmm6-cpp",
+   "family": "swmm6",
+   "language": "C++",
+   "role": "reference",
+   "name": "OpenSWMM 6 engine, C++, built from HydroCouple/openswmm.engine swmm6_rel 88329d6, held to one thread",
+   "repo": "https://github.com/HydroCouple/openswmm.engine",
+   "pinned": "swmm6_rel 88329d6",
+   "command": [
+    "{SWMM6_PORTS}/ref/runswmm6"
+   ],
+   "artifacts": [
+    "{SWMM6_PORTS}/ref/openswmm"
+   ],
+   "git": "{SWMM6_PORTS}",
+   "env": {
+    "OMP_NUM_THREADS": "1",
+    "OMP_THREAD_LIMIT": "1",
+    "OMP_DYNAMIC": "false"
+   },
+   "capabilities": {
+    "simulate": true,
+    "routing": [
+     "STEADY",
+     "KINWAVE",
+     "DYNWAVE",
+     "FV (finite volume)"
+    ],
+    "two_d": "not through this command line",
+    "threads": 1
+   },
+   "verification": [
+    {
+     "suite": "the reference for the six SWMM6 translations",
+     "as_of": "2026-11-04"
+    }
+   ]
+  },
+  {
+   "id": "swmm6-csharp",
+   "family": "swmm6",
+   "language": "C#",
+   "role": "translation",
+   "name": "swmm6-csharp (the OpenSWMM 6 1D engine translated from C++ to C#; the other five are translated from this)",
+   "repo": "https://github.com/SWMMBobSWMM6/swmm6-csharp",
+   "command": [
+    "dotnet",
+    "{SWMM6_PORTS}/cs/binX/openswmm.dll"
+   ],
+   "artifacts": [
+    "{SWMM6_PORTS}/cs/binX/openswmm.dll"
+   ],
+   "git": "{SWMM6_PORTS}",
+   "capabilities": {
+    "simulate": true,
+    "routing": [
+     "STEADY",
+     "KINWAVE",
+     "DYNWAVE",
+     "FV (finite volume)"
+    ],
+    "two_d": false,
+    "threads": 1
+   },
+   "verification": [
+    {
+     "suite": "1729 gate (480 models)",
+     "total": 480,
+     "identical": 480,
+     "untested": 0,
+     "different": 0,
+     "run": "cs8",
+     "as_of": "2026-11-04",
+     "evidence": "https://github.com/SWMMBobSWMM6/swmm6-csharp/tree/main/gate/evidence"
+    },
+    {
+     "suite": "SWMM6 extra decks (336 upstream tests + 116 swmm6-rust decks)",
+     "total": 452,
+     "identical": 452,
+     "untested": 0,
+     "different": 0,
+     "run": "cs_x4",
+     "as_of": "2026-11-04",
+     "evidence": "https://github.com/SWMMBobSWMM6/swmm6-csharp/tree/main/gate/evidence"
+    }
+   ]
+  },
+  {
+   "id": "swmm6-go",
+   "family": "swmm6",
+   "language": "Go",
+   "role": "translation",
+   "name": "swmm6-go (translated from the verified C#)",
+   "repo": "https://github.com/SWMMBobSWMM6/swmm6-go",
+   "command": [
+    "{SWMM6_PORTS}/go/bin/openswmm"
+   ],
+   "artifacts": [
+    "{SWMM6_PORTS}/go/bin/openswmm"
+   ],
+   "git": "{SWMM6_PORTS}",
+   "capabilities": {
+    "simulate": true,
+    "routing": [
+     "STEADY",
+     "KINWAVE",
+     "DYNWAVE",
+     "FV (finite volume)"
+    ],
+    "two_d": false,
+    "threads": 1
+   },
+   "verification": [
+    {
+     "suite": "1729 gate (480 models)",
+     "total": 480,
+     "identical": 480,
+     "untested": 0,
+     "different": 0,
+     "run": "go5",
+     "as_of": "2026-11-04",
+     "evidence": "https://github.com/SWMMBobSWMM6/swmm6-go/tree/main/gate/evidence"
+    },
+    {
+     "suite": "SWMM6 extra decks (336 upstream tests + 116 swmm6-rust decks)",
+     "total": 452,
+     "identical": 452,
+     "untested": 0,
+     "different": 0,
+     "run": "go_x3",
+     "as_of": "2026-11-04",
+     "evidence": "https://github.com/SWMMBobSWMM6/swmm6-go/tree/main/gate/evidence"
+    }
+   ]
+  },
+  {
+   "id": "swmm6-java",
+   "family": "swmm6",
+   "language": "Java",
+   "role": "translation",
+   "name": "swmm6-java (translated from the verified C#)",
+   "repo": "https://github.com/SWMMBobSWMM6/swmm6-java",
+   "command": [
+    "{SWMM6_PORTS}/java/runswmm6"
+   ],
+   "artifacts": [
+    "{SWMM6_PORTS}/java/bin/openswmm.jar"
+   ],
+   "git": "{SWMM6_PORTS}",
+   "capabilities": {
+    "simulate": true,
+    "routing": [
+     "STEADY",
+     "KINWAVE",
+     "DYNWAVE",
+     "FV (finite volume)"
+    ],
+    "two_d": false,
+    "threads": 1
+   },
+   "verification": [
+    {
+     "suite": "1729 gate (480 models)",
+     "total": 480,
+     "identical": 480,
+     "untested": 0,
+     "different": 0,
+     "run": "java2",
+     "as_of": "2026-11-04",
+     "evidence": "https://github.com/SWMMBobSWMM6/swmm6-java/tree/main/gate/evidence"
+    },
+    {
+     "suite": "SWMM6 extra decks (336 upstream tests + 116 swmm6-rust decks)",
+     "total": 452,
+     "identical": 452,
+     "untested": 0,
+     "different": 0,
+     "run": "java_x2",
+     "as_of": "2026-11-04",
+     "evidence": "https://github.com/SWMMBobSWMM6/swmm6-java/tree/main/gate/evidence"
+    }
+   ]
+  },
+  {
+   "id": "swmm6-typescript",
+   "family": "swmm6",
+   "language": "TypeScript",
+   "role": "translation",
+   "name": "swmm6-typescript (translated from the verified C#, run on Node)",
+   "repo": "https://github.com/SWMMBobSWMM6/swmm6-typescript",
+   "command": [
+    "{SWMM6_PORTS}/ts/runswmm6"
+   ],
+   "artifacts": [
+    "{SWMM6_PORTS}/ts/dist"
+   ],
+   "git": "{SWMM6_PORTS}",
+   "capabilities": {
+    "simulate": true,
+    "routing": [
+     "STEADY",
+     "KINWAVE",
+     "DYNWAVE",
+     "FV (finite volume)"
+    ],
+    "two_d": false,
+    "threads": 1,
+    "runtime": "Node (not a browser build)"
+   },
+   "verification": [
+    {
+     "suite": "1729 gate (480 models)",
+     "total": 480,
+     "identical": 480,
+     "untested": 0,
+     "different": 0,
+     "run": "ts2",
+     "as_of": "2026-11-04",
+     "evidence": "https://github.com/SWMMBobSWMM6/swmm6-typescript/tree/main/gate/evidence"
+    },
+    {
+     "suite": "SWMM6 extra decks (336 upstream tests + 116 swmm6-rust decks)",
+     "total": 452,
+     "identical": 452,
+     "untested": 0,
+     "different": 0,
+     "run": "ts_x3",
+     "as_of": "2026-11-04",
+     "evidence": "https://github.com/SWMMBobSWMM6/swmm6-typescript/tree/main/gate/evidence"
+    }
+   ]
+  },
+  {
+   "id": "swmm6-fortran",
+   "family": "swmm6",
+   "language": "Fortran",
+   "role": "translation",
+   "name": "swmm6-fortran (translated from the verified C#; Boehm garbage collector)",
+   "repo": "https://github.com/SWMMBobSWMM6/swmm6-fortran",
+   "command": [
+    "{SWMM6_PORTS}/f90/runswmm6"
+   ],
+   "artifacts": [
+    "{SWMM6_PORTS}/f90/build/swmm6"
+   ],
+   "git": "{SWMM6_PORTS}",
+   "capabilities": {
+    "simulate": true,
+    "routing": [
+     "STEADY",
+     "KINWAVE",
+     "DYNWAVE",
+     "FV (finite volume)"
+    ],
+    "two_d": false,
+    "threads": 1
+   },
+   "verification": [
+    {
+     "suite": "1729 gate (480 models)",
+     "total": 480,
+     "identical": 480,
+     "untested": 0,
+     "different": 0,
+     "run": "f90c",
+     "as_of": "2026-11-04",
+     "evidence": "https://github.com/SWMMBobSWMM6/swmm6-fortran/tree/main/gate/evidence"
+    },
+    {
+     "suite": "SWMM6 extra decks (336 upstream tests + 116 swmm6-rust decks)",
+     "total": 452,
+     "identical": 452,
+     "untested": 0,
+     "different": 0,
+     "run": "f90_x2",
+     "as_of": "2026-11-04",
+     "evidence": "https://github.com/SWMMBobSWMM6/swmm6-fortran/tree/main/gate/evidence"
+    }
+   ]
+  },
+  {
+   "id": "swmm6-python",
+   "family": "swmm6",
+   "language": "Python",
+   "role": "translation",
+   "name": "swmm6-python (translated from the verified C#, pure CPython)",
+   "repo": "https://github.com/SWMMBobSWMM6/swmm6-python",
+   "command": [
+    "{SWMM6_PORTS}/py/runswmm6"
+   ],
+   "artifacts": [
+    "{SWMM6_PORTS}/py/runswmm6.py",
+    "{SWMM6_PORTS}/py/gen",
+    "{SWMM6_PORTS}/py/cpp"
+   ],
+   "git": "{SWMM6_PORTS}",
+   "capabilities": {
+    "simulate": true,
+    "routing": [
+     "STEADY",
+     "KINWAVE",
+     "DYNWAVE",
+     "FV (finite volume)"
+    ],
+    "two_d": false,
+    "threads": 1
+   },
+   "verification": [
+    {
+     "suite": "SWMM6 extra decks (336 upstream tests + 116 swmm6-rust decks)",
+     "total": 452,
+     "identical": 450,
+     "untested": 2,
+     "different": 0,
+     "run": "py_x2",
+     "as_of": "2026-11-04",
+     "note": "legacy_small.inp and refactored_small.inp did not finish in 7,000 s",
+     "evidence": "https://github.com/SWMMBobSWMM6/swmm6-python/tree/main/gate/evidence"
+    },
+    {
+     "suite": "1729 gate (480 models)",
+     "total": 480,
+     "identical": null,
+     "untested": 0,
+     "different": 0,
+     "run": "py2",
+     "as_of": "2026-11-04",
+     "note": "rerun of the final build under way; the build before the extra-deck fixes gave 479 identical and 1 that did not finish (py1, py1h)",
+     "evidence": "https://github.com/SWMMBobSWMM6/swmm6-python/tree/main/gate/evidence"
+    }
+   ]
+  },
+  {
+   "id": "swmm6-rust",
+   "family": "swmm6",
+   "language": "Rust",
+   "role": "translation (incomplete)",
+   "name": "swmm6-rust (Rust translation of OpenSWMM 6: loading, initialisation, geometry and numerical helpers; no time stepping or output writers yet)",
+   "repo": "https://github.com/SWMMBobSWMM6/swmm6-rust",
+   "command": null,
+   "artifacts": [],
+   "git": null,
+   "capabilities": {
+    "simulate": false,
+    "reason": "the time-stepping engine and the output writers are unfinished (its README)"
+   },
+   "verification": []
+  }
+ ]
 }

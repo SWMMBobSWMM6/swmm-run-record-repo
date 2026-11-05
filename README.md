@@ -112,8 +112,8 @@ Two models were used:
   pollutants, with dynamic wave routing and Preissmann slot surcharge. Its 3,000 one-minute report periods hold
   2,462 values each.
 
-Neither model is in the 480-model gate set of the SWMM6 ports, and the SWMM5 ports' 480 gate models do not include
-this Greenville file either.
+Example 1 is one of the SWMM6 ports' 452 extra decks. This Greenville file is in no gate set, SWMM5's or SWMM6's
+(the 480 hold a different Greenville model, the six-LID-controls one).
 
 | | Example 1 | Greenville |
 |---|---|---|
