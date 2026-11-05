@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/SWMMBobSWMM6/swmm-run-record/schema/run-record-1.schema.json",
+  "$id": "https://github.com/SWMMBobSWMM6/swmm-run-record-repo/schema/run-record-1.schema.json",
   "title": "SWMM run record, version 1",
   "description": "What ran (engine and build), on what (model and every file it reads), how it ended, and what it produced, for one run of one SWMM 5 or OpenSWMM 6 engine. Non-finite numbers are written as the strings NaN, Infinity and -Infinity. Written by Claude (Anthropic) for Robert Dickinson.",
   "type": "object",
