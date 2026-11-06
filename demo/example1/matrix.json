@@ -446,18 +446,23 @@
    "family": "swmm6",
    "language": "Rust",
    "role": "translation (incomplete)",
-   "status": "crashed",
-   "exit_code": 3,
-   "exit_code_agrees_with_report": false,
-   "wall_seconds": 0.011,
-   "cpu_seconds": 0.002,
-   "build_sha256": "d0cd65f2619d9914d187d8fa8a304ebb0e15ec9488f4eb810749ea9c16d610f5",
-   "results_sha256": null,
-   "continuity": {},
+   "status": "completed",
+   "exit_code": 0,
+   "exit_code_agrees_with_report": true,
+   "wall_seconds": 0.215,
+   "cpu_seconds": 0.181,
+   "build_sha256": "aae1df6005f8c15cc2408fbd5148cf81de24fd79c153130d9ac57466990e72a1",
+   "results_sha256": "d85c41845c2bd3ee1cccaff0da3c55a2c958a30e66083f0476f17e15b805c711",
+   "continuity": {
+    "runoff_quantity_continuity": -0.111,
+    "runoff_quality_continuity": 0.0,
+    "flow_routing_continuity": 0.01,
+    "quality_routing_continuity": -1.925
+   },
    "reason": null,
    "vs_reference": {
     "reference": "swmm6-cpp",
-    "verdict": "NOT_COMPARABLE",
+    "verdict": "IDENTICAL_FILES",
     "values_outside": null,
     "max_tolerance_ratio": null
    }

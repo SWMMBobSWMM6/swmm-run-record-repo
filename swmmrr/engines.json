@@ -716,7 +716,7 @@
    "family": "swmm6",
    "language": "Rust",
    "role": "translation (incomplete)",
-   "name": "swmm6-rust (OpenSWMM 6 translated by hand into safe Rust, #![forbid(unsafe_code)]; runs end to end; quality routing, the FV router and the SWMM6-only modules are not translated yet)",
+   "name": "swmm6-rust (OpenSWMM 6 translated a function at a time into safe Rust, #![forbid(unsafe_code)]; runs end to end; the FV router, the EULERIAN_ARD and LAGRANGIAN quality engines and some SWMM6-only modules are not translated yet)",
    "repo": "https://github.com/SWMMBobSWMM6/swmm6-rust",
    "command": [
     "{SWMMBOB}/swmm6-rust/target/release/openswmm"
@@ -739,29 +739,28 @@
     ],
     "two_d": false,
     "threads": 1,
-    "reason": "a deck that needs quality routing (pollutants with IGNORE_QUALITY NO), the FV router or a SWMM6-only module stops with exit status 3 and the message 'not translated yet'"
+    "reason": "a deck that needs the FV router, the EULERIAN_ARD or LAGRANGIAN quality engine, or a SWMM6-only module not translated yet (UEB snow, heat transport hooks, reaction-species surface and LID units, Richards node LID columns) stops with exit status 3 and the message 'not translated yet'"
    },
    "verification": [
     {
      "suite": "1729 gate (480 models)",
      "total": 480,
-     "identical": 452,
-     "untested": 28,
+     "identical": 480,
+     "untested": 0,
      "different": 0,
-     "run": "rs6_out_480",
+     "run": "rs6_main_480",
      "as_of": "2026-11-05",
-     "note": "the 28 need quality routing, not translated yet",
      "evidence": "https://github.com/SWMMBobSWMM6/swmm6-rust"
     },
     {
      "suite": "SWMM6 extra decks (336 upstream tests + 116 swmm6-rust decks)",
      "total": 452,
-     "identical": 380,
-     "untested": 72,
+     "identical": 408,
+     "untested": 44,
      "different": 0,
-     "run": "rs6_out_452",
+     "run": "rs6_main_452",
      "as_of": "2026-11-05",
-     "note": "the 72 stop at code not translated yet: quality routing 34, FV routing 16, SWMM6-only modules 21, Richards node LID 1",
+     "note": "the 44 stop at code not translated yet: FV routing 16, heat transport hooks 8, UEB snow 6, EULERIAN_ARD 4, species surface 4, species LID units 3, LAGRANGIAN 2, Richards node LID 1",
      "evidence": "https://github.com/SWMMBobSWMM6/swmm6-rust"
     }
    ]
