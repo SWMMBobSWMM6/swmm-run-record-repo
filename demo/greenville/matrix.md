@@ -4,23 +4,23 @@ Model SHA-256 `5808a9bad783d64d`; 2 raingages, 30 subcatchments, 149 junctions, 
 
 | Engine | Status | Exit code | Wall s | Results block (SHA-256) | Against its family reference | Runoff cont. % | Routing cont. % |
 |---|---|---|---|---|---|---|---|
-| swmm5-epa | completed | 0 | 4.59 | `d0dc979565a2` | reference | -0.359 | 5.71 |
-| swmm5-cplus | completed | 0 | 4.49 | `d0dc979565a2` | IDENTICAL_FILES | -0.359 | 5.71 |
-| swmm5-rust | completed | 0 | 5.4 | `d0dc979565a2` | IDENTICAL_FILES | -0.359 | 5.71 |
-| swmm5-fortran | completed | 0 | 5.22 | `d0dc979565a2` | IDENTICAL_FILES | -0.359 | 5.71 |
-| swmm5-csharp | completed | 0 | 7.86 | `d0dc979565a2` | IDENTICAL_FILES | -0.359 | 5.71 |
-| swmm5-python | completed | 0 | 418 | `d0dc979565a2` | IDENTICAL_FILES | -0.359 | 5.71 |
-| swmm5-typescript | completed | 0 | 68.8 | `d0dc979565a2` | IDENTICAL_FILES | -0.359 | 5.71 |
-| swmm5-java | completed | 0 | 16.6 | `d0dc979565a2` | IDENTICAL_FILES | -0.359 | 5.71 |
-| swmm5-go | completed | 0 | 9.66 | `d0dc979565a2` | IDENTICAL_FILES | -0.359 | 5.71 |
-| swmm6-cpp | completed | 0 | 13.9 | `aa2bb947f288` | reference | -0.358 | 5.7 |
-| swmm6-csharp | completed | 0 | 32.4 | `aa2bb947f288` | IDENTICAL_FILES | -0.358 | 5.7 |
-| swmm6-go | completed | 0 | 52.1 | `aa2bb947f288` | IDENTICAL_FILES | -0.358 | 5.7 |
-| swmm6-java | completed | 0 | 87.8 | `aa2bb947f288` | IDENTICAL_FILES | -0.358 | 5.7 |
-| swmm6-typescript | completed | 0 | 241 | `aa2bb947f288` | IDENTICAL_FILES | -0.358 | 5.7 |
-| swmm6-fortran | completed | 0 | 155 | `aa2bb947f288` | IDENTICAL_FILES | -0.358 | 5.7 |
-| swmm6-python | completed | 0 | 1.67e+03 | `aa2bb947f288` | IDENTICAL_FILES | -0.358 | 5.7 |
-| swmm6-rust | not run: the time-stepping engine and the output writers are unfinished (its README) | - | - | - | - | - | - |
+| swmm5-epa | completed | 0 | 2.02 | `d0dc979565a2` | reference | -0.359 | 5.71 |
+| swmm5-cplus | completed | 0 | 1.87 | `d0dc979565a2` | IDENTICAL_FILES | -0.359 | 5.71 |
+| swmm5-rust | completed | 0 | 2.33 | `d0dc979565a2` | IDENTICAL_FILES | -0.359 | 5.71 |
+| swmm5-fortran | completed | 0 | 2.47 | `d0dc979565a2` | IDENTICAL_FILES | -0.359 | 5.71 |
+| swmm5-csharp | completed | 0 | 6.19 | `d0dc979565a2` | IDENTICAL_FILES | -0.359 | 5.71 |
+| swmm5-python | completed | 0 | 181 | `d0dc979565a2` | IDENTICAL_FILES | -0.359 | 5.71 |
+| swmm5-typescript | completed | 0 | 27.2 | `d0dc979565a2` | IDENTICAL_FILES | -0.359 | 5.71 |
+| swmm5-java | completed | 0 | 7.95 | `d0dc979565a2` | IDENTICAL_FILES | -0.359 | 5.71 |
+| swmm5-go | completed | 0 | 3.75 | `d0dc979565a2` | IDENTICAL_FILES | -0.359 | 5.71 |
+| swmm6-cpp | completed | 0 | 6.14 | `aa2bb947f288` | reference | -0.358 | 5.7 |
+| swmm6-csharp | completed | 0 | 15.5 | `aa2bb947f288` | IDENTICAL_FILES | -0.358 | 5.7 |
+| swmm6-go | completed | 0 | 23.3 | `aa2bb947f288` | IDENTICAL_FILES | -0.358 | 5.7 |
+| swmm6-java | completed | 0 | 16 | `aa2bb947f288` | IDENTICAL_FILES | -0.358 | 5.7 |
+| swmm6-typescript | completed | 0 | 83.4 | `aa2bb947f288` | IDENTICAL_FILES | -0.358 | 5.7 |
+| swmm6-fortran | completed | 0 | 72.8 | `aa2bb947f288` | IDENTICAL_FILES | -0.358 | 5.7 |
+| swmm6-python | completed | 0 | 676 | `aa2bb947f288` | IDENTICAL_FILES | -0.358 | 5.7 |
+| swmm6-rust | completed | 0 | 5.78 | `aa2bb947f288` | IDENTICAL_FILES | -0.358 | 5.7 |
 
 ## swmm6-cpp against swmm5-epa
 

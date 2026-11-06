@@ -1,6 +1,6 @@
 {
  "schema": "swmm-run-record/1",
- "created": "2026-11-04T20:12:35+00:00",
+ "created": "2026-11-06T04:01:56+00:00",
  "tool": {
   "name": "swmmrr",
   "version": "1.0.0"
@@ -30,14 +30,26 @@
   },
   "verification": [
    {
-    "set": "extra decks (452)",
-    "result": "450 identical; 2 did not finish in 7,000 s (untested, not failed) (run py_x2)",
-    "as_of": "2026-11-04"
+    "suite": "SWMM6 extra decks (336 upstream tests + 116 swmm6-rust decks)",
+    "total": 452,
+    "identical": 450,
+    "untested": 2,
+    "different": 0,
+    "run": "py_x2",
+    "as_of": "2026-11-04",
+    "note": "legacy_small.inp and refactored_small.inp did not finish in 7,000 s",
+    "evidence": "https://github.com/SWMMBobSWMM6/swmm6-python/tree/main/gate/evidence"
    },
    {
-    "set": "1729 gate (480 models)",
-    "result": "rerun of the final build under way (run py2); the earlier build gave 479 identical and 1 that did not finish (py1, py1h)",
-    "as_of": "2026-11-04"
+    "suite": "1729 gate (480 models)",
+    "total": 480,
+    "identical": null,
+    "untested": 0,
+    "different": 0,
+    "run": "py2",
+    "as_of": "2026-11-04",
+    "note": "rerun of the final build under way; the build before the extra-deck fixes gave 479 identical and 1 that did not finish (py1, py1h)",
+    "evidence": "https://github.com/SWMMBobSWMM6/swmm6-python/tree/main/gate/evidence"
    }
   ],
   "fingerprint": {
@@ -60,8 +72,8 @@
     }
    ],
    "git": {
-    "commit": "99248bc420e9439689ae704a52b3d98c0f06a379",
-    "dirty": true
+    "commit": "91238e6ae7720804b48694ee86bc8a87ba7607c8",
+    "dirty": false
    }
   }
  },
@@ -111,7 +123,7 @@
   "rpt": {
    "path": "/home/claude/swmm-run-record/demo/greenville/swmm6-python/run.rpt",
    "bytes": 211733,
-   "sha256": "5689037764310fda2cd279fa4cbb601292edc2a82e442e36bc16626e33bb2e8b",
+   "sha256": "3ea392adc2fc469d79725a43478232a74c9fb3f604e3ff9a1ebcb3df7f13552f",
    "sha256_without_clock": "2104e9098d95c268d2ca97db137596e935eb2ad232173ccfb3c241a6455cb8e9"
   },
   "out": {
@@ -6980,9 +6992,9 @@
  "run": {
   "exit_code": 0,
   "signal": null,
-  "wall_seconds": 1669.329,
-  "cpu_seconds": 1127.59,
-  "timeout_seconds": 5400.0,
+  "wall_seconds": 676.276,
+  "cpu_seconds": 653.927,
+  "timeout_seconds": 3600.0,
   "stderr_tail": null,
   "errors": [],
   "warnings": [

@@ -40,8 +40,10 @@ Every engine is run the same way: from the model's own folder, as `COMMAND model
 - its capabilities;
 - its verification, dated.
 
-An engine that cannot run says why. `swmm6-rust`, for example, has no time stepping yet, so a 2D or FV task can
-never be routed to an engine that lacks that capability.
+An engine that cannot run says why, and its capabilities say what it can route, so a 2D or FV task can never be
+routed to an engine that lacks that capability. `swmm6-rust`, for example, runs end to end but has no FV router or
+quality routing yet: a deck that needs either stops with exit status 3 and "not translated yet", which the record
+keeps (on Example 1 its status is `crashed`, exit 3, with that message in `stderr_tail`).
 
 ## How a run ended
 
@@ -118,10 +120,10 @@ Example 1 is one of the SWMM6 ports' 452 extra decks. This Greenville file is in
 | | Example 1 | Greenville |
 |---|---|---|
 | The 8 SWMM5 translations against EPA 5.2.4 | all IDENTICAL_FILES | all IDENTICAL_FILES |
-| The 6 SWMM6 translations against the OpenSWMM C++ | all IDENTICAL_FILES | all IDENTICAL_FILES |
+| The SWMM6 translations against the OpenSWMM C++ | the 6 generated ones: all IDENTICAL_FILES; swmm6-rust stops at quality routing | all 7: IDENTICAL_FILES |
 | OpenSWMM 6 against EPA 5.2.4 (engineering profile) | DIFFERENT: 16 of 82,080 values outside | DIFFERENT: 25,650 of 7,386,000 values (0.35%) outside |
 | Continuity error %, runoff / routing (EPA vs OpenSWMM) | -0.111 / 0.01 vs -0.111 / 0.01 | -0.359 / 5.71 vs -0.358 / 5.70 |
-| Wall seconds, fastest and slowest translation | Rust 0.27 s, SWMM6 Python 48 s | SWMM5 C++ 4.5 s, SWMM6 Python 1,669 s |
+| Wall seconds, fastest and slowest translation | Rust 0.27 s, SWMM6 Python 48 s | SWMM5 C++ 1.9 s, SWMM6 Python 676 s |
 
 On Greenville the two families agree closely where it counts most:
 

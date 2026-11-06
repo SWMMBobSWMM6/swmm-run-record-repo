@@ -1,6 +1,6 @@
 {
  "schema": "swmm-run-record/1",
- "created": "2026-11-04T19:53:25+00:00",
+ "created": "2026-11-06T04:15:02+00:00",
  "tool": {
   "name": "swmmrr",
   "version": "1.0.0"
@@ -10,17 +10,66 @@
   "family": "swmm6",
   "language": "Rust",
   "role": "translation (incomplete)",
-  "name": "swmm6-rust (Rust translation of OpenSWMM 6: loading, initialisation, geometry and numerical helpers; no time stepping or output writers yet)",
+  "name": "swmm6-rust (OpenSWMM 6 translated by hand into safe Rust, #![forbid(unsafe_code)]; runs end to end; quality routing, the FV router and the SWMM6-only modules are not translated yet)",
   "repo": "https://github.com/SWMMBobSWMM6/swmm6-rust",
   "pinned": null,
-  "command": null,
-  "env": {},
-  "capabilities": {
-   "simulate": false,
-   "reason": "the time-stepping engine and the output writers are unfinished (its README)"
+  "command": [
+   "/home/claude/swmmbobswmm6/swmm6-rust/target/release/openswmm"
+  ],
+  "env": {
+   "OMP_NUM_THREADS": "1",
+   "OMP_THREAD_LIMIT": "1",
+   "OMP_DYNAMIC": "false"
   },
-  "verification": [],
-  "fingerprint": null
+  "capabilities": {
+   "simulate": true,
+   "routing": [
+    "STEADY",
+    "KINWAVE",
+    "DYNWAVE"
+   ],
+   "two_d": false,
+   "threads": 1,
+   "reason": "a deck that needs quality routing (pollutants with IGNORE_QUALITY NO), the FV router or a SWMM6-only module stops with exit status 3 and the message 'not translated yet'"
+  },
+  "verification": [
+   {
+    "suite": "1729 gate (480 models)",
+    "total": 480,
+    "identical": 452,
+    "untested": 28,
+    "different": 0,
+    "run": "rs6_out_480",
+    "as_of": "2026-11-05",
+    "note": "the 28 need quality routing, not translated yet",
+    "evidence": "https://github.com/SWMMBobSWMM6/swmm6-rust"
+   },
+   {
+    "suite": "SWMM6 extra decks (336 upstream tests + 116 swmm6-rust decks)",
+    "total": 452,
+    "identical": 380,
+    "untested": 72,
+    "different": 0,
+    "run": "rs6_out_452",
+    "as_of": "2026-11-05",
+    "note": "the 72 stop at code not translated yet: quality routing 34, FV routing 16, SWMM6-only modules 21, Richards node LID 1",
+    "evidence": "https://github.com/SWMMBobSWMM6/swmm6-rust"
+   }
+  ],
+  "fingerprint": {
+   "build_sha256": "d0cd65f2619d9914d187d8fa8a304ebb0e15ec9488f4eb810749ea9c16d610f5",
+   "artifacts": [
+    {
+     "path": "/home/claude/swmmbobswmm6/swmm6-rust/target/release/openswmm",
+     "sha256": "6e51e5394bf883e47fcf37270dd1c40648424e17248e557028477ea03297af49",
+     "files": 1
+    }
+   ],
+   "git": {
+    "commit": "926efe6075be9446c3bd9c8b80e0da03595ddef8",
+    "dirty": false
+   }
+  }
  },
  "model": {
   "path": "/home/claude/swmmbobswmm6/1729-swmm5-models-2030/OpenSWMM_Engine_Test_Decks/tests/regression/data/Example1.inp",
@@ -52,8 +101,39 @@
   },
   "files": []
  },
+ "files": {
+  "rpt": {
+   "path": "/home/claude/swmm-run-record/demo/example1/swmm6-rust/run.rpt",
+   "bytes": 1151,
+   "sha256": "a0260e636c32aef9373703adcd3ef7cf0334e0c1f357d9db00ec78996ec40b2e",
+   "sha256_without_clock": "a0260e636c32aef9373703adcd3ef7cf0334e0c1f357d9db00ec78996ec40b2e"
+  }
+ },
+ "time": {
+  "model_start": "1998-01-01T00:00:00",
+  "model_end": "1998-01-02T06:00:00"
+ },
  "run": {
-  "status": "not_run",
-  "reason": "the time-stepping engine and the output writers are unfinished (its README)"
- }
+  "exit_code": 3,
+  "signal": null,
+  "wall_seconds": 0.011,
+  "cpu_seconds": 0.002,
+  "timeout_seconds": 3600.0,
+  "stderr_tail": "openswmm (swmm6-rust): not translated yet: quality routing\n",
+  "errors": [],
+  "warnings": [
+   {
+    "code": 9,
+    "text": "time series interval greater than recording interval for Rain Gage RainGage"
+   }
+  ],
+  "warning_counts": {
+   "9": 1
+  },
+  "banner": "OPENSWMM ENGINE - VERSION 6.0.0-alpha.4",
+  "status": "crashed",
+  "exit_code_agrees_with_report": false
+ },
+ "continuity": {},
+ "time_steps": {}
 }

@@ -1,6 +1,6 @@
 {
  "schema": "swmm-run-record/1",
- "created": "2026-11-04T19:54:07+00:00",
+ "created": "2026-11-06T03:54:30+00:00",
  "tool": {
   "name": "swmmrr",
   "version": "1.0.0"
@@ -30,9 +30,15 @@
   },
   "verification": [
    {
-    "set": "1729 gate (480 models)",
-    "result": "465 identical: the 451 fast models and a 14-model sample of the 29 slow ones",
-    "as_of": "2026-10-29"
+    "suite": "1729 gate (480 models)",
+    "total": 480,
+    "identical": 465,
+    "untested": 15,
+    "different": 0,
+    "run": null,
+    "as_of": "2026-10-29",
+    "note": "the 451 fast models and a 14-model sample of the 29 slow ones",
+    "evidence": "https://github.com/SWMMBobSWMM6/swmm5-python"
    }
   ],
   "fingerprint": {
@@ -6970,9 +6976,9 @@
  "run": {
   "exit_code": 0,
   "signal": null,
-  "wall_seconds": 417.512,
-  "cpu_seconds": 278.776,
-  "timeout_seconds": 5400.0,
+  "wall_seconds": 180.501,
+  "cpu_seconds": 173.82,
+  "timeout_seconds": 3600.0,
   "stderr_tail": null,
   "errors": [],
   "warnings": [

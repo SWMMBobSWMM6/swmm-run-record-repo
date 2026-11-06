@@ -20,7 +20,7 @@ Model SHA-256 `7a78aab1315a83a5`; 1 raingages, 7 subcatchments, 11 junctions, 1 
 | swmm6-typescript | completed | 0 | 11.1 | `d85c41845c2b` | IDENTICAL_FILES | -0.111 | 0.01 |
 | swmm6-fortran | completed | 0 | 1.83 | `d85c41845c2b` | IDENTICAL_FILES | -0.111 | 0.01 |
 | swmm6-python | completed | 0 | 47.7 | `d85c41845c2b` | IDENTICAL_FILES | -0.111 | 0.01 |
-| swmm6-rust | not run: the time-stepping engine and the output writers are unfinished (its README) | - | - | - | - | - | - |
+| swmm6-rust | crashed | 3 (disagrees with report) | 0.011 | - | NOT_COMPARABLE | - | - |
 
 ## swmm6-cpp against swmm5-epa
 

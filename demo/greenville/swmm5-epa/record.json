@@ -1,6 +1,6 @@
 {
  "schema": "swmm-run-record/1",
- "created": "2026-11-04T19:53:33+00:00",
+ "created": "2026-11-06T03:54:11+00:00",
  "tool": {
   "name": "swmmrr",
   "version": "1.0.0"
@@ -29,8 +29,14 @@
   },
   "verification": [
    {
-    "what": "the reference itself; run twice, 40 of 40 files identical (null control)",
-    "as_of": "2026-10-29"
+    "suite": "EPA run twice (null control)",
+    "total": 40,
+    "identical": 40,
+    "untested": 0,
+    "different": 0,
+    "run": null,
+    "as_of": "2026-10-29",
+    "note": "the reference itself"
    }
   ],
   "fingerprint": {
@@ -94,7 +100,7 @@
   "rpt": {
    "path": "/home/claude/swmm-run-record/demo/greenville/swmm5-epa/run.rpt",
    "bytes": 220653,
-   "sha256": "395991835ed74b306b846eeda345ee235a3f5da5ede4506da987767f918dae59",
+   "sha256": "58ce76a8a8e6c9732faa86c9b5015802a8f583f31be4f2de68cac5d56479cb15",
    "sha256_without_clock": "0ff876a0139e2c762af780de97ca1226ca70347edb03607ce8c4e7201fa55e4e"
   },
   "out": {
@@ -6963,9 +6969,9 @@
  "run": {
   "exit_code": 0,
   "signal": null,
-  "wall_seconds": 4.595,
-  "cpu_seconds": 3.08,
-  "timeout_seconds": 5400.0,
+  "wall_seconds": 2.021,
+  "cpu_seconds": 1.982,
+  "timeout_seconds": 3600.0,
   "stderr_tail": null,
   "errors": [],
   "warnings": [

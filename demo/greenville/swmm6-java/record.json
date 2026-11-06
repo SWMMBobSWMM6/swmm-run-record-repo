@@ -1,6 +1,6 @@
 {
  "schema": "swmm-run-record/1",
- "created": "2026-11-04T20:04:27+00:00",
+ "created": "2026-11-06T03:59:01+00:00",
  "tool": {
   "name": "swmmrr",
   "version": "1.0.0"
@@ -30,14 +30,24 @@
   },
   "verification": [
    {
-    "set": "1729 gate (480 models)",
-    "result": "480 of 480 identical to the C++ (run java2)",
-    "as_of": "2026-11-04"
+    "suite": "1729 gate (480 models)",
+    "total": 480,
+    "identical": 480,
+    "untested": 0,
+    "different": 0,
+    "run": "java2",
+    "as_of": "2026-11-04",
+    "evidence": "https://github.com/SWMMBobSWMM6/swmm6-java/tree/main/gate/evidence"
    },
    {
-    "set": "extra decks (452)",
-    "result": "452 of 452 identical (run java_x2)",
-    "as_of": "2026-11-04"
+    "suite": "SWMM6 extra decks (336 upstream tests + 116 swmm6-rust decks)",
+    "total": 452,
+    "identical": 452,
+    "untested": 0,
+    "different": 0,
+    "run": "java_x2",
+    "as_of": "2026-11-04",
+    "evidence": "https://github.com/SWMMBobSWMM6/swmm6-java/tree/main/gate/evidence"
    }
   ],
   "fingerprint": {
@@ -50,8 +60,8 @@
     }
    ],
    "git": {
-    "commit": "99248bc420e9439689ae704a52b3d98c0f06a379",
-    "dirty": true
+    "commit": "91238e6ae7720804b48694ee86bc8a87ba7607c8",
+    "dirty": false
    }
   }
  },
@@ -101,7 +111,7 @@
   "rpt": {
    "path": "/home/claude/swmm-run-record/demo/greenville/swmm6-java/run.rpt",
    "bytes": 211733,
-   "sha256": "39aa700f667615da59d1cf111adea4fad7b04c8f07d3873fccefca3938784038",
+   "sha256": "3a0400871308f92b3e1bdb1b0a50355fa2c0ce28744f2b339ecda18229a76347",
    "sha256_without_clock": "2104e9098d95c268d2ca97db137596e935eb2ad232173ccfb3c241a6455cb8e9"
   },
   "out": {
@@ -6970,9 +6980,9 @@
  "run": {
   "exit_code": 0,
   "signal": null,
-  "wall_seconds": 87.837,
-  "cpu_seconds": 51.245,
-  "timeout_seconds": 5400.0,
+  "wall_seconds": 15.964,
+  "cpu_seconds": 29.092,
+  "timeout_seconds": 3600.0,
   "stderr_tail": null,
   "errors": [],
   "warnings": [

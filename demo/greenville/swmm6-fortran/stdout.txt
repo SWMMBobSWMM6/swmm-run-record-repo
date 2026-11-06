@@ -5,5 +5,5 @@
 ... Output: /home/claude/swmm-run-record/demo/greenville/swmm6-fortran/run.out
 
 ... 18003 steps completed.
-... OpenSWMM Engine completed in 155.29 seconds.
+... OpenSWMM Engine completed in 72.69 seconds.
 

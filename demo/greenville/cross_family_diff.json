@@ -1,6 +1,6 @@
 {
  "schema": "swmm-run-diff/1",
- "created": "2026-11-04T20:40:26+00:00",
+ "created": "2026-11-06T04:13:19+00:00",
  "tool": {
   "name": "swmmrr",
   "version": "1.0.0"
@@ -69,11 +69,11 @@
  "run": {
   "a": {
    "status": "completed",
-   "wall_seconds": 4.595
+   "wall_seconds": 2.021
   },
   "b": {
    "status": "completed",
-   "wall_seconds": 13.876
+   "wall_seconds": 6.143
   }
  },
  "verdict": "DIFFERENT",

@@ -1,6 +1,6 @@
 {
  "schema": "swmm-run-record/1",
- "created": "2026-11-04T19:53:58+00:00",
+ "created": "2026-11-06T03:54:23+00:00",
  "tool": {
   "name": "swmmrr",
   "version": "1.0.0"
@@ -30,9 +30,14 @@
   },
   "verification": [
    {
-    "set": "1729 gate (480 models)",
-    "result": "480 of 480 identical to EPA",
-    "as_of": "2026-10-29"
+    "suite": "1729 gate (480 models)",
+    "total": 480,
+    "identical": 480,
+    "untested": 0,
+    "different": 0,
+    "run": null,
+    "as_of": "2026-10-29",
+    "evidence": "https://github.com/SWMMBobSWMM6/swmm5-csharp"
    }
   ],
   "fingerprint": {
@@ -96,7 +101,7 @@
   "rpt": {
    "path": "/home/claude/swmm-run-record/demo/greenville/swmm5-csharp/run.rpt",
    "bytes": 220653,
-   "sha256": "2f7cde3e3969cfc137e9da4c3b235398173b80222fddd9bd9a8262b81172f0ec",
+   "sha256": "3a54161e472d1550ae939d314d4532c70610b97734949edb2c8bbaff78ebdffd",
    "sha256_without_clock": "0ff876a0139e2c762af780de97ca1226ca70347edb03607ce8c4e7201fa55e4e"
   },
   "out": {
@@ -6965,9 +6970,9 @@
  "run": {
   "exit_code": 0,
   "signal": null,
-  "wall_seconds": 7.861,
-  "cpu_seconds": 5.08,
-  "timeout_seconds": 5400.0,
+  "wall_seconds": 6.186,
+  "cpu_seconds": 3.639,
+  "timeout_seconds": 3600.0,
   "stderr_tail": null,
   "errors": [],
   "warnings": [

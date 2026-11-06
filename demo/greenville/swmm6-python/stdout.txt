@@ -5,5 +5,5 @@
 ... Output: /home/claude/swmm-run-record/demo/greenville/swmm6-python/run.out
 
 ... 18003 steps completed.
-... OpenSWMM Engine completed in 1669.12 seconds.
+... OpenSWMM Engine completed in 675.74 seconds.
 

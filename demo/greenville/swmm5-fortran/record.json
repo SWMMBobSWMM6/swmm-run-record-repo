@@ -1,6 +1,6 @@
 {
  "schema": "swmm-run-record/1",
- "created": "2026-11-04T19:53:52+00:00",
+ "created": "2026-11-06T03:54:20+00:00",
  "tool": {
   "name": "swmmrr",
   "version": "1.0.0"
@@ -29,9 +29,14 @@
   },
   "verification": [
    {
-    "set": "1729 gate (480 models)",
-    "result": "480 of 480 identical to EPA",
-    "as_of": "2026-10-29"
+    "suite": "1729 gate (480 models)",
+    "total": 480,
+    "identical": 480,
+    "untested": 0,
+    "different": 0,
+    "run": null,
+    "as_of": "2026-10-29",
+    "evidence": "https://github.com/SWMMBobSWMM6/swmm5-fortran"
    }
   ],
   "fingerprint": {
@@ -95,7 +100,7 @@
   "rpt": {
    "path": "/home/claude/swmm-run-record/demo/greenville/swmm5-fortran/run.rpt",
    "bytes": 220653,
-   "sha256": "9966e31bf5bd925d99c7b952fbad6902741bd7982b56ba6308c3737c25974492",
+   "sha256": "7d686596775ea8fc719e3a8fc83e3f4feca7bd85ac4c7b7c775fb39a90bc4337",
    "sha256_without_clock": "0ff876a0139e2c762af780de97ca1226ca70347edb03607ce8c4e7201fa55e4e"
   },
   "out": {
@@ -6964,9 +6969,9 @@
  "run": {
   "exit_code": 0,
   "signal": null,
-  "wall_seconds": 5.219,
-  "cpu_seconds": 3.525,
-  "timeout_seconds": 5400.0,
+  "wall_seconds": 2.47,
+  "cpu_seconds": 2.42,
+  "timeout_seconds": 3600.0,
   "stderr_tail": null,
   "errors": [],
   "warnings": [

@@ -1,6 +1,6 @@
 {
  "schema": "swmm-run-record/1",
- "created": "2026-11-04T20:05:56+00:00",
+ "created": "2026-11-06T03:59:18+00:00",
  "tool": {
   "name": "swmmrr",
   "version": "1.0.0"
@@ -31,14 +31,24 @@
   },
   "verification": [
    {
-    "set": "extra decks (452)",
-    "result": "452 of 452 identical (run ts_x3)",
-    "as_of": "2026-11-04"
+    "suite": "1729 gate (480 models)",
+    "total": 480,
+    "identical": 480,
+    "untested": 0,
+    "different": 0,
+    "run": "ts2",
+    "as_of": "2026-11-04",
+    "evidence": "https://github.com/SWMMBobSWMM6/swmm6-typescript/tree/main/gate/evidence"
    },
    {
-    "set": "1729 gate (480 models)",
-    "result": "rerun of the final build under way (run ts2); the build before the extra-deck fixes passed 480 of 480 (ts1)",
-    "as_of": "2026-11-04"
+    "suite": "SWMM6 extra decks (336 upstream tests + 116 swmm6-rust decks)",
+    "total": 452,
+    "identical": 452,
+    "untested": 0,
+    "different": 0,
+    "run": "ts_x3",
+    "as_of": "2026-11-04",
+    "evidence": "https://github.com/SWMMBobSWMM6/swmm6-typescript/tree/main/gate/evidence"
    }
   ],
   "fingerprint": {
@@ -51,8 +61,8 @@
     }
    ],
    "git": {
-    "commit": "99248bc420e9439689ae704a52b3d98c0f06a379",
-    "dirty": true
+    "commit": "91238e6ae7720804b48694ee86bc8a87ba7607c8",
+    "dirty": false
    }
   }
  },
@@ -102,7 +112,7 @@
   "rpt": {
    "path": "/home/claude/swmm-run-record/demo/greenville/swmm6-typescript/run.rpt",
    "bytes": 211733,
-   "sha256": "dacf9272d1e05bd76a6db14cd0d86ed5792a4436964152eca4b91f9f13004723",
+   "sha256": "3ddcf6aadb19bf7f58004927cc1c6225494b2c7e185dc25a5d229125ec32b9e1",
    "sha256_without_clock": "2104e9098d95c268d2ca97db137596e935eb2ad232173ccfb3c241a6455cb8e9"
   },
   "out": {
@@ -6971,9 +6981,9 @@
  "run": {
   "exit_code": 0,
   "signal": null,
-  "wall_seconds": 241.396,
-  "cpu_seconds": 157.76,
-  "timeout_seconds": 5400.0,
+  "wall_seconds": 83.356,
+  "cpu_seconds": 84.751,
+  "timeout_seconds": 3600.0,
   "stderr_tail": null,
   "errors": [],
   "warnings": [

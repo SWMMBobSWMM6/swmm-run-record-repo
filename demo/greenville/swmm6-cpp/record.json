@@ -1,6 +1,6 @@
 {
  "schema": "swmm-run-record/1",
- "created": "2026-11-04T20:02:45+00:00",
+ "created": "2026-11-06T03:58:13+00:00",
  "tool": {
   "name": "swmmrr",
   "version": "1.0.0"
@@ -34,7 +34,7 @@
   },
   "verification": [
    {
-    "what": "the reference for the six SWMM6 translations",
+    "suite": "the reference for the six SWMM6 translations",
     "as_of": "2026-11-04"
    }
   ],
@@ -48,8 +48,8 @@
     }
    ],
    "git": {
-    "commit": "99248bc420e9439689ae704a52b3d98c0f06a379",
-    "dirty": true
+    "commit": "91238e6ae7720804b48694ee86bc8a87ba7607c8",
+    "dirty": false
    }
   }
  },
@@ -99,7 +99,7 @@
   "rpt": {
    "path": "/home/claude/swmm-run-record/demo/greenville/swmm6-cpp/run.rpt",
    "bytes": 211733,
-   "sha256": "9d3d01847635ca74e2a84181b509d7cdf0d35f2784b8cb12cfbd96f5edacafa5",
+   "sha256": "7303d8e26ffbcb1d4531682c5ea4f08597f0ff9a14e729c96d98f1625b1e4bd8",
    "sha256_without_clock": "2104e9098d95c268d2ca97db137596e935eb2ad232173ccfb3c241a6455cb8e9"
   },
   "out": {
@@ -6968,9 +6968,9 @@
  "run": {
   "exit_code": 0,
   "signal": null,
-  "wall_seconds": 13.876,
-  "cpu_seconds": 9.271,
-  "timeout_seconds": 5400.0,
+  "wall_seconds": 6.143,
+  "cpu_seconds": 5.923,
+  "timeout_seconds": 3600.0,
   "stderr_tail": null,
   "errors": [],
   "warnings": [

@@ -1,6 +1,6 @@
 {
  "schema": "swmm-run-record/1",
- "created": "2026-11-04T20:09:59+00:00",
+ "created": "2026-11-06T04:00:42+00:00",
  "tool": {
   "name": "swmmrr",
   "version": "1.0.0"
@@ -30,14 +30,24 @@
   },
   "verification": [
    {
-    "set": "1729 gate (480 models)",
-    "result": "480 of 480 identical to the C++ (run f90c)",
-    "as_of": "2026-11-04"
+    "suite": "1729 gate (480 models)",
+    "total": 480,
+    "identical": 480,
+    "untested": 0,
+    "different": 0,
+    "run": "f90c",
+    "as_of": "2026-11-04",
+    "evidence": "https://github.com/SWMMBobSWMM6/swmm6-fortran/tree/main/gate/evidence"
    },
    {
-    "set": "extra decks (452)",
-    "result": "452 of 452 identical (run f90_x2)",
-    "as_of": "2026-11-04"
+    "suite": "SWMM6 extra decks (336 upstream tests + 116 swmm6-rust decks)",
+    "total": 452,
+    "identical": 452,
+    "untested": 0,
+    "different": 0,
+    "run": "f90_x2",
+    "as_of": "2026-11-04",
+    "evidence": "https://github.com/SWMMBobSWMM6/swmm6-fortran/tree/main/gate/evidence"
    }
   ],
   "fingerprint": {
@@ -50,8 +60,8 @@
     }
    ],
    "git": {
-    "commit": "99248bc420e9439689ae704a52b3d98c0f06a379",
-    "dirty": true
+    "commit": "91238e6ae7720804b48694ee86bc8a87ba7607c8",
+    "dirty": false
    }
   }
  },
@@ -101,7 +111,7 @@
   "rpt": {
    "path": "/home/claude/swmm-run-record/demo/greenville/swmm6-fortran/run.rpt",
    "bytes": 211733,
-   "sha256": "bfd6814ee7fc0f67a17d34c4ff359dd3394fb85a605dd450aab9df77c1967f08",
+   "sha256": "73a5a5132f670a85c756e722aa5b868a7fe531fb891454f27863e2f307a3ef8f",
    "sha256_without_clock": "2104e9098d95c268d2ca97db137596e935eb2ad232173ccfb3c241a6455cb8e9"
   },
   "out": {
@@ -6970,9 +6980,9 @@
  "run": {
   "exit_code": 0,
   "signal": null,
-  "wall_seconds": 155.323,
-  "cpu_seconds": 106.534,
-  "timeout_seconds": 5400.0,
+  "wall_seconds": 72.758,
+  "cpu_seconds": 72.292,
+  "timeout_seconds": 3600.0,
   "stderr_tail": null,
   "errors": [],
   "warnings": [

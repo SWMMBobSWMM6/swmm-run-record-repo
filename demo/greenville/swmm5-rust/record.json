@@ -1,6 +1,6 @@
 {
  "schema": "swmm-run-record/1",
- "created": "2026-11-04T19:53:45+00:00",
+ "created": "2026-11-06T03:54:16+00:00",
  "tool": {
   "name": "swmmrr",
   "version": "1.0.0"
@@ -29,14 +29,25 @@
   },
   "verification": [
    {
-    "set": "1729 gate (480 models)",
-    "result": "480 of 480 identical to EPA",
-    "as_of": "2026-10-29"
+    "suite": "1729 gate (480 models)",
+    "total": 480,
+    "identical": 480,
+    "untested": 0,
+    "different": 0,
+    "run": null,
+    "as_of": "2026-10-29",
+    "evidence": "https://github.com/SWMMBobSWMM6/swmm5-rust"
    },
    {
-    "set": "1729 corpus (3,759 models)",
-    "result": "3,738 identical, 15 undefined in C, 0 different, 6 inconclusive",
-    "as_of": "2026-10-29"
+    "suite": "1729 corpus (3,759 models)",
+    "total": 3759,
+    "identical": 3738,
+    "untested": 6,
+    "different": 0,
+    "run": null,
+    "as_of": "2026-10-29",
+    "note": "15 undefined in C; 6 inconclusive",
+    "evidence": "https://github.com/SWMMBobSWMM6/swmm5-rust"
    }
   ],
   "fingerprint": {
@@ -100,7 +111,7 @@
   "rpt": {
    "path": "/home/claude/swmm-run-record/demo/greenville/swmm5-rust/run.rpt",
    "bytes": 220653,
-   "sha256": "b166eb8d714d911e41c32eaed2f70eaaffdd7600493d019efa22a2b96884f82b",
+   "sha256": "9e1f1dc072a5db642c885e877a7ebbc5b7b714f3e3583215cfbe1869c9dc3b06",
    "sha256_without_clock": "0ff876a0139e2c762af780de97ca1226ca70347edb03607ce8c4e7201fa55e4e"
   },
   "out": {
@@ -6969,9 +6980,9 @@
  "run": {
   "exit_code": 0,
   "signal": null,
-  "wall_seconds": 5.401,
-  "cpu_seconds": 3.458,
-  "timeout_seconds": 5400.0,
+  "wall_seconds": 2.335,
+  "cpu_seconds": 2.238,
+  "timeout_seconds": 3600.0,
   "stderr_tail": null,
   "errors": [],
   "warnings": [

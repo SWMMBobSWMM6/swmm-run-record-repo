@@ -1,0 +1,9 @@
+
+... OpenSWMM Engine 6.0.0-alpha.4
+... Input: Greenville_all_SWMM5_Features_SI_Units.inp
+... Report: /home/claude/swmm-run-record/demo/greenville/swmm6-rust/run.rpt
+... Output: /home/claude/swmm-run-record/demo/greenville/swmm6-rust/run.out
+... 1000 steps, elapsed = 0.1154 days... 2000 steps, elapsed = 0.2311 days... 3000 steps, elapsed = 0.3469 days... 4000 steps, elapsed = 0.4626 days... 5000 steps, elapsed = 0.5784 days... 6000 steps, elapsed = 0.6941 days... 7000 steps, elapsed = 0.8098 days... 8000 steps, elapsed = 0.9256 days... 9000 steps, elapsed = 1.0413 days... 10000 steps, elapsed = 1.1571 days... 11000 steps, elapsed = 1.2728 days... 12000 steps, elapsed = 1.3886 days... 13000 steps, elapsed = 1.5043 days... 14000 steps, elapsed = 1.6200 days... 15000 steps, elapsed = 1.7358 days... 16000 steps, elapsed = 1.8515 days... 17000 steps, elapsed = 1.9673 days... 18000 steps, elapsed = 2.0830 days
+... 18003 steps completed.
+... OpenSWMM Engine completed in 5.00 seconds.
+

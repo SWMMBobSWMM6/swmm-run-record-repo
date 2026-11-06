@@ -1,6 +1,6 @@
 {
  "schema": "swmm-run-record/1",
- "created": "2026-11-04T19:53:40+00:00",
+ "created": "2026-11-06T03:54:14+00:00",
  "tool": {
   "name": "swmmrr",
   "version": "1.0.0"
@@ -29,14 +29,25 @@
   },
   "verification": [
    {
-    "set": "1729 gate (480 models)",
-    "result": "480 of 480 identical to EPA",
-    "as_of": "2026-10-29"
+    "suite": "1729 gate (480 models)",
+    "total": 480,
+    "identical": 480,
+    "untested": 0,
+    "different": 0,
+    "run": null,
+    "as_of": "2026-10-29",
+    "evidence": "https://github.com/SWMMBobSWMM6/swmm5-cplus"
    },
    {
-    "set": "1729 corpus (3,759 models run)",
-    "result": "3,743 identical, 0 different, 4 inconclusive (time cap), 12 crash decks crash both alike",
-    "as_of": "2026-10-29"
+    "suite": "1729 corpus (models under 125 KB plus a 72-model sample of larger)",
+    "total": 3759,
+    "identical": 3743,
+    "untested": 4,
+    "different": 0,
+    "run": null,
+    "as_of": "2026-10-29",
+    "note": "12 crash decks crash both alike; the 4 untested hit the time cap",
+    "evidence": "https://github.com/SWMMBobSWMM6/swmm5-cplus"
    }
   ],
   "fingerprint": {
@@ -100,7 +111,7 @@
   "rpt": {
    "path": "/home/claude/swmm-run-record/demo/greenville/swmm5-cplus/run.rpt",
    "bytes": 220653,
-   "sha256": "970c66d7dc6dbf14eef19d09c7003e3675d2ed1ba0555a09e315c3116dcc5fc5",
+   "sha256": "3d241f72607ab95e67d6c1dfaa8370837c13fcf069b6b6470b14978f1bdfa682",
    "sha256_without_clock": "0ff876a0139e2c762af780de97ca1226ca70347edb03607ce8c4e7201fa55e4e"
   },
   "out": {
@@ -6969,9 +6980,9 @@
  "run": {
   "exit_code": 0,
   "signal": null,
-  "wall_seconds": 4.491,
-  "cpu_seconds": 2.843,
-  "timeout_seconds": 5400.0,
+  "wall_seconds": 1.868,
+  "cpu_seconds": 1.801,
+  "timeout_seconds": 3600.0,
   "stderr_tail": null,
   "errors": [],
   "warnings": [
