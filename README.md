@@ -41,9 +41,10 @@ Every engine is run the same way: from the model's own folder, as `COMMAND model
 - its verification, dated.
 
 An engine that cannot run says why, and its capabilities say what it can route, so a 2D or FV task can never be
-routed to an engine that lacks that capability. `swmm6-rust`, for example, runs end to end but has no FV router yet: a
-deck that needs it stops with exit status 3 and "not translated yet", and the record keeps that (status `crashed`,
-exit 3, the message in `stderr_tail`).
+routed to an engine that lacks that capability. `swmm6-rust`, for example, matches the C++ on all 932 gate decks but has
+not translated paths no gate deck reaches (the pressurized implicit FV solver, native hot-start files and a few
+more): a deck that needs one stops with exit status 3 and "not translated yet", and the record keeps that (status
+`crashed`, exit 3, the message in `stderr_tail`).
 
 ## How a run ended
 
