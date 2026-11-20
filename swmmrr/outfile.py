@@ -3,7 +3,9 @@
 Both engines write the same layout (SWMM 5's), with a different version number in the header (5.2.4 writes 52004,
 OpenSWMM 6 writes 60000) and, for OpenSWMM 6, possibly more reporting variables. The reader therefore takes every
 count from the file itself (property codes, variable codes) instead of assuming SWMM 5's, and names the variable
-codes it knows.
+codes it knows. Two things in the header do differ between the engines: the node type codes (see NODE_TYPES) and
+the property code numbers (SWMM 5 labels a node's properties 0, 2, 3 and a link's 0, 4, 4, 3, 5; OpenSWMM 6 labels
+them 0, 2, 4 and 0, 6, 7, 4, 8). The properties are in the same order in both, and this reader uses only code 0.
 
 Written by Claude (Anthropic) for Robert Dickinson; see AI-USE.md.
 """
@@ -23,7 +25,15 @@ LINK_VARS = ['flow', 'depth', 'velocity', 'volume', 'capacity']
 SYS_VARS = ['air_temperature', 'rainfall', 'snow_depth', 'infiltration', 'runoff', 'dry_weather_inflow',
             'groundwater_inflow', 'rdii_inflow', 'external_inflow', 'total_lateral_inflow', 'flooding',
             'outfall_outflow', 'storage_volume', 'evaporation', 'pet']
+PROP_TYPE = 0                                                    # property code of an object's type (INPUT_TYPE_CODE)
+# Node type by code. The two engines number them differently, and each writes its own number to the .out:
+# SWMM 5 has STORAGE = 2 and DIVIDER = 3 (enums.h, NodeType); OpenSWMM 6 has DIVIDER = 2 and STORAGE = 3
+# (NodeType in src/engine/data/NodeData.hpp, which DefaultOutputPlugin.cpp writes as it is). So a storage node of
+# an OpenSWMM 6 file carries the code SWMM 5 uses for a divider. The file's version number says which table applies.
+# Link types have the same codes in both.
 NODE_TYPES = ['JUNCTION', 'OUTFALL', 'STORAGE', 'DIVIDER']
+NODE_TYPES_OPENSWMM6 = ['JUNCTION', 'OUTFALL', 'DIVIDER', 'STORAGE']
+OPENSWMM6_VERSION = 60000                                        # header version numbers from here up are OpenSWMM 6's
 LINK_TYPES = ['CONDUIT', 'PUMP', 'ORIFICE', 'WEIR', 'OUTLET']
 
 
@@ -52,16 +62,20 @@ class OutFile:
             p += 4 + n
         a, c, d = self.nsub, self.nsub + self.nnode, self.nsub + self.nnode + self.nlink
         self.subcatchments, self.nodes, self.links, self.pollutants = names[:a], names[a:c], names[c:d], names[d:]
-        # object properties: for each kind a count, that many codes, then each object's values
+        # object properties: for each kind a count, that many codes, then each object's values.
+        # The type code (property code 0) is a 4-byte integer and every other property a 4-byte float: the engines
+        # write a node as fwrite(&k, sizeof(INT4), ...) then two REAL4s, a link as an INT4 then four REAL4s
+        # (output.c, output_open). Read as a float, type 1 is 1.4e-45, which int() turns into 0: until version
+        # 1.0.1 this reader did that, and called every node a JUNCTION and every link a CONDUIT.
         p = self.input_pos
         self.props = {}
         for kind, n in (('sub', self.nsub), ('node', self.nnode), ('link', self.nlink)):
             k = struct.unpack_from('<i', b, p)[0]
             codes = list(struct.unpack_from('<%di' % k, b, p + 4))
             p += 4 * (1 + k)
-            vals = struct.unpack_from('<%df' % (k * n), b, p) if n else ()
+            row = '<' + ''.join('i' if code == PROP_TYPE else 'f' for code in codes)
+            self.props[kind] = (codes, [struct.unpack_from(row, b, p + 4 * k * i) for i in range(n)])
             p += 4 * k * n
-            self.props[kind] = (codes, [vals[i * k:(i + 1) * k] for i in range(n)])
         # reporting variables: for each kind a count and the codes
         self.var_codes = {}
         for kind in ('sub', 'node', 'link', 'sys'):
@@ -97,12 +111,13 @@ class OutFile:
 
     def node_type(self, i):
         codes, vals = self.props['node']
-        t = int(vals[i][codes.index(0)]) if 0 in codes else -1
-        return NODE_TYPES[t] if 0 <= t < len(NODE_TYPES) else 'code_%d' % t
+        t = vals[i][codes.index(PROP_TYPE)] if PROP_TYPE in codes else -1
+        names = NODE_TYPES_OPENSWMM6 if self.version >= OPENSWMM6_VERSION else NODE_TYPES
+        return names[t] if 0 <= t < len(names) else 'code_%d' % t
 
     def link_type(self, i):
         codes, vals = self.props['link']
-        t = int(vals[i][codes.index(0)]) if 0 in codes else -1
+        t = vals[i][codes.index(PROP_TYPE)] if PROP_TYPE in codes else -1
         return LINK_TYPES[t] if 0 <= t < len(LINK_TYPES) else 'code_%d' % t
 
     def results_sha256(self):

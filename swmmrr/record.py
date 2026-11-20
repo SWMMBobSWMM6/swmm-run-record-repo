@@ -22,7 +22,7 @@ import time
 from . import engines, inpfile, outfile, rptfile
 
 SCHEMA = 'swmm-run-record/1'
-TOOL = dict(name='swmmrr', version='1.0.0')
+TOOL = dict(name='swmmrr', version='1.0.1')
 EPOCH = dt.datetime(1899, 12, 30)                     # SWMM keeps dates as days since 12/30/1899
 
 
@@ -124,6 +124,83 @@ def _summary(pk, o):
     if pk['subcatchments']:
         s['subcatchments']['max_runoff'] = top(pk['subcatchments'], 'max_runoff')
     return s
+
+
+def _out_sections(o):
+    """The parts of a record that come from the .out file alone and from nothing else about the run: the units,
+    the objects, the summary and the peaks. run() writes them; reread() derives them again from the same file."""
+    system = o.unit_system
+    nt, lt = {}, {}
+    for j in range(o.nnode):
+        nt[o.node_type(j)] = nt.get(o.node_type(j), 0) + 1
+    for j in range(o.nlink):
+        lt[o.link_type(j)] = lt.get(o.link_type(j), 0) + 1
+    pk = _peaks(o) if o.nperiods else dict(subcatchments={}, nodes={}, links={}, system={})
+    return dict(units=dict(flow=o.flow_units, system=system, **UNITS[system]),
+                objects=dict(subcatchments=o.nsub, nodes=o.nnode, links=o.nlink, pollutants=o.pollutants,
+                             node_types=nt, link_types=lt,
+                             variables={k: o.var_names(k) for k in ('sub', 'node', 'link', 'sys')}),
+                summary=_summary(pk, o), peaks=pk)
+
+
+def _differences(old, new, path=''):
+    """JSON paths at which two values differ."""
+    if isinstance(old, dict) and isinstance(new, dict):
+        out = []
+        for k in list(old) + [k for k in new if k not in old]:
+            if k not in old or k not in new:
+                out.append(path + k)
+            else:
+                out += _differences(old[k], new[k], path + k + '.')
+        return out
+    return [] if old == new else [path.rstrip('.')]
+
+
+def reread(record_path, out_path, reason):
+    """Derive a record's .out sections again from its .out file, with the reader as it is now.
+
+    For a record made by a reader that has since been corrected. Nothing is run. The file must be the one the
+    record names: its SHA-256 has to equal files.out.sha256, or nothing is changed. Only the sections that come
+    from the .out alone (units, objects, summary, peaks) are derived again; what ran, on what, how it ended and
+    when stay as recorded. Every changed value is counted in a new entry of the record's "corrections" list, so a
+    record that was changed after it was made says so.
+
+    Returns (record, changed) where changed maps each kind of path (object names replaced by *) to a count; an
+    empty map means the record already agreed with the reader and was left alone."""
+    with open(record_path) as fh:
+        rec = json.load(fh)
+    named = (rec.get('files') or {}).get('out', {}).get('sha256')
+    if not named:
+        raise ValueError('%s names no .out file: there is nothing to read again' % record_path)
+    have = inpfile.sha256_file(out_path)
+    if have != named:
+        raise ValueError('%s is not the file this record was made from: its SHA-256 is %s, the record names %s'
+                         % (out_path, have, named))
+    new = json.loads(json.dumps(clean(_out_sections(outfile.OutFile(out_path))), allow_nan=False))
+    changed = {}
+    names = {'peaks.' + kind + '.': set((rec.get('peaks') or {}).get(kind, {})) | set(new['peaks'].get(kind, {}))
+             for kind in ('subcatchments', 'nodes', 'links')}
+    for section, value in new.items():
+        for path in _differences(rec.get(section, {}), value, section + '.'):
+            for prefix, ids in names.items():        # peaks.nodes.J1.type -> peaks.nodes.*.type
+                if path.startswith(prefix):
+                    rest = path[len(prefix):]
+                    oid = max((i for i in ids if rest == i or rest.startswith(i + '.')), key=len, default=None)
+                    if oid is not None:
+                        path = prefix + '*' + rest[len(oid):]
+                    break
+            changed[path] = changed.get(path, 0) + 1
+    if not changed:
+        return rec, changed
+    for section, value in new.items():
+        rec[section] = value
+    rec.setdefault('corrections', []).append(dict(
+        date=dt.datetime.now(dt.timezone.utc).isoformat(timespec='seconds'), tool=TOOL, reason=reason,
+        method='reread: units, objects, summary and peaks derived again from the .out file; nothing was run',
+        out_sha256=have, changed=dict(sorted(changed.items()))))
+    with open(record_path, 'w') as fh:
+        json.dump(clean(rec), fh, indent=1, allow_nan=False)
+    return rec, changed
 
 
 def _series(o, specs):
@@ -239,19 +316,7 @@ def run(engine_id, inp, workdir, timeout=3600.0, series=None, reg=None):
             rec['time']['reached_end'] = (end - last).total_seconds() < o.report_step
             if status == 'completed' and not rec['time']['reached_end']:
                 run_['status'] = 'incomplete'
-        system = o.unit_system
-        rec['units'] = dict(flow=o.flow_units, system=system, **UNITS[system])
-        nt, lt = {}, {}
-        for j in range(o.nnode):
-            nt[o.node_type(j)] = nt.get(o.node_type(j), 0) + 1
-        for j in range(o.nlink):
-            lt[o.link_type(j)] = lt.get(o.link_type(j), 0) + 1
-        rec['objects'] = dict(subcatchments=o.nsub, nodes=o.nnode, links=o.nlink, pollutants=o.pollutants,
-                              node_types=nt, link_types=lt,
-                              variables={k: o.var_names(k) for k in ('sub', 'node', 'link', 'sys')})
-        pk = _peaks(o) if o.nperiods else dict(subcatchments={}, nodes={}, links={}, system={})
-        rec['summary'] = _summary(pk, o)
-        rec['peaks'] = pk
+        rec.update(_out_sections(o))
         if series:
             rec['series'] = dict(dates=[swmm_date(d) for d in dates], items=_series(o, series))
     rec['run'] = run_

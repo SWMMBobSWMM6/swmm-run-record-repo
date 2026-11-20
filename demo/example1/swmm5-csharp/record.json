@@ -126,7 +126,8 @@
    "TSS"
   ],
   "node_types": {
-   "JUNCTION": 12
+   "JUNCTION": 11,
+   "OUTFALL": 1
   },
   "link_types": {
    "CONDUIT": 11
@@ -571,7 +572,7 @@
     "max_flooding_time": "1998-01-01T00:05:00",
     "max_quality:TSS": 371.63507080078125,
     "max_quality:TSS_time": "1998-01-01T11:55:00",
-    "type": "JUNCTION"
+    "type": "OUTFALL"
    }
   },
   "links": {
@@ -1010,5 +1011,22 @@
     "percent": 0.0
    }
   ]
- }
+ },
+ "corrections": [
+  {
+   "date": "2026-11-20T04:13:01+00:00",
+   "tool": {
+    "name": "swmmrr",
+    "version": "1.0.1"
+   },
+   "reason": "swmmrr before 1.0.1 read the node and link type codes of the .out as floats (they are 4-byte integers), so every node was recorded as JUNCTION and every link as CONDUIT; the numbers were not affected",
+   "method": "reread: units, objects, summary and peaks derived again from the .out file; nothing was run",
+   "out_sha256": "d660d53af622d533d57c46df56fc30febc2ab7da1305eab7e4cc4477d46789f1",
+   "changed": {
+    "objects.node_types.JUNCTION": 1,
+    "objects.node_types.OUTFALL": 1,
+    "peaks.nodes.*.type": 1
+   }
+  }
+ ]
 }

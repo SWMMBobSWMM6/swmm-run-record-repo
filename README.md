@@ -29,6 +29,8 @@ python3 -m swmmrr run swmm6-go model.inp -d runs/go         # runs/go/record.jso
 python3 -m swmmrr run swmm5-epa model.inp -d runs/epa --series node:J1:depth link:C1:flow sys::runoff
 python3 -m swmmrr compare runs/epa/record.json runs/go/record.json --profile engineering -o diff.json
 python3 -m swmmrr matrix model.inp -d runs/model            # every engine, compared within and across families
+python3 -m swmmrr reread runs/go/record.json runs/go/run.out --reason "..."   # after a reader fix: see Corrections
+python3 -m unittest discover -s tests                       # the readers, on real output of both families
 ```
 
 Every engine is run the same way: from the model's own folder, as `COMMAND model.inp report.rpt output.out`.
@@ -144,7 +146,59 @@ lists every variable, with the object, time and both values of its worst point.
 The matrices also time every engine (on a shared two-core machine with gate runs going, so roughly). Python is the
 slow one: 418 s for the SWMM5 translation and 1,669 s for the SWMM6 one, against 4.6 s for EPA on Greenville.
 
+## Corrections
+
+**Object types, corrected 19 November 2026 (swmmrr 1.0.1).** Until then the `.out` reader unpacked every saved
+property as a float:
+
+```python
+vals = struct.unpack_from('<%df' % (k * n), b, p) if n else ()
+...
+t = int(vals[i][codes.index(0)]) if 0 in codes else -1
+```
+
+The engines write a node's or link's type code as a 4-byte integer and only the other properties as floats. Type 1
+read as a float is 1.4e-45, and `int()` makes it 0, so every record called every node a JUNCTION and every link a
+CONDUIT. Greenville has 149 junctions, 5 outfalls, 17 storage nodes and a divider, and 223 conduits, 5 pumps,
+4 weirs, 2 orifices and an outlet; its records said 172 JUNCTION and 235 CONDUIT. Only three things were wrong:
+`objects.node_types`, `objects.link_types`, and the `type` of each node and link under `peaks`. No number in any
+record depended on them, and neither did any comparison verdict or matrix.
+
+The reader now reads the type code as an integer. It also reads it by the right table, because the two engines
+number node types differently and each writes its own number:
+
+| Code | SWMM 5 | OpenSWMM 6 |
+|---|---|---|
+| 0 | JUNCTION | JUNCTION |
+| 1 | OUTFALL | OUTFALL |
+| 2 | STORAGE | DIVIDER |
+| 3 | DIVIDER | STORAGE |
+
+So a storage node in an OpenSWMM 6 `.out` carries the code a SWMM 5 reader takes for a divider. The file's version
+number (60000 and up for OpenSWMM 6) says which table applies. OpenSWMM 6 also labels the saved properties with
+other code numbers (a node's are 0, 2, 4 where SWMM 5 writes 0, 2, 3; a link's are 0, 6, 7, 4, 8 where SWMM 5 writes
+0, 4, 4, 3, 5); the properties themselves are in the same order.
+
+**How the 34 demo records were corrected.** They were not run again: 15 of the 17 engines were not at hand, and a
+new run would have replaced each record's fingerprint, timing and date for the sake of a label. Instead
+`swmmrr reread` derived each record's `.out` sections again from the record's own `.out` file:
+
+- The `.out` files are not kept in this repository, so they were produced again: swmm5-rust and swmm6-rust ran both
+  models, and the four files have exactly the SHA-256 the records name (one per family and model; within a family
+  every engine's `.out` is byte-identical, which is what the records already said).
+- `reread` refuses a file whose SHA-256 is not the one in the record.
+- Control: with the reader as it was, the same procedure reproduces all 34 records exactly, value for value. So the
+  procedure itself changes nothing; only the fix does.
+- With the corrected reader 799 values changed across the 34 records, every one of them a type or a count of types.
+  The corrected types were then compared with the section each object sits in in the `.inp`: 7,310 comparisons, all
+  equal. Every record still validates against the schema.
+- Each record carries a `corrections` entry saying what was changed, by which tool version, why, and from which
+  file. A record that was changed after it was made says so.
+
 ## What this does not show
+
+- **The corrected records were not re-run.** Their object types come from `.out` files produced again on
+  19 November 2026 and matched to each record by SHA-256, not from the original run's own files.
 
 - **Correctness against the physics.** A record says what an engine produced. Agreement between engines is evidence
   about the translations, not about the hydraulics. The six SWMM6 translations come from one C# translation, so they

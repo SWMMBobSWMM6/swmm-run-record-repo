@@ -1,3 +1,4 @@
 *.out
+!tests/data/*.out
 __pycache__/
 *.pyc

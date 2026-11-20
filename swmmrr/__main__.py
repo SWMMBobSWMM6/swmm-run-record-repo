@@ -8,6 +8,9 @@
                                            run every engine (or the ones named), compare each with its family's
                                            reference and the two references with each other, and write
                                            DIR/matrix.json and DIR/matrix.md
+  reread RECORD.json RUN.out --reason TEXT derive a record's .out sections again with the reader as it is now.
+                                           Nothing is run; RUN.out must have the SHA-256 the record names. What
+                                           changed is counted in the record's "corrections" list.
 
 Written by Claude (Anthropic) for Robert Dickinson; see AI-USE.md.
 """
@@ -51,6 +54,19 @@ def cmd_compare(a):
         print('  %-5s %-20s outside %6d of %8d  worst x%-8s at %s %s (%s vs %s)' % (
             v['kind'], v['variable'], v['outside'], v['compared'], _fmt(v['tolerance_ratio']), w.get('id'), w.get('time'),
             _fmt(w.get('a'), 6), _fmt(w.get('b'), 6)))
+
+
+def cmd_reread(a):
+    try:
+        rec, changed = record.reread(a.record, a.out, a.reason)
+    except ValueError as ex:
+        sys.exit('swmmrr reread: %s' % ex)
+    if not changed:
+        print('%s: already agrees with the reader; left alone' % a.record)
+    else:
+        print('%s: %d value(s) corrected' % (a.record, sum(changed.values())))
+        for path, n in sorted(changed.items()):
+            print('  %-40s %d' % (path, n))
 
 
 def cmd_matrix(a):
@@ -158,6 +174,9 @@ def main(argv=None):
     p.add_argument('--timeout', type=float, default=3600.0); p.add_argument('--reuse', action='store_true')
     p.add_argument('--profile', default='engineering', choices=compare.PROFILES)
     p.set_defaults(f=cmd_matrix)
+    p = sp.add_parser('reread')
+    p.add_argument('record'); p.add_argument('out'); p.add_argument('--reason', required=True)
+    p.set_defaults(f=cmd_reread)
     a = ap.parse_args(argv)
     a.f(a)
 
