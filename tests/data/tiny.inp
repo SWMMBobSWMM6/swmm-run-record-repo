@@ -1,0 +1,104 @@
+[TITLE]
+Test fixture: one acre, three pipes, a wet well, one pump, a steady 1 cfs inflow.
+Made for these tests; not a real place. Coordinates are feet on an arbitrary grid.
+
+[OPTIONS]
+FLOW_UNITS           CFS
+INFILTRATION         HORTON
+FLOW_ROUTING         DYNWAVE
+START_DATE           06/01/2026
+START_TIME           00:00:00
+REPORT_START_DATE    06/01/2026
+REPORT_START_TIME    00:00:00
+END_DATE             06/01/2026
+END_TIME             02:00:00
+DRY_DAYS             0
+REPORT_STEP          00:01:00
+WET_STEP             00:01:00
+DRY_STEP             00:01:00
+ROUTING_STEP         5
+ALLOW_PONDING        NO
+
+[RAINGAGES]
+;;Name  Format     Interval  SCF  Source
+RG1     INTENSITY  0:05      1.0  TIMESERIES STORM
+
+[SUBCATCHMENTS]
+;;Name  Gage  Outlet  Area  %Imperv  Width  %Slope  CurbLen
+S1      RG1   J1      1     100      500    5       0
+
+[SUBAREAS]
+;;Sub  N-Imperv  N-Perv  S-Imperv  S-Perv  PctZero  RouteTo
+S1     0.01      0.1     0         0.05    100      OUTLET
+
+[INFILTRATION]
+S1     3.0       0.5     4         7       0
+
+[JUNCTIONS]
+;;Name  Elev  MaxDepth  InitDepth  SurDepth  Aponded
+J1      100   10        0          0         0
+J2      99    10        0          0         0
+J3      98    10        0          0         0
+
+[OUTFALLS]
+O1      97    FREE
+
+[STORAGE]
+;;Name  Elev  MaxDepth  InitDepth  Shape       Coeff  Exp  Const
+WET1    90    12        0          FUNCTIONAL  0      0    200
+
+[CONDUITS]
+;;Name  From   To     Length  Rough  InOff  OutOff
+C1      J1     J2     400     0.013  0      0
+C2      J2     J3     400     0.013  0      0
+C3      J3     WET1   200     0.013  0      0
+
+[PUMPS]
+;;Name  From  To  Curve  Status  Startup  Shutoff
+P1      WET1  O1  PC1    ON      2        0.5
+
+[XSECTIONS]
+C1      CIRCULAR  1.5  0  0  0  1
+C2      CIRCULAR  1.5  0  0  0  1
+C3      CIRCULAR  1.5  0  0  0  1
+
+[INFLOWS]
+;;Node  Constituent  Series  Type  Mfactor  Sfactor  Baseline
+J1      FLOW         ""      FLOW  1.0      1.0      1.0
+
+[CURVES]
+PC1     Pump3   0   5
+PC1             20  5
+
+[TIMESERIES]
+;;Name  Time  Value
+STORM   0:00  0
+STORM   0:10  1.0
+STORM   0:30  0
+
+[REPORT]
+SUBCATCHMENTS ALL
+NODES ALL
+LINKS ALL
+
+[COORDINATES]
+J1      0     0
+J2      400   0
+J3      800   0
+WET1    1000  0
+O1      1100  50
+RG1     -100  300
+
+[VERTICES]
+C2      600   40
+C2      700   40
+
+[POLYGONS]
+S1      -300  -150
+S1      -300  150
+S1      0     150
+S1      0     -150
+
+[MAP]
+DIMENSIONS -300 -150 1100 300
+Units      Feet

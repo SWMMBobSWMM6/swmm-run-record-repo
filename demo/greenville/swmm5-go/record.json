@@ -140,10 +140,17 @@
   "links": 235,
   "pollutants": [],
   "node_types": {
-   "JUNCTION": 172
+   "JUNCTION": 149,
+   "OUTFALL": 5,
+   "DIVIDER": 1,
+   "STORAGE": 17
   },
   "link_types": {
-   "CONDUIT": 235
+   "CONDUIT": 223,
+   "PUMP": 5,
+   "ORIFICE": 2,
+   "WEIR": 4,
+   "OUTLET": 1
   },
   "variables": {
    "sub": [
@@ -3028,7 +3035,7 @@
     "max_total_inflow_time": "1997-01-01T00:01:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "OUTFALL"
    },
    "OFALL-10": {
     "max_depth": 0.009674652479588985,
@@ -3043,7 +3050,7 @@
     "max_total_inflow_time": "1997-01-01T14:08:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "OUTFALL"
    },
    "OFALL-12": {
     "max_depth": 0.002651165472343564,
@@ -3058,7 +3065,7 @@
     "max_total_inflow_time": "1997-01-02T23:26:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "OUTFALL"
    },
    "VIADUCT1": {
     "max_depth": 0.0009260320803150535,
@@ -3073,7 +3080,7 @@
     "max_total_inflow_time": "1997-01-01T12:46:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "OUTFALL"
    },
    "VIADUCT2": {
     "max_depth": 7.241233834065497e-05,
@@ -3088,7 +3095,7 @@
     "max_total_inflow_time": "1997-01-01T13:26:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "OUTFALL"
    },
    "333": {
     "max_depth": 0.2910546362400055,
@@ -3103,7 +3110,7 @@
     "max_total_inflow_time": "1997-01-01T14:18:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "DIVIDER"
    },
    "1114": {
     "max_depth": 0.0022161677479743958,
@@ -3118,7 +3125,7 @@
     "max_total_inflow_time": "1997-01-01T12:15:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "STORAGE"
    },
    "1115": {
     "max_depth": 0.5628754496574402,
@@ -3133,7 +3140,7 @@
     "max_total_inflow_time": "1997-01-01T12:15:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "STORAGE"
    },
    "117": {
     "max_depth": 0.019177814945578575,
@@ -3148,7 +3155,7 @@
     "max_total_inflow_time": "1997-01-01T14:01:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "STORAGE"
    },
    "163": {
     "max_depth": 0.006542467512190342,
@@ -3163,7 +3170,7 @@
     "max_total_inflow_time": "1997-01-01T12:59:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "STORAGE"
    },
    "17": {
     "max_depth": 0.006452259141951799,
@@ -3178,7 +3185,7 @@
     "max_total_inflow_time": "1997-01-01T12:15:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "STORAGE"
    },
    "187": {
     "max_depth": 0.00411324854940176,
@@ -3193,7 +3200,7 @@
     "max_total_inflow_time": "1997-01-01T12:15:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "STORAGE"
    },
    "229": {
     "max_depth": 0.003850464941933751,
@@ -3208,7 +3215,7 @@
     "max_total_inflow_time": "1997-01-01T13:28:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "STORAGE"
    },
    "421": {
     "max_depth": 0.015549085102975368,
@@ -3223,7 +3230,7 @@
     "max_total_inflow_time": "1997-01-01T12:15:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "STORAGE"
    },
    "83": {
     "max_depth": 8.92320167622529e-05,
@@ -3238,7 +3245,7 @@
     "max_total_inflow_time": "1997-01-01T16:07:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "STORAGE"
    },
    "989": {
     "max_depth": 6.122550985310227e-05,
@@ -3253,7 +3260,7 @@
     "max_total_inflow_time": "1997-01-01T07:01:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "STORAGE"
    },
    "STOR-10": {
     "max_depth": 0.25180038809776306,
@@ -3268,7 +3275,7 @@
     "max_total_inflow_time": "1997-01-01T14:09:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "STORAGE"
    },
    "STOR-12": {
     "max_depth": 0.14910650253295898,
@@ -3283,7 +3290,7 @@
     "max_total_inflow_time": "1997-01-01T14:27:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "STORAGE"
    },
    "STOR-14": {
     "max_depth": 0.6097007393836975,
@@ -3298,7 +3305,7 @@
     "max_total_inflow_time": "1997-01-01T14:56:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "STORAGE"
    },
    "STOR-16": {
     "max_depth": 1.1975834369659424,
@@ -3313,7 +3320,7 @@
     "max_total_inflow_time": "1997-01-01T15:00:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "STORAGE"
    },
    "260": {
     "max_depth": 9.981098264688626e-05,
@@ -3328,7 +3335,7 @@
     "max_total_inflow_time": "1997-01-01T14:07:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "STORAGE"
    },
    "261": {
     "max_depth": 3.203800952178426e-05,
@@ -3343,7 +3350,7 @@
     "max_total_inflow_time": "1997-01-02T12:01:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "STORAGE"
    },
    "209": {
     "max_depth": 0.07967889308929443,
@@ -3358,7 +3365,7 @@
     "max_total_inflow_time": "1997-01-01T12:45:00",
     "max_flooding": 0.0,
     "max_flooding_time": "1997-01-01T00:01:00",
-    "type": "JUNCTION"
+    "type": "STORAGE"
    }
   },
   "links": {
@@ -6720,7 +6727,7 @@
     "max_volume_time": "1997-01-01T00:01:00",
     "max_capacity": 0.0,
     "max_capacity_time": "1997-01-01T00:01:00",
-    "type": "CONDUIT"
+    "type": "PUMP"
    },
    "PUMP-15": {
     "max_flow": 17.501949310302734,
@@ -6735,7 +6742,7 @@
     "max_volume_time": "1997-01-01T00:01:00",
     "max_capacity": 1.0,
     "max_capacity_time": "1997-01-02T01:20:00",
-    "type": "CONDUIT"
+    "type": "PUMP"
    },
    "PUMP-17": {
     "max_flow": 0.0,
@@ -6750,7 +6757,7 @@
     "max_volume_time": "1997-01-01T00:01:00",
     "max_capacity": 0.0,
     "max_capacity_time": "1997-01-01T00:01:00",
-    "type": "CONDUIT"
+    "type": "PUMP"
    },
    "PUMP-19": {
     "max_flow": 0.0,
@@ -6765,7 +6772,7 @@
     "max_volume_time": "1997-01-01T00:01:00",
     "max_capacity": 0.0,
     "max_capacity_time": "1997-01-01T00:01:00",
-    "type": "CONDUIT"
+    "type": "PUMP"
    },
    "PUMP1@1115-351": {
     "max_flow": 0.0,
@@ -6780,7 +6787,7 @@
     "max_volume_time": "1997-01-01T00:01:00",
     "max_capacity": 0.0,
     "max_capacity_time": "1997-01-01T00:01:00",
-    "type": "CONDUIT"
+    "type": "PUMP"
    },
    "ORI-11": {
     "max_flow": 0.0,
@@ -6795,7 +6802,7 @@
     "max_volume_time": "1997-01-01T00:01:00",
     "max_capacity": 1.0,
     "max_capacity_time": "1997-01-01T00:01:00",
-    "type": "CONDUIT"
+    "type": "ORIFICE"
    },
    "CDT-41": {
     "max_flow": 0.23353300988674164,
@@ -6810,7 +6817,7 @@
     "max_volume_time": "1997-01-01T00:01:00",
     "max_capacity": 1.0,
     "max_capacity_time": "1997-01-01T00:01:00",
-    "type": "CONDUIT"
+    "type": "ORIFICE"
    },
    "WEIR1@260-261": {
     "max_flow": 0.0,
@@ -6825,7 +6832,7 @@
     "max_volume_time": "1997-01-01T00:01:00",
     "max_capacity": 1.0,
     "max_capacity_time": "1997-01-01T00:01:00",
-    "type": "CONDUIT"
+    "type": "WEIR"
    },
    "Vnotch1": {
     "max_flow": 9.673266632148625e-09,
@@ -6840,7 +6847,7 @@
     "max_volume_time": "1997-01-01T00:01:00",
     "max_capacity": 1.0,
     "max_capacity_time": "1997-01-01T00:01:00",
-    "type": "CONDUIT"
+    "type": "WEIR"
    },
    "Transverse1": {
     "max_flow": 0.0006038646097294986,
@@ -6855,7 +6862,7 @@
     "max_volume_time": "1997-01-01T00:01:00",
     "max_capacity": 1.0,
     "max_capacity_time": "1997-01-01T00:01:00",
-    "type": "CONDUIT"
+    "type": "WEIR"
    },
    "2601OF": {
     "max_flow": 0.0006038646097294986,
@@ -6870,7 +6877,7 @@
     "max_volume_time": "1997-01-01T00:01:00",
     "max_capacity": 1.0,
     "max_capacity_time": "1997-01-01T00:01:00",
-    "type": "CONDUIT"
+    "type": "WEIR"
    },
    "OLET-11": {
     "max_flow": 0.0,
@@ -6885,7 +6892,7 @@
     "max_volume_time": "1997-01-01T00:01:00",
     "max_capacity": 1.0,
     "max_capacity_time": "1997-01-01T00:01:00",
-    "type": "CONDUIT"
+    "type": "OUTLET"
    }
   },
   "system": {
@@ -7218,5 +7225,30 @@
     "percent": 0.0
    }
   ]
- }
+ },
+ "corrections": [
+  {
+   "date": "2026-11-20T04:13:05+00:00",
+   "tool": {
+    "name": "swmmrr",
+    "version": "1.0.1"
+   },
+   "reason": "swmmrr before 1.0.1 read the node and link type codes of the .out as floats (they are 4-byte integers), so every node was recorded as JUNCTION and every link as CONDUIT; the numbers were not affected",
+   "method": "reread: units, objects, summary and peaks derived again from the .out file; nothing was run",
+   "out_sha256": "59b7084e206d648009ffc781bcee8c973d0b3c365ddfdd87a09a75a0674b1782",
+   "changed": {
+    "objects.link_types.CONDUIT": 1,
+    "objects.link_types.ORIFICE": 1,
+    "objects.link_types.OUTLET": 1,
+    "objects.link_types.PUMP": 1,
+    "objects.link_types.WEIR": 1,
+    "objects.node_types.DIVIDER": 1,
+    "objects.node_types.JUNCTION": 1,
+    "objects.node_types.OUTFALL": 1,
+    "objects.node_types.STORAGE": 1,
+    "peaks.links.*.type": 12,
+    "peaks.nodes.*.type": 23
+   }
+  }
+ ]
 }

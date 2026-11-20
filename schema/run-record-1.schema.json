@@ -88,7 +88,12 @@
       "description": "from the .out file: for every object the maximum of each reporting variable and the time of the first period that reaches it (links also the minimum flow)",
       "properties": {"subcatchments": {"type": "object"}, "nodes": {"type": "object"}, "links": {"type": "object"}, "system": {"type": "object"}}
     },
-    "series": {"type": "object", "properties": {"dates": {"type": "array", "items": {"type": "string"}}, "items": {"type": "array", "items": {"type": "object", "required": ["kind", "variable", "values"], "properties": {"kind": {"enum": ["sub", "node", "link", "sys"]}, "id": {"type": ["string", "null"]}, "variable": {"type": "string"}, "values": {"type": ["array", "null"]}, "note": {"type": "string"}}}}}}
+    "series": {"type": "object", "properties": {"dates": {"type": "array", "items": {"type": "string"}}, "items": {"type": "array", "items": {"type": "object", "required": ["kind", "variable", "values"], "properties": {"kind": {"enum": ["sub", "node", "link", "sys"]}, "id": {"type": ["string", "null"]}, "variable": {"type": "string"}, "values": {"type": ["array", "null"]}, "note": {"type": "string"}}}}}},
+    "corrections": {
+      "type": "array",
+      "description": "present only on a record changed after it was made: one entry per change. `swmmrr reread` adds an entry when a corrected reader gives the record's own .out file (same SHA-256) different units, objects, summary or peaks; nothing is run again, and what ran, on what and how it ended stay as recorded",
+      "items": {"type": "object", "required": ["date", "tool", "reason", "method", "out_sha256", "changed"], "properties": {"date": {"type": "string"}, "tool": {"type": "object", "required": ["name", "version"], "properties": {"name": {"type": "string"}, "version": {"type": "string"}}}, "reason": {"type": "string"}, "method": {"type": "string"}, "out_sha256": {"type": "string"}, "changed": {"type": "object", "description": "how many values changed at each kind of JSON path, object names written as *", "additionalProperties": {"type": "integer"}}}}
+    }
   },
   "$defs": {
     "message": {"type": "object", "required": ["code", "text"], "properties": {"code": {"type": "integer"}, "text": {"type": "string"}}}
